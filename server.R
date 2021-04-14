@@ -1,7 +1,7 @@
 pacman::p_load(shiny, shinyjs, shinyWidgets, futile.logger, httr, jsonlite,
                plyr, dplyr, tidyr, readr, magrittr, purrr, stringr, glue, tibble, 
                data.table, DT, ggplot2, scales, RColorBrewer, gt, rpivotTable,
-               rvest, paws, htmlwidgets, datimutils, doMC)
+               rvest, paws, htmlwidgets, datimutils, doMC, R.utils)
 
 source("./utils.R")
 source("./visuals.R")

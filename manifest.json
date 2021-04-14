@@ -242,58 +242,6 @@
         "Built": "R 3.6.3; ; 2021-02-10 15:25:36 UTC; windows"
       }
     },
-    "aws.s3": {
-      "Source": "CRAN",
-      "Repository": "https://cran.rstudio.com",
-      "description": {
-        "Package": "aws.s3",
-        "Type": "Package",
-        "Title": "'AWS S3' Client Package",
-        "Version": "0.3.21",
-        "Authors@R": "c(person(\"Thomas J.\", \"Leeper\", role = \"aut\",\n                    email = \"thosjleeper@gmail.com\",\n                    comment = c(ORCID = \"0000-0003-4097-6326\")),\n             person(\"Boettiger\", \"Carl\", role = \"ctb\"),\n             person(\"Andrew\", \"Martin\", role = \"ctb\"),\n             person(\"Mark\", \"Thompson\", role = \"ctb\"),\n             person(\"Tyler\", \"Hunt\", role = \"ctb\"),\n             person(\"Steven\", \"Akins\", role = \"ctb\"),\n             person(\"Bao\", \"Nguyen\", role = \"ctb\"),\n             person(\"Thierry\", \"Onkelinx\", role = \"ctb\"),\n             person(\"Andrii\", \"Degtiarov\", role = \"ctb\"),\n             person(\"Dhruv\", \"Aggarwal\", role = \"ctb\"),\n             person(\"Alyssa\", \"Columbus\", role = \"ctb\"),\n             person(\"Simon\", \"Urbanek\", role = c(\"cre\", \"ctb\"),\n                    email = \"simon.urbanek@R-project.org\")\n\t     )",
-        "Maintainer": "Simon Urbanek <simon.urbanek@R-project.org>",
-        "Description": "A simple client package for the Amazon Web Services ('AWS') Simple\n    Storage Service ('S3') 'REST' 'API' <https://aws.amazon.com/s3/>.",
-        "License": "GPL (>= 2)",
-        "URL": "https://github.com/cloudyr/aws.s3",
-        "BugReports": "https://github.com/cloudyr/aws.s3/issues",
-        "Encoding": "UTF-8",
-        "Imports": "utils, tools, curl, httr, xml2 (> 1.0.0), base64enc, digest,\naws.signature (>= 0.3.7)",
-        "Suggests": "testthat, datasets",
-        "RoxygenNote": "7.0.2",
-        "NeedsCompilation": "no",
-        "Packaged": "2020-04-07 20:31:01 UTC; svnuser",
-        "Author": "Thomas J. Leeper [aut] (<https://orcid.org/0000-0003-4097-6326>),\n  Boettiger Carl [ctb],\n  Andrew Martin [ctb],\n  Mark Thompson [ctb],\n  Tyler Hunt [ctb],\n  Steven Akins [ctb],\n  Bao Nguyen [ctb],\n  Thierry Onkelinx [ctb],\n  Andrii Degtiarov [ctb],\n  Dhruv Aggarwal [ctb],\n  Alyssa Columbus [ctb],\n  Simon Urbanek [cre, ctb]",
-        "Repository": "CRAN",
-        "Date/Publication": "2020-04-07 21:10:02 UTC",
-        "Built": "R 3.6.3; ; 2021-02-10 19:31:00 UTC; windows"
-      }
-    },
-    "aws.signature": {
-      "Source": "CRAN",
-      "Repository": "https://cran.rstudio.com",
-      "description": {
-        "Package": "aws.signature",
-        "Type": "Package",
-        "Title": "Amazon Web Services Request Signatures",
-        "Version": "0.6.0",
-        "Date": "2020-06-01",
-        "Authors@R": "c(person(\"Thomas J.\", \"Leeper\",\n                    role = c(\"aut\"),\n                    email = \"thosjleeper@gmail.com\",\n                    comment = c(ORCID = \"0000-0003-4097-6326\")),\n             person(\"Jonathan\", \"Stott\", email = \"jonathan.stott@magairports.com\", role = c(\"cre\", \"aut\")),\n             person(\"Mike\", \"Kaminsky\", email = \"kaminsky.michael@gmail.com\", role = \"ctb\")\n            )",
-        "Description": "Generates version 2 and version 4 request signatures for Amazon Web Services ('AWS') <https://aws.amazon.com/> Application Programming Interfaces ('APIs') and provides a mechanism for retrieving credentials from environment variables, 'AWS' credentials files, and 'EC2' instance metadata. For use on 'EC2' instances, users will need to install the suggested package 'aws.ec2metadata' <https://cran.r-project.org/package=aws.ec2metadata>.",
-        "License": "GPL (>= 2)",
-        "Imports": "digest, base64enc",
-        "Suggests": "testthat (>= 2.1.0), aws.ec2metadata (>= 0.1.6)",
-        "URL": "https://github.com/cloudyr/aws.signature",
-        "BugReports": "https://github.com/cloudyr/aws.signature/issues",
-        "RoxygenNote": "7.1.0",
-        "NeedsCompilation": "no",
-        "Packaged": "2020-06-01 09:51:14 UTC; jon_m",
-        "Author": "Thomas J. Leeper [aut] (<https://orcid.org/0000-0003-4097-6326>),\n  Jonathan Stott [cre, aut],\n  Mike Kaminsky [ctb]",
-        "Maintainer": "Jonathan Stott <jonathan.stott@magairports.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2020-06-01 10:10:02 UTC",
-        "Built": "R 3.6.3; ; 2021-02-10 16:22:20 UTC; windows"
-      }
-    },
     "backports": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
@@ -1230,6 +1178,31 @@
         "Built": "R 3.6.3; ; 2021-02-10 19:13:28 UTC; windows"
       }
     },
+    "ini": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "ini",
+        "Type": "Package",
+        "Title": "Read and Write '.ini' Files",
+        "Version": "0.3.1",
+        "Date": "2018-05-19",
+        "Author": "David Valentim Dias",
+        "Maintainer": "David Valentim Dias <dvdscripter@gmail.com>",
+        "Description": "Parse simple '.ini' configuration files to an structured list. Users\n  can manipulate this resulting list with lapply() functions. This same\n  structured list can be used to write back to file after modifications.",
+        "License": "GPL-3",
+        "URL": "https://github.com/dvdscripter/ini",
+        "BugReports": "https://github.com/dvdscripter/ini/issues",
+        "LazyData": "FALSE",
+        "RoxygenNote": "6.0.1",
+        "Suggests": "testthat",
+        "NeedsCompilation": "no",
+        "Packaged": "2018-05-19 23:19:45 UTC; CLIENTE",
+        "Repository": "CRAN",
+        "Date/Publication": "2018-05-20 03:26:39 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 04:32:36 UTC; windows"
+      }
+    },
     "isoband": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
@@ -1438,39 +1411,6 @@
         "Repository": "CRAN",
         "Date/Publication": "2021-02-15 15:20:06 UTC",
         "Built": "R 3.6.3; ; 2021-02-19 18:40:52 UTC; windows"
-      }
-    },
-    "lubridate": {
-      "Source": "CRAN",
-      "Repository": "https://cran.rstudio.com",
-      "description": {
-        "Type": "Package",
-        "Package": "lubridate",
-        "Title": "Make Dealing with Dates a Little Easier",
-        "Version": "1.7.9.2",
-        "Authors@R": "\n    c(person(given = \"Vitalie\",\n             family = \"Spinu\",\n             role = c(\"aut\", \"cre\"),\n             email = \"spinuvit@gmail.com\"),\n      person(given = \"Garrett\",\n             family = \"Grolemund\",\n             role = \"aut\"),\n      person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\"),\n      person(given = \"Ian\",\n             family = \"Lyttle\",\n             role = \"ctb\"),\n      person(given = \"Imanuel\",\n             family = \"Costigan\",\n             role = \"ctb\"),\n      person(given = \"Jason\",\n             family = \"Law\",\n             role = \"ctb\"),\n      person(given = \"Doug\",\n             family = \"Mitarotonda\",\n             role = \"ctb\"),\n      person(given = \"Joseph\",\n             family = \"Larmarange\",\n             role = \"ctb\"),\n      person(given = \"Jonathan\",\n             family = \"Boiser\",\n             role = \"ctb\"),\n      person(given = \"Chel Hee\",\n             family = \"Lee\",\n             role = \"ctb\"),\n      person(\"Google Inc.\", role = c(\"ctb\", \"cph\")))",
-        "Maintainer": "Vitalie Spinu <spinuvit@gmail.com>",
-        "Description": "Functions to work with date-times and time-spans:\n    fast and user friendly parsing of date-time data, extraction and\n    updating of components of a date-time (years, months, days, hours,\n    minutes, and seconds), algebraic manipulation on date-time and\n    time-span objects. The 'lubridate' package has a consistent and\n    memorable syntax that makes working with dates easy and fun.  Parts of\n    the 'CCTZ' source code, released under the Apache 2.0 License, are\n    included in this package. See <https://github.com/google/cctz> for\n    more details.",
-        "License": "GPL (>= 2)",
-        "URL": "https://lubridate.tidyverse.org,\nhttps://github.com/tidyverse/lubridate",
-        "BugReports": "https://github.com/tidyverse/lubridate/issues",
-        "Depends": "methods, R (>= 3.2)",
-        "Imports": "generics, Rcpp (>= 0.12.13)",
-        "Suggests": "covr, knitr, testthat (>= 2.1.0), vctrs (>= 0.3.0), rmarkdown",
-        "Enhances": "chron, timeDate, tis, zoo",
-        "LinkingTo": "Rcpp",
-        "VignetteBuilder": "knitr",
-        "Encoding": "UTF-8",
-        "LazyData": "true",
-        "RoxygenNote": "7.1.1",
-        "SystemRequirements": "A system with zoneinfo data (e.g.\n/usr/share/zoneinfo) as well as a recent-enough C++11 compiler\n(such as g++-4.8 or later). On Windows the zoneinfo included\nwith R is used.",
-        "Collate": "'Dates.r' 'POSIXt.r' 'RcppExports.R' 'util.r' 'parse.r'\n'timespans.r' 'intervals.r' 'difftimes.r' 'durations.r'\n'periods.r' 'accessors-date.R' 'accessors-day.r'\n'accessors-dst.r' 'accessors-hour.r' 'accessors-minute.r'\n'accessors-month.r' 'accessors-quarter.r' 'accessors-second.r'\n'accessors-tz.r' 'accessors-week.r' 'accessors-year.r'\n'am-pm.r' 'time-zones.r' 'numeric.r' 'coercion.r' 'constants.r'\n'cyclic_encoding.r' 'data.r' 'decimal-dates.r' 'deprecated.r'\n'format_ISO8601.r' 'guess.r' 'hidden.r' 'instants.r'\n'leap-years.r' 'ops-addition.r' 'ops-compare.r'\n'ops-division.r' 'ops-integer-division.r' 'ops-m+.r'\n'ops-modulo.r' 'ops-multiplication.r' 'ops-subtraction.r'\n'package.r' 'pretty.r' 'round.r' 'stamp.r' 'update.r' 'vctrs.R'\n'zzz.R'",
-        "NeedsCompilation": "yes",
-        "Packaged": "2020-11-11 19:57:49 UTC; vspinu",
-        "Author": "Vitalie Spinu [aut, cre],\n  Garrett Grolemund [aut],\n  Hadley Wickham [aut],\n  Ian Lyttle [ctb],\n  Imanuel Costigan [ctb],\n  Jason Law [ctb],\n  Doug Mitarotonda [ctb],\n  Joseph Larmarange [ctb],\n  Jonathan Boiser [ctb],\n  Chel Hee Lee [ctb],\n  Google Inc. [ctb, cph]",
-        "Repository": "CRAN",
-        "Date/Publication": "2020-11-13 15:30:02 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-02-10 17:16:15 UTC; windows"
       }
     },
     "magrittr": {
@@ -1686,6 +1626,356 @@
         "Repository": "CRAN",
         "Date/Publication": "2019-03-11 11:50:07 UTC",
         "Built": "R 3.6.1; ; 2019-10-18 18:16:02 UTC; windows"
+      }
+    },
+    "paws": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws",
+        "Title": "Amazon Web Services Software Development Kit",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services <https://aws.amazon.com>,\n    including storage, database, and compute services, such as 'Simple\n    Storage Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda'\n    functions-as-a-service.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.compute (>= 0.1.10), paws.storage (>= 0.1.10),\npaws.database (>= 0.1.10), paws.networking (>= 0.1.10),\npaws.management (>= 0.1.10), paws.machine.learning (>= 0.1.10),\npaws.analytics (>= 0.1.10), paws.security.identity (>= 0.1.10),\npaws.application.integration (>= 0.1.10), paws.cost.management\n(>= 0.1.10), paws.customer.engagement (>= 0.1.10)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-17 20:54:49 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-17 21:20:02 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:46:26 UTC; windows"
+      }
+    },
+    "paws.analytics": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.analytics",
+        "Title": "Amazon Web Services Analytics Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services 'analytics' services,\n    including 'Elastic MapReduce' 'Hadoop' and 'Spark' big data service,\n    'Elasticsearch' search engine, and more <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'athena_service.R' 'athena_interfaces.R' 'athena_operations.R'\n'cloudsearch_service.R' 'cloudsearch_interfaces.R'\n'cloudsearch_operations.R' 'cloudsearchdomain_service.R'\n'cloudsearchdomain_interfaces.R'\n'cloudsearchdomain_operations.R' 'datapipeline_service.R'\n'datapipeline_interfaces.R' 'datapipeline_operations.R'\n'elasticsearchservice_service.R'\n'elasticsearchservice_interfaces.R'\n'elasticsearchservice_operations.R' 'emr_service.R'\n'emr_interfaces.R' 'emr_operations.R' 'firehose_service.R'\n'firehose_interfaces.R' 'firehose_operations.R'\n'glue_service.R' 'glue_interfaces.R' 'glue_operations.R'\n'kafka_service.R' 'kafka_interfaces.R' 'kafka_operations.R'\n'kinesis_service.R' 'kinesis_interfaces.R'\n'kinesis_operations.R' 'kinesisanalytics_service.R'\n'kinesisanalytics_interfaces.R' 'kinesisanalytics_operations.R'\n'kinesisanalyticsv2_service.R'\n'kinesisanalyticsv2_interfaces.R'\n'kinesisanalyticsv2_operations.R' 'mturk_service.R'\n'mturk_interfaces.R' 'mturk_operations.R'\n'quicksight_service.R' 'quicksight_interfaces.R'\n'quicksight_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-16 20:40:44 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-16 21:00:02 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:00:37 UTC; windows"
+      }
+    },
+    "paws.application.integration": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.application.integration",
+        "Title": "Amazon Web Services Application Integration Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services application integration\n    services, including 'Simple Queue Service' ('SQS') message queue,\n    'Simple Notification Service' ('SNS') publish/subscribe messaging, and\n    more <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'eventbridge_service.R' 'eventbridge_interfaces.R'\n'eventbridge_operations.R' 'mq_service.R' 'mq_interfaces.R'\n'mq_operations.R' 'sfn_service.R' 'sfn_interfaces.R'\n'sfn_operations.R' 'sns_service.R' 'sns_interfaces.R'\n'sns_operations.R' 'sqs_service.R' 'sqs_interfaces.R'\n'sqs_operations.R' 'swf_service.R' 'swf_interfaces.R'\n'swf_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-16 20:54:35 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-16 21:20:02 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:00:38 UTC; windows"
+      }
+    },
+    "paws.common": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.common",
+        "Type": "Package",
+        "Title": "Paws Low-Level Amazon Web Services API",
+        "Version": "0.3.9",
+        "Authors@R": "c(\n        person(\"David\", \"Kretch\", email = \"david.kretch@gmail.com\", role = c(\"aut\", \"cre\")),\n        person(\"Adam\", \"Banker\", email = \"adam.banker39@gmail.com\", role = \"aut\"),\n        person(\"Amazon.com, Inc.\", role = \"cph\")\n    )",
+        "Description": "Functions for making low-level API requests to Amazon Web Services\n    <https://aws.amazon.com>. The functions handle building, signing, and\n    sending requests, and receiving responses. They are designed to help build \n    higher-level interfaces to individual services, such as Simple Storage\n    Service (S3).",
+        "License": "Apache License (>= 2.0)",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "Imports": "base64enc, digest, httr, ini, jsonlite, methods, utils, xml2",
+        "Suggests": "covr, rstudioapi, testthat",
+        "SystemRequirements": "pandoc (>= 1.12.3) - http://pandoc.org",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'struct.R' 'handlers.R' 'dateutil.R' 'credential_sts.R'\n'url.R' 'net.R' 'credential_providers.R' 'credentials.R'\n'client.R' 'config.R' 'convert.R' 'service.R'\n'custom_dynamodb.R' 'custom_rds.R' 'xmlutil.R' 'util.R'\n'stream.R' 'custom_s3.R' 'error.R' 'handlers_core.R'\n'handlers_ec2query.R' 'handlers_jsonrpc.R' 'handlers_query.R'\n'handlers_rest.R' 'handlers_restjson.R' 'handlers_restxml.R'\n'idempotency.R' 'jsonutil.R' 'populate.R' 'populateutil.R'\n'tags.R' 'queryutil.R' 'request.R' 'signer_v4.R' 'signer_s3.R'\n'signer_s3v4.R' 'signer_v2.R' 'time.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-02-25 23:13:11 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-02-26 06:00:16 UTC",
+        "Built": "R 3.6.3; ; 2021-02-27 23:07:51 UTC; windows"
+      }
+    },
+    "paws.compute": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.compute",
+        "Title": "Amazon Web Services Compute Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services compute services, including\n    'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,\n    containers, batch processing, and more <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'batch_service.R' 'batch_interfaces.R' 'batch_operations.R'\n'ec2_service.R' 'ec2_interfaces.R' 'ec2_operations.R'\n'ec2instanceconnect_service.R'\n'ec2instanceconnect_interfaces.R'\n'ec2instanceconnect_operations.R' 'ecr_service.R'\n'ecr_interfaces.R' 'ecr_operations.R' 'ecs_service.R'\n'ecs_interfaces.R' 'ecs_operations.R' 'eks_service.R'\n'eks_interfaces.R' 'eks_operations.R'\n'elasticbeanstalk_service.R' 'elasticbeanstalk_interfaces.R'\n'elasticbeanstalk_operations.R' 'lambda_service.R'\n'lambda_interfaces.R' 'lambda_operations.R'\n'lightsail_service.R' 'lightsail_interfaces.R'\n'lightsail_operations.R'\n'serverlessapplicationrepository_service.R'\n'serverlessapplicationrepository_interfaces.R'\n'serverlessapplicationrepository_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-16 21:23:22 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-16 21:50:02 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:00:46 UTC; windows"
+      }
+    },
+    "paws.cost.management": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.cost.management",
+        "Title": "Amazon Web Services Cost Management Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services cost management services,\n    including cost and usage reports, budgets, pricing, and more\n    <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'budgets_service.R' 'budgets_interfaces.R'\n'budgets_operations.R' 'costandusagereportservice_service.R'\n'costandusagereportservice_interfaces.R'\n'costandusagereportservice_operations.R'\n'costexplorer_service.R' 'costexplorer_interfaces.R'\n'costexplorer_operations.R'\n'marketplacecommerceanalytics_service.R'\n'marketplacecommerceanalytics_interfaces.R'\n'marketplacecommerceanalytics_operations.R'\n'marketplaceentitlementservice_service.R'\n'marketplaceentitlementservice_interfaces.R'\n'marketplaceentitlementservice_operations.R'\n'marketplacemetering_service.R'\n'marketplacemetering_interfaces.R'\n'marketplacemetering_operations.R' 'pricing_service.R'\n'pricing_interfaces.R' 'pricing_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-16 21:36:17 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-16 22:00:03 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:00:47 UTC; windows"
+      }
+    },
+    "paws.customer.engagement": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.customer.engagement",
+        "Title": "Amazon Web Services Customer Engagement Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services customer engagement\n    services, including 'Simple Email Service', 'Connect' contact center\n    service, and more <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'connect_service.R' 'connect_interfaces.R'\n'connect_operations.R' 'pinpoint_service.R'\n'pinpoint_interfaces.R' 'pinpoint_operations.R'\n'pinpointemail_service.R' 'pinpointemail_interfaces.R'\n'pinpointemail_operations.R' 'pinpointsmsvoice_service.R'\n'pinpointsmsvoice_interfaces.R' 'pinpointsmsvoice_operations.R'\n'ses_service.R' 'ses_interfaces.R' 'ses_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-17 12:58:13 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-17 13:30:02 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:00:51 UTC; windows"
+      }
+    },
+    "paws.database": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.database",
+        "Title": "Amazon Web Services Database Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services database services, including\n    'Relational Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database,\n    and more <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'dax_service.R' 'dax_interfaces.R' 'dax_operations.R'\n'docdb_service.R' 'docdb_interfaces.R' 'docdb_operations.R'\n'dynamodb_service.R' 'dynamodb_interfaces.R'\n'dynamodb_operations.R' 'dynamodbstreams_service.R'\n'dynamodbstreams_interfaces.R' 'dynamodbstreams_operations.R'\n'elasticache_service.R' 'elasticache_interfaces.R'\n'elasticache_operations.R' 'neptune_service.R'\n'neptune_interfaces.R' 'neptune_operations.R' 'rds_service.R'\n'rds_operations.R' 'rds_custom.R' 'rds_interfaces.R'\n'rdsdataservice_service.R' 'rdsdataservice_interfaces.R'\n'rdsdataservice_operations.R' 'redshift_service.R'\n'redshift_interfaces.R' 'redshift_operations.R'\n'simpledb_service.R' 'simpledb_interfaces.R'\n'simpledb_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-16 20:18:49 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-16 20:50:02 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:00:52 UTC; windows"
+      }
+    },
+    "paws.machine.learning": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.machine.learning",
+        "Title": "Amazon Web Services Machine Learning Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services machine learning services,\n    including 'SageMaker' managed machine learning service, natural\n    language processing, speech recognition, translation, and more\n    <https://aws.amazon.com/machine-learning/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'comprehend_service.R' 'comprehend_interfaces.R'\n'comprehend_operations.R' 'comprehendmedical_service.R'\n'comprehendmedical_interfaces.R'\n'comprehendmedical_operations.R'\n'lexmodelbuildingservice_service.R'\n'lexmodelbuildingservice_interfaces.R'\n'lexmodelbuildingservice_operations.R'\n'lexruntimeservice_service.R' 'lexruntimeservice_interfaces.R'\n'lexruntimeservice_operations.R' 'machinelearning_service.R'\n'machinelearning_interfaces.R' 'machinelearning_operations.R'\n'personalize_service.R' 'personalize_interfaces.R'\n'personalize_operations.R' 'personalizeevents_service.R'\n'personalizeevents_interfaces.R'\n'personalizeevents_operations.R' 'personalizeruntime_service.R'\n'personalizeruntime_interfaces.R'\n'personalizeruntime_operations.R' 'polly_service.R'\n'polly_interfaces.R' 'polly_operations.R'\n'rekognition_service.R' 'rekognition_interfaces.R'\n'rekognition_operations.R' 'sagemaker_service.R'\n'sagemaker_interfaces.R' 'sagemaker_operations.R'\n'sagemakerruntime_service.R' 'sagemakerruntime_interfaces.R'\n'sagemakerruntime_operations.R' 'textract_service.R'\n'textract_interfaces.R' 'textract_operations.R'\n'transcribeservice_service.R' 'transcribeservice_interfaces.R'\n'transcribeservice_operations.R' 'translate_service.R'\n'translate_interfaces.R' 'translate_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-17 13:17:33 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-17 13:40:03 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:00:54 UTC; windows"
+      }
+    },
+    "paws.management": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.management",
+        "Title": "Amazon Web Services Management & Governance Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services management and governance\n    services, including 'CloudWatch' application and infrastructure\n    monitoring, 'Auto Scaling' for automatically scaling resources, and\n    more <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'applicationautoscaling_service.R'\n'applicationautoscaling_interfaces.R'\n'applicationautoscaling_operations.R'\n'applicationinsights_service.R'\n'applicationinsights_interfaces.R'\n'applicationinsights_operations.R' 'autoscaling_service.R'\n'autoscaling_interfaces.R' 'autoscaling_operations.R'\n'autoscalingplans_service.R' 'autoscalingplans_interfaces.R'\n'autoscalingplans_operations.R' 'cloudformation_service.R'\n'cloudformation_interfaces.R' 'cloudformation_operations.R'\n'cloudtrail_service.R' 'cloudtrail_interfaces.R'\n'cloudtrail_operations.R' 'cloudwatch_service.R'\n'cloudwatch_interfaces.R' 'cloudwatch_operations.R'\n'cloudwatchevents_service.R' 'cloudwatchevents_interfaces.R'\n'cloudwatchevents_operations.R' 'cloudwatchlogs_service.R'\n'cloudwatchlogs_interfaces.R' 'cloudwatchlogs_operations.R'\n'configservice_service.R' 'configservice_interfaces.R'\n'configservice_operations.R' 'health_service.R'\n'health_interfaces.R' 'health_operations.R'\n'licensemanager_service.R' 'licensemanager_interfaces.R'\n'licensemanager_operations.R' 'opsworks_service.R'\n'opsworks_interfaces.R' 'opsworks_operations.R'\n'opsworkscm_service.R' 'opsworkscm_interfaces.R'\n'opsworkscm_operations.R' 'organizations_service.R'\n'organizations_interfaces.R' 'organizations_operations.R'\n'pi_service.R' 'pi_interfaces.R' 'pi_operations.R'\n'resourcegroups_service.R' 'resourcegroups_interfaces.R'\n'resourcegroups_operations.R'\n'resourcegroupstaggingapi_service.R'\n'resourcegroupstaggingapi_interfaces.R'\n'resourcegroupstaggingapi_operations.R'\n'servicecatalog_service.R' 'servicecatalog_interfaces.R'\n'servicecatalog_operations.R' 'servicequotas_service.R'\n'servicequotas_interfaces.R' 'servicequotas_operations.R'\n'ssm_service.R' 'ssm_interfaces.R' 'ssm_operations.R'\n'support_service.R' 'support_interfaces.R'\n'support_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-17 13:48:32 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-17 14:30:02 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:00:59 UTC; windows"
+      }
+    },
+    "paws.networking": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.networking",
+        "Title": "Amazon Web Services Networking & Content Delivery Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services networking and content\n    delivery services, including 'Route 53' Domain Name System service,\n    'CloudFront' content delivery, load balancing, and more\n    <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'apigateway_service.R' 'apigateway_interfaces.R'\n'apigateway_operations.R' 'apigatewaymanagementapi_service.R'\n'apigatewaymanagementapi_interfaces.R'\n'apigatewaymanagementapi_operations.R' 'apigatewayv2_service.R'\n'apigatewayv2_interfaces.R' 'apigatewayv2_operations.R'\n'appmesh_service.R' 'appmesh_interfaces.R'\n'appmesh_operations.R' 'cloudfront_service.R'\n'cloudfront_interfaces.R' 'cloudfront_operations.R'\n'directconnect_service.R' 'directconnect_interfaces.R'\n'directconnect_operations.R' 'elb_service.R' 'elb_interfaces.R'\n'elb_operations.R' 'elbv2_service.R' 'elbv2_interfaces.R'\n'elbv2_operations.R' 'globalaccelerator_service.R'\n'globalaccelerator_interfaces.R'\n'globalaccelerator_operations.R' 'route53_service.R'\n'route53_interfaces.R' 'route53_operations.R'\n'route53domains_service.R' 'route53domains_interfaces.R'\n'route53domains_operations.R' 'route53resolver_service.R'\n'route53resolver_interfaces.R' 'route53resolver_operations.R'\n'servicediscovery_service.R' 'servicediscovery_interfaces.R'\n'servicediscovery_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-17 14:06:27 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-17 14:40:02 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:01:03 UTC; windows"
+      }
+    },
+    "paws.security.identity": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.security.identity",
+        "Title": "Amazon Web Services Security, Identity, & Compliance Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services security, identity, and\n    compliance services, including the 'Identity & Access Management'\n    ('IAM') service for managing access to services and resources, and\n    more <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'acm_service.R' 'acm_interfaces.R' 'acm_operations.R'\n'acmpca_service.R' 'acmpca_interfaces.R' 'acmpca_operations.R'\n'clouddirectory_service.R' 'clouddirectory_interfaces.R'\n'clouddirectory_operations.R' 'cloudhsm_service.R'\n'cloudhsm_interfaces.R' 'cloudhsm_operations.R'\n'cloudhsmv2_service.R' 'cloudhsmv2_interfaces.R'\n'cloudhsmv2_operations.R' 'cognitoidentity_service.R'\n'cognitoidentity_interfaces.R' 'cognitoidentity_operations.R'\n'cognitoidentityprovider_service.R'\n'cognitoidentityprovider_interfaces.R'\n'cognitoidentityprovider_operations.R' 'cognitosync_service.R'\n'cognitosync_interfaces.R' 'cognitosync_operations.R'\n'directoryservice_service.R' 'directoryservice_interfaces.R'\n'directoryservice_operations.R' 'fms_service.R'\n'fms_interfaces.R' 'fms_operations.R' 'guardduty_service.R'\n'guardduty_interfaces.R' 'guardduty_operations.R'\n'iam_service.R' 'iam_interfaces.R' 'iam_operations.R'\n'inspector_service.R' 'inspector_interfaces.R'\n'inspector_operations.R' 'kms_service.R' 'kms_interfaces.R'\n'kms_operations.R' 'macie_service.R' 'macie_interfaces.R'\n'macie_operations.R' 'ram_service.R' 'ram_interfaces.R'\n'ram_operations.R' 'secretsmanager_service.R'\n'secretsmanager_interfaces.R' 'secretsmanager_operations.R'\n'securityhub_service.R' 'securityhub_interfaces.R'\n'securityhub_operations.R' 'shield_service.R'\n'shield_interfaces.R' 'shield_operations.R' 'sts_service.R'\n'sts_interfaces.R' 'sts_operations.R' 'waf_service.R'\n'waf_interfaces.R' 'waf_operations.R' 'wafregional_service.R'\n'wafregional_interfaces.R' 'wafregional_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-17 14:41:18 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-17 15:10:03 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:01:05 UTC; windows"
+      }
+    },
+    "paws.storage": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "paws.storage",
+        "Title": "Amazon Web Services Storage Services",
+        "Version": "0.1.10",
+        "Authors@R": "\n    c(person(given = \"David\",\n             family = \"Kretch\",\n             role = c(\"aut\", \"cre\"),\n             email = \"david.kretch@gmail.com\"),\n      person(given = \"Adam\",\n             family = \"Banker\",\n             role = \"aut\",\n             email = \"adam.banker39@gmail.com\"),\n      person(given = \"Amazon.com, Inc.\",\n             role = \"cph\"))",
+        "Description": "Interface to Amazon Web Services storage services, including\n    'Simple Storage Service' ('S3') and more <https://aws.amazon.com/>.",
+        "License": "Apache License (>= 2.0)",
+        "URL": "https://github.com/paws-r/paws",
+        "BugReports": "https://github.com/paws-r/paws/issues",
+        "Imports": "paws.common (>= 0.3.0)",
+        "Suggests": "testthat",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1",
+        "Collate": "'backup_service.R' 'backup_interfaces.R' 'backup_operations.R'\n'dlm_service.R' 'dlm_interfaces.R' 'dlm_operations.R'\n'efs_service.R' 'efs_interfaces.R' 'efs_operations.R'\n'fsx_service.R' 'fsx_interfaces.R' 'fsx_operations.R'\n'glacier_service.R' 'glacier_interfaces.R'\n'glacier_operations.R' 's3_service.R' 's3_interfaces.R'\n's3_operations.R' 's3control_service.R'\n's3control_interfaces.R' 's3control_operations.R'\n'storagegateway_service.R' 'storagegateway_interfaces.R'\n'storagegateway_operations.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-01-17 15:15:19 UTC; david.kretch",
+        "Author": "David Kretch [aut, cre],\n  Adam Banker [aut],\n  Amazon.com, Inc. [cph]",
+        "Maintainer": "David Kretch <david.kretch@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-01-17 15:40:03 UTC",
+        "Built": "R 3.6.3; ; 2021-02-28 05:01:17 UTC; windows"
       }
     },
     "pillar": {
@@ -2782,19 +3072,13 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "67d5bfb04640dd25b6401903491e11f7"
-    },
-    "config.yml": {
-      "checksum": "6deb06c561c33d4ec315872d662481d2"
+      "checksum": "23aa246a4d18761bf95d0d8f67804827"
     },
     "daa-analysis.log": {
       "checksum": "c44ce9facf19e29a748b3490215b4fb1"
     },
     "daa_countries.csv": {
       "checksum": "32725cfb4030d564a3a8de450d3e6179"
-    },
-    "data.csv": {
-      "checksum": "58375c86a10bd9439d7d656ccf8c935b"
     },
     "documentation/DAA Shiny Architecture.PNG": {
       "checksum": "134ae0631be5d450fe87980500f54e84"
@@ -2810,12 +3094,6 @@
     },
     "packrat/desc/assertthat": {
       "checksum": "075b9a3cedc0399fd0e7f2b6e1c63c5f"
-    },
-    "packrat/desc/aws.s3": {
-      "checksum": "31593c2b5f45e6f2605741f1d13a8df3"
-    },
-    "packrat/desc/aws.signature": {
-      "checksum": "72ff35bf720a800d5eaad9fb3232b31d"
     },
     "packrat/desc/backports": {
       "checksum": "067e1b3915582b5ecea2a0a812b65f1d"
@@ -2925,6 +3203,9 @@
     "packrat/desc/httr": {
       "checksum": "709badd6a52967211470811b682fecd2"
     },
+    "packrat/desc/ini": {
+      "checksum": "43b604bc1876ec326abce7c0a49d85db"
+    },
     "packrat/desc/isoband": {
       "checksum": "4789d01ecff63aed41c41e8d08b61b0a"
     },
@@ -2948,9 +3229,6 @@
     },
     "packrat/desc/lifecycle": {
       "checksum": "536f0957ebd1b4c596c556a26e3aa3f1"
-    },
-    "packrat/desc/lubridate": {
-      "checksum": "b50618808eb261da2708684cf249b32f"
     },
     "packrat/desc/magrittr": {
       "checksum": "120ccfd3f851ecf0a77a2e84c44c1de0"
@@ -2981,6 +3259,45 @@
     },
     "packrat/desc/pacman": {
       "checksum": "ed0ddcab8ebd1a5d91378dd0a404597b"
+    },
+    "packrat/desc/paws": {
+      "checksum": "371484d4e73eb1bcca52dcf11e99aba0"
+    },
+    "packrat/desc/paws.analytics": {
+      "checksum": "71dacfc821984715951feced69b1bdac"
+    },
+    "packrat/desc/paws.application.integration": {
+      "checksum": "d8fc8a748050a5ca6253bcf87f456294"
+    },
+    "packrat/desc/paws.common": {
+      "checksum": "f362b0204e2bbfc0916ccabd28f06e00"
+    },
+    "packrat/desc/paws.compute": {
+      "checksum": "1aa318b57b4733be68363f090af038e7"
+    },
+    "packrat/desc/paws.cost.management": {
+      "checksum": "659069e6527e74e8472ca64a165e8930"
+    },
+    "packrat/desc/paws.customer.engagement": {
+      "checksum": "6bc31cf90158d809021a147f70b11bc4"
+    },
+    "packrat/desc/paws.database": {
+      "checksum": "efeef19163e70b11d0747d466e20c763"
+    },
+    "packrat/desc/paws.machine.learning": {
+      "checksum": "ddbef6ddd5cea397d9b2a77a7e3c6684"
+    },
+    "packrat/desc/paws.management": {
+      "checksum": "bd0fecf10a88ca4144bc9d89ef611f23"
+    },
+    "packrat/desc/paws.networking": {
+      "checksum": "953f76c89c7746f0fba587ef2895b535"
+    },
+    "packrat/desc/paws.security.identity": {
+      "checksum": "1c76a188860e211754ba06ce6751f4c1"
+    },
+    "packrat/desc/paws.storage": {
+      "checksum": "0d9e81ea8797ed918a0a659e461cc666"
     },
     "packrat/desc/pillar": {
       "checksum": "d650da357059c8fe57d8008344c03591"
@@ -3112,13 +3429,16 @@
       "checksum": "eb83f7012fbcc55e02c84c6a85da62e8"
     },
     "packrat/packrat.lock": {
-      "checksum": "3d0a8df8ebd39875d6e2dd506e4390ba"
+      "checksum": "42fc0a855202b8b52c93cf1688adce50"
     },
     "README.md": {
       "checksum": "c533625c4a9d393eb0f8a73bdfab1358"
     },
+    "s3_files/example.csv.gz": {
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
     "server.R": {
-      "checksum": "cece4950344f32549281c00f847bed26"
+      "checksum": "9d58b95e813e0bd2556d7a48a602e9d1"
     },
     "templates/template.xlsx": {
       "checksum": "64e702630b6b12a3688b8e0269cf807c"
@@ -3135,17 +3455,11 @@
     "templates/template_TX.xlsx": {
       "checksum": "75b523c46cab636a27f3b656ee1ad20a"
     },
-    "test.csv": {
-      "checksum": "63ec7c535301a7f545765884aa7b4e06"
-    },
-    "testing.R": {
-      "checksum": "8b0e71b9b7419f71387128f398d340de"
-    },
     "ui.R": {
       "checksum": "8b288852ddd1c98fce20dd61c02d1fe8"
     },
     "utils.R": {
-      "checksum": "a1474e6416981f74c147c42a9215da65"
+      "checksum": "112808ba547c563d060c1aff17d54d27"
     },
     "visuals.R": {
       "checksum": "cdae25f27d4f3a8aa0796488d7aec67e"
