@@ -1,0 +1,27 @@
+# Rprofile files
+.Rprofile
+
+# History files
+.Rhistory
+.Rapp.history
+
+# Session data files
+.RData
+
+# RStudio files
+.Rproj
+.Rproj.user/
+
+# Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
+rsconnect/
+
+# App log files
+daa-analysis.log
+
+# Testing files
+testing.R
+testing/
+
+# Ignore all S3 files except example.csv.gz
+data/*
+!data/example.csv.gz
