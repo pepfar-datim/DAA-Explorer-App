@@ -308,7 +308,7 @@
     },
     "XML": {
       "Source": "CRAN",
-      "Repository": null,
+      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -329,9 +329,10 @@
         "Packaged": "2020-01-20 05:19:55 UTC; ripley",
         "Author": "CRAN Team [ctb, cre] (de facto maintainer since 2013),\n  Duncan Temple Lang [aut] (<https://orcid.org/0000-0003-0159-1546>),\n  Tomas Kalibera [ctb]",
         "Maintainer": "CRAN Team <CRAN@r-project.org>",
-        "Repository": "CRAN",
+        "Repository": "RSPM",
         "Date/Publication": "2020-01-20 08:44:55 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2020-04-25 04:59:10 UTC; windows"
+        "Encoding": "UTF-8",
+        "Built": "R 3.6.3; x86_64-pc-linux-gnu; 2021-02-11 21:18:02 UTC; unix"
       }
     },
     "askpass": {
