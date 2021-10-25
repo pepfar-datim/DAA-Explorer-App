@@ -1,29 +1,4 @@
 
-data_availability_table <- function(d) {
-
-  if (is.null(d) || is.null(d$data_availability)) {
-    return(NULL)
-  }
-
-  t <-
-    purrr::pluck(d, "data_availability") %>%
-    dplyr::filter(namelevel3 == d$ou_name) %>%
-    dplyr::select(period,
-                  indicator,
-                  `Mapping` = has_disag_mapping,
-                  `Results Data` = has_results_data) %>%
-    tidyr::nest(`Mapping`,
-                `Results Data`,
-                .key = "value_col") %>%
-    tidyr::spread(key = period, value = value_col) %>%
-    tidyr::unnest(names_sep = "_") %>%
-    dplyr::select(which(colMeans(is.na(.)) != 1)) %>%
-    gt::gt(rowname_col = "Indicator") %>%
-    gt::tab_spanner_delim(delim = "_")
-
-  return(t)
-}
-
 country_summary <- function(d, filter_values) {
 
   if (is.null(d) || is.null(d$combined_data)) {
@@ -47,6 +22,9 @@ country_summary <- function(d, filter_values) {
                      y = d$data_availability %>%
                        dplyr::filter(namelevel3 == d$ou_name),
                      by = c("namelevel3", "period", "indicator")) %>%
+    # TODO Go back and fix this issue in the package upstream
+    dplyr::mutate(has_results_data = ifelse(!is.na(`Concordance`),
+                                            "Yes", "No")) %>%
     table_filter(de_filter = filter_values$vz_de_filter,
                  pe_filter = filter_values$vz_pe_filter)
 
@@ -75,6 +53,9 @@ matching_summary <- function(d, filter_values) {
                      y = d$data_availability %>%
                        dplyr::filter(namelevel3 == d$ou_name),
                      by = c("namelevel3", "period", "indicator")) %>%
+    #TODO Go back and fix this issue in the package upstream
+    dplyr::mutate(has_results_data = ifelse(!is.na(`Concordance`),
+                                            "Yes", "No")) %>%
     table_filter(de_filter = filter_values$vz_de_filter,
                  pe_filter = filter_values$vz_pe_filter)
 
@@ -87,12 +68,15 @@ site_reporting_graph <- function(df) {
     return(NULL)
   }
 
+  df %<>%
+    dplyr::filter(has_results_data == "Yes")
+
   graph_fy <- max(df$period)
 
   gg_rprt <- df %>%
     dplyr::select(namelevel3, indicator, period,
                   reported_by, site_count) %>%
-    dplyr::filter(period == max(period),
+    dplyr::filter(period == graph_fy,
                   reported_by %in% c("Both", "PEPFAR")) %>%
     dplyr::mutate(site_type = ifelse(reported_by == "Both",
                                      "Matched sites",

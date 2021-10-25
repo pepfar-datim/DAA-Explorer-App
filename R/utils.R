@@ -90,7 +90,7 @@ s3_timestamp <- function() {
 
 # Workbook File Functions --------------------------------------------------
 
-adorn_export_data <- function(d) {
+adorn_export_data <- function(d, wb_raw_uids_check = NULL) {
 
   if (is.null(d) || is.null(d$combined_data)) {
     return("No data available for export.")
@@ -108,6 +108,17 @@ adorn_export_data <- function(d) {
     dplyr::select(dplyr::starts_with("namelevel"), facilityuid, indicator,
                   period, moh, pepfar, difference, dplyr::everything())
 
+  if (is.null(wb_raw_uids_check) || !wb_raw_uids_check){
+    return(df)
+  } else {
+    hierarchy_uids <- d$ou_metadata %>%
+      tidyr::separate(col = path,
+                      into = c(NA, NA, NA, paste0("level", 3:7, "_uid"))) %>%
+      dplyr::select(uid, tidyselect::starts_with("level"))
+
+    df %<>%
+      dplyr::left_join(hierarchy_uids, by = c("facilityuid" = "uid"))
+  }
   return(df)
 }
 

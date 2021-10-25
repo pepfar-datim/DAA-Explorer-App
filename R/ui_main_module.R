@@ -117,6 +117,9 @@ ui_main <- function(input, output, session, d2_session) { #, refreshed) {
                                    selected = filter_options$pe_list,
                                    options = list(`actions-box` = TRUE),
                                    multiple = TRUE),
+                       checkboxInput(inputId = "wb_raw_uids_input",
+                                     label = "Include UIDs for entire hierarchy\n(increases file size)",
+                                     value = FALSE),
                        downloadButton(outputId = "download_raw",
                                       label = "Download",
                                       style = "width:100%;text-align: left;"))

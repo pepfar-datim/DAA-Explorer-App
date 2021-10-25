@@ -232,16 +232,16 @@
     },
     "daa.analytics": {
       "Package": "daa.analytics",
-      "Version": "0.1.5",
+      "Version": "0.1.6",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "pepfar-datim",
       "RemoteRepo": "daa-analytics",
-      "RemoteRef": "ab65fa89709baf65b97e4342510e0fade062764b",
-      "RemoteSha": "ab65fa89709baf65b97e4342510e0fade062764b",
+      "RemoteRef": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
+      "RemoteSha": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
       "Remotes": "pepfar-datim/datimutils",
-      "Hash": "60042868d015d5f934c84d2082e3ef6a"
+      "Hash": "3f04f37ac91960b97491e604ce122aa7"
     },
     "data.table": {
       "Package": "data.table",

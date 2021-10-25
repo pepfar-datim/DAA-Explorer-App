@@ -21,19 +21,19 @@
         "Package": "BH",
         "Type": "Package",
         "Title": "Boost C++ Header Files",
-        "Version": "1.72.0-3",
-        "Date": "2019-12-28",
+        "Version": "1.75.0-0",
+        "Date": "2020-12-12",
         "Author": "Dirk Eddelbuettel, John W. Emerson and Michael J. Kane",
         "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
-        "Description": "Boost provides free peer-reviewed portable C++ source \n libraries.  A large part of Boost is provided as C++ template code\n which is resolved entirely at compile-time without linking.  This \n package aims to provide the most useful subset of Boost libraries \n for template use among CRAN packages. By placing these libraries in \n this package, we offer a more efficient distribution system for CRAN \n as replication of this code in the sources of other packages is \n avoided. As of release 1.72.0-3, the following Boost libraries are\n included: 'accumulators' 'algorithm' 'align' 'any' 'atomic' 'bimap'\n 'bind' 'circular_buffer' 'compute' 'concept' 'config' 'container'\n 'date_time' 'detail' 'dynamic_bitset' 'exception' 'flyweight'\n 'foreach' 'functional' 'fusion' 'geometry' 'graph' 'heap' 'icl'\n 'integer' 'interprocess' 'intrusive' 'io' 'iostreams' 'iterator'\n 'math' 'move' 'mp11' 'mpl' 'multiprcecision' 'numeric' 'pending'\n 'phoenix' 'polygon' 'preprocessor' 'propery_tree' 'random' 'range'\n 'scope_exit' 'smart_ptr' 'sort' 'spirit' 'tuple' 'type_traits'\n 'typeof' 'unordered' 'utility' 'uuid'.",
+        "Description": "Boost provides free peer-reviewed portable C++ source \n libraries.  A large part of Boost is provided as C++ template code\n which is resolved entirely at compile-time without linking.  This \n package aims to provide the most useful subset of Boost libraries \n for template use among CRAN packages. By placing these libraries in \n this package, we offer a more efficient distribution system for CRAN \n as replication of this code in the sources of other packages is \n avoided. As of release 1.75.0-0, the following Boost libraries are\n included: 'accumulators' 'algorithm' 'align' 'any' 'atomic' 'beast'\n 'bimap' 'bind' 'circular_buffer' 'compute' 'concept' 'config'\n 'container' 'date_time' 'detail' 'dynamic_bitset' 'exception'\n 'flyweight' 'foreach' 'functional' 'fusion' 'geometry' 'graph' 'heap'\n 'icl' 'integer' 'interprocess' 'intrusive' 'io' 'iostreams'\n 'iterator' 'math' 'move' 'mp11' 'mpl' 'multiprecision' 'numeric'\n 'pending' 'phoenix' 'polygon' 'preprocessor' 'propery_tree' 'random'\n 'range' 'scope_exit' 'smart_ptr' 'sort' 'spirit' 'tuple'\n 'type_traits' 'typeof' 'unordered' 'utility' 'uuid'.",
         "License": "BSL-1.0",
         "URL": "https://github.com/eddelbuettel/bh",
         "BugReports": "https://github.com/eddelbuettel/bh/issues",
         "NeedsCompilation": "no",
-        "Packaged": "2019-12-28 14:48:54.73981 UTC; edd",
+        "Packaged": "2021-01-09 03:50:01 UTC; edd",
         "Repository": "CRAN",
-        "Date/Publication": "2020-01-08 23:20:08 UTC",
-        "Built": "R 3.6.2; ; 2020-01-10 11:02:38 UTC; windows"
+        "Date/Publication": "2021-01-11 22:50:06 UTC",
+        "Built": "R 3.6.3; ; 2021-01-16 01:51:22 UTC; windows"
       }
     },
     "DT": {
@@ -308,7 +308,7 @@
     },
     "XML": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": null,
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -329,10 +329,9 @@
         "Packaged": "2020-01-20 05:19:55 UTC; ripley",
         "Author": "CRAN Team [ctb, cre] (de facto maintainer since 2013),\n  Duncan Temple Lang [aut] (<https://orcid.org/0000-0003-0159-1546>),\n  Tomas Kalibera [ctb]",
         "Maintainer": "CRAN Team <CRAN@r-project.org>",
-        "Repository": "RSPM",
+        "Repository": "CRAN",
         "Date/Publication": "2020-01-20 08:44:55 UTC",
-        "Encoding": "UTF-8",
-        "Built": "R 3.6.3; x86_64-pc-linux-gnu; 2021-02-11 21:18:02 UTC; unix"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2020-04-25 04:59:10 UTC; windows"
       }
     },
     "askpass": {
@@ -944,12 +943,12 @@
       "Repository": null,
       "GithubRepo": "daa-analytics",
       "GithubUsername": "pepfar-datim",
-      "GithubRef": "ab65fa89709baf65b97e4342510e0fade062764b",
-      "GithubSha1": "ab65fa89709baf65b97e4342510e0fade062764b",
+      "GithubRef": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
+      "GithubSha1": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
       "description": {
         "Package": "daa.analytics",
         "Title": "Utilities for Compiling and Analyzing PEPFAR Data Alignment Activity Data",
-        "Version": "0.1.5",
+        "Version": "0.1.6",
         "Date": "2021-06-17",
         "Authors@R": "\n    person(given = \"Chris\",\n           family = \"Nemarich\",\n           role = c(\"aut\", \"cre\"),\n           email = \"cnemarich@guidehousefederal.com\",\n           comment = c(ORCID = \"YOUR-ORCID-ID\"))",
         "Description": "General functions for pulling, joining, analyzing, and visualizing DAA data.",
@@ -965,18 +964,18 @@
         "RoxygenNote": "7.1.1",
         "Author": "Chris Nemarich [aut, cre] (<https://orcid.org/YOUR-ORCID-ID>)",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 3.6.3; ; 2021-09-28 15:40:20 UTC; windows",
+        "Built": "R 3.6.3; ; 2021-10-22 20:08:40 UTC; windows",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
-        "RemoteRef": "ab65fa89709baf65b97e4342510e0fade062764b",
-        "RemoteSha": "ab65fa89709baf65b97e4342510e0fade062764b",
+        "RemoteRef": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
+        "RemoteSha": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
-        "GithubRef": "ab65fa89709baf65b97e4342510e0fade062764b",
-        "GithubSHA1": "ab65fa89709baf65b97e4342510e0fade062764b",
+        "GithubRef": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
+        "GithubSHA1": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
         "Remotes": "pepfar-datim/datimutils"
       }
     },

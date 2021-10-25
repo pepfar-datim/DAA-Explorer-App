@@ -15,6 +15,7 @@ shinyServer(function(input, output, session) {
                                   wb_analysis_pe_filter = NULL,
                                   wb_raw_de_filter = NULL,
                                   wb_raw_pe_filter = NULL,
+                                  wb_raw_uids_check = NULL,
                                   integrity_radio = NULL)
 
   timestamps <- reactiveValues(s3 = NULL,
@@ -152,6 +153,9 @@ shinyServer(function(input, output, session) {
   observeEvent(input$wb_raw_pe_input, {
     filter_values$wb_raw_pe_filter <- input$wb_raw_pe_input
   })
+  observeEvent(input$wb_raw_uids_input, {
+    filter_values$wb_raw_uids_check <- input$wb_raw_uids_input
+  })
   observeEvent(input$integrity_radio_input, {
     filter_values$integrity_radio <- input$integrity_radio_input
   })
@@ -174,14 +178,6 @@ shinyServer(function(input, output, session) {
   })
 
   # Table and Graph Outputs ---------------------------------------------------
-
-  ## Data Availability Table --------------------------------------------------
-  output$data_availability <- gt::render_gt(
-    expr = analysis_data() %>%
-      data_availability_table(),
-    height = px(700),
-    width = "70%"
-  )
 
   ## Indicator Table ----------------------------------------------------------
   output$indicator_table <- gt::render_gt(
@@ -243,8 +239,11 @@ shinyServer(function(input, output, session) {
 
   ## Analysis Workbooks -------------------------------------------------------
   output$download_workbook <- downloadHandler(
-    filename = wb_filename(d = analysis_data(),
-                           type = "analysis"),
+    filename = function() {
+      wb_name <- analysis_data() %>%
+        wb_filename(type = "analysis")
+      return(wb_name)
+      },
     content = function(file) {
       df <- analysis_data() %>%
         adorn_export_data() %>%
@@ -257,11 +256,14 @@ shinyServer(function(input, output, session) {
 
   ## Raw Workbooks ------------------------------------------------------------
   output$download_raw <- downloadHandler(
-    filename = wb_filename(d = analysis_data(),
-                           type = "raw"),
+    filename = function() {
+      wb_name <- analysis_data() %>%
+        wb_filename(type = "raw")
+      return(wb_name)
+    },
     content = function(file) {
       d <- analysis_data() %>%
-        adorn_export_data() %>%
+        adorn_export_data(filter_values$wb_raw_uids_check) %>%
         table_filter(de_filter = filter_values$wb_raw_de_filter,
                      pe_filter = filter_values$wb_raw_pe_filter)
       raw_file <- write.csv(d, file)
