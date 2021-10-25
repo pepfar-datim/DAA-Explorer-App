@@ -308,7 +308,7 @@
     },
     "XML": {
       "Source": "CRAN",
-      "Repository": null,
+      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
