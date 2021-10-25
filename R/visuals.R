@@ -69,7 +69,11 @@ site_reporting_graph <- function(df) {
   }
 
   df %<>%
-    dplyr::filter(has_results_data == "Yes")
+    dplyr::group_by(namelevel3, indicator, period) %>%
+    dplyr::mutate(group_results =
+                    sum(ifelse(has_results_data == "Yes", 1, 0))) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(group_results > 0)
 
   graph_fy <- max(df$period)
 
