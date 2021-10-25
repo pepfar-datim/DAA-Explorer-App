@@ -21,19 +21,19 @@
         "Package": "BH",
         "Type": "Package",
         "Title": "Boost C++ Header Files",
-        "Version": "1.75.0-0",
-        "Date": "2020-12-12",
+        "Version": "1.72.0-3",
+        "Date": "2019-12-28",
         "Author": "Dirk Eddelbuettel, John W. Emerson and Michael J. Kane",
         "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
-        "Description": "Boost provides free peer-reviewed portable C++ source \n libraries.  A large part of Boost is provided as C++ template code\n which is resolved entirely at compile-time without linking.  This \n package aims to provide the most useful subset of Boost libraries \n for template use among CRAN packages. By placing these libraries in \n this package, we offer a more efficient distribution system for CRAN \n as replication of this code in the sources of other packages is \n avoided. As of release 1.75.0-0, the following Boost libraries are\n included: 'accumulators' 'algorithm' 'align' 'any' 'atomic' 'beast'\n 'bimap' 'bind' 'circular_buffer' 'compute' 'concept' 'config'\n 'container' 'date_time' 'detail' 'dynamic_bitset' 'exception'\n 'flyweight' 'foreach' 'functional' 'fusion' 'geometry' 'graph' 'heap'\n 'icl' 'integer' 'interprocess' 'intrusive' 'io' 'iostreams'\n 'iterator' 'math' 'move' 'mp11' 'mpl' 'multiprecision' 'numeric'\n 'pending' 'phoenix' 'polygon' 'preprocessor' 'propery_tree' 'random'\n 'range' 'scope_exit' 'smart_ptr' 'sort' 'spirit' 'tuple'\n 'type_traits' 'typeof' 'unordered' 'utility' 'uuid'.",
+        "Description": "Boost provides free peer-reviewed portable C++ source \n libraries.  A large part of Boost is provided as C++ template code\n which is resolved entirely at compile-time without linking.  This \n package aims to provide the most useful subset of Boost libraries \n for template use among CRAN packages. By placing these libraries in \n this package, we offer a more efficient distribution system for CRAN \n as replication of this code in the sources of other packages is \n avoided. As of release 1.72.0-3, the following Boost libraries are\n included: 'accumulators' 'algorithm' 'align' 'any' 'atomic' 'bimap'\n 'bind' 'circular_buffer' 'compute' 'concept' 'config' 'container'\n 'date_time' 'detail' 'dynamic_bitset' 'exception' 'flyweight'\n 'foreach' 'functional' 'fusion' 'geometry' 'graph' 'heap' 'icl'\n 'integer' 'interprocess' 'intrusive' 'io' 'iostreams' 'iterator'\n 'math' 'move' 'mp11' 'mpl' 'multiprcecision' 'numeric' 'pending'\n 'phoenix' 'polygon' 'preprocessor' 'propery_tree' 'random' 'range'\n 'scope_exit' 'smart_ptr' 'sort' 'spirit' 'tuple' 'type_traits'\n 'typeof' 'unordered' 'utility' 'uuid'.",
         "License": "BSL-1.0",
         "URL": "https://github.com/eddelbuettel/bh",
         "BugReports": "https://github.com/eddelbuettel/bh/issues",
         "NeedsCompilation": "no",
-        "Packaged": "2021-01-09 03:50:01 UTC; edd",
+        "Packaged": "2019-12-28 14:48:54.73981 UTC; edd",
         "Repository": "CRAN",
-        "Date/Publication": "2021-01-11 22:50:06 UTC",
-        "Built": "R 3.6.3; ; 2021-01-16 01:51:22 UTC; windows"
+        "Date/Publication": "2020-01-08 23:20:08 UTC",
+        "Built": "R 3.6.2; ; 2020-01-10 11:02:38 UTC; windows"
       }
     },
     "DT": {
@@ -303,7 +303,7 @@
         "Packaged": "2021-01-14 13:44:02 UTC; edd",
         "Repository": "CRAN",
         "Date/Publication": "2021-01-15 13:10:13 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-01-29 14:21:59 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-05-12 16:47:38 UTC; windows"
       }
     },
     "XML": {
@@ -586,9 +586,9 @@
         "Packaged": "2021-09-01 21:39:14 UTC; cpsievert",
         "Author": "Carson Sievert [aut, cre] (<https://orcid.org/0000-0002-4958-2844>),\n  Joe Cheng [aut],\n  RStudio [cph],\n  Bootstrap contributors [ctb] (Bootstrap library),\n  Twitter, Inc [cph] (Bootstrap library),\n  Javi Aguilar [ctb, cph] (Bootstrap colorpicker library),\n  Thomas Park [ctb, cph] (Bootswatch library),\n  PayPal [ctb, cph] (Bootstrap accessibility plugin)",
         "Maintainer": "Carson Sievert <carson@rstudio.com>",
-        "Repository": "RSPM",
+        "Repository": "CRAN",
         "Date/Publication": "2021-09-02 14:50:41 UTC",
-        "Built": "R 3.6.3; ; 2021-09-08 20:26:38 UTC; windows"
+        "Built": "R 3.6.3; ; 2021-10-25 21:44:07 UTC; windows"
       }
     },
     "cachem": {
@@ -615,9 +615,9 @@
         "Packaged": "2021-08-19 21:07:46 UTC; barret",
         "Author": "Winston Chang [aut, cre],\n  RStudio [cph, fnd]",
         "Maintainer": "Winston Chang <winston@rstudio.com>",
-        "Repository": "CRAN",
+        "Repository": "RSPM",
         "Date/Publication": "2021-08-19 21:30:02 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-08-24 20:49:37 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-08-20 11:02:53 UTC; windows"
       }
     },
     "callr": {
@@ -648,7 +648,7 @@
         "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
         "Repository": "CRAN",
         "Date/Publication": "2020-10-13 13:10:02 UTC",
-        "Built": "R 3.6.3; ; 2021-09-29 16:46:59 UTC; windows"
+        "Built": "R 3.6.3; ; 2021-02-10 18:03:19 UTC; windows"
       }
     },
     "checkmate": {
@@ -840,7 +840,7 @@
         "Maintainer": "Jim Hester <jim.hester@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2021-06-25 20:00:02 UTC",
-        "Built": "R 3.6.3; ; 2021-10-04 20:16:21 UTC; windows"
+        "Built": "R 3.6.3; ; 2021-10-22 15:17:21 UTC; windows"
       }
     },
     "crayon": {
@@ -943,12 +943,12 @@
       "Repository": null,
       "GithubRepo": "daa-analytics",
       "GithubUsername": "pepfar-datim",
-      "GithubRef": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
-      "GithubSha1": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
+      "GithubRef": "b185d50f8d1e27cc332e1b2c3b58e299885fa50d",
+      "GithubSha1": "b185d50f8d1e27cc332e1b2c3b58e299885fa50d",
       "description": {
         "Package": "daa.analytics",
         "Title": "Utilities for Compiling and Analyzing PEPFAR Data Alignment Activity Data",
-        "Version": "0.1.6",
+        "Version": "0.2.0",
         "Date": "2021-06-17",
         "Authors@R": "\n    person(given = \"Chris\",\n           family = \"Nemarich\",\n           role = c(\"aut\", \"cre\"),\n           email = \"cnemarich@guidehousefederal.com\",\n           comment = c(ORCID = \"YOUR-ORCID-ID\"))",
         "Description": "General functions for pulling, joining, analyzing, and visualizing DAA data.",
@@ -964,18 +964,18 @@
         "RoxygenNote": "7.1.1",
         "Author": "Chris Nemarich [aut, cre] (<https://orcid.org/YOUR-ORCID-ID>)",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 3.6.3; ; 2021-10-22 20:08:40 UTC; windows",
+        "Built": "R 3.6.3; ; 2021-10-25 21:49:14 UTC; windows",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
-        "RemoteRef": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
-        "RemoteSha": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
+        "RemoteRef": "b185d50f8d1e27cc332e1b2c3b58e299885fa50d",
+        "RemoteSha": "b185d50f8d1e27cc332e1b2c3b58e299885fa50d",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
-        "GithubRef": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
-        "GithubSHA1": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
+        "GithubRef": "b185d50f8d1e27cc332e1b2c3b58e299885fa50d",
+        "GithubSHA1": "b185d50f8d1e27cc332e1b2c3b58e299885fa50d",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
@@ -1329,7 +1329,7 @@
         "Maintainer": "Winston Chang <winston@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2021-01-25 21:00:02 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-01-29 10:08:29 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-05-12 16:47:37 UTC; windows"
       }
     },
     "filelock": {
@@ -1671,7 +1671,7 @@
         "Maintainer": "Baptiste Auguie <baptiste.auguie@gmail.com>",
         "Repository": "CRAN",
         "Date/Publication": "2017-09-09 14:12:08 UTC",
-        "Built": "R 3.6.3; ; 2020-04-19 20:05:34 UTC; windows"
+        "Built": "R 3.6.3; ; 2021-05-12 16:47:49 UTC; windows"
       }
     },
     "gt": {
@@ -1867,7 +1867,7 @@
         "Maintainer": "Winston Chang <winston@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2021-01-13 06:40:06 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-09-29 16:34:22 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-04-14 06:26:47 UTC; windows"
       }
     },
     "httr": {
@@ -1989,7 +1989,7 @@
         "Maintainer": "Carson Sievert <carson@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2020-12-17 16:40:03 UTC",
-        "Built": "R 3.6.3; ; 2021-08-24 14:17:44 UTC; windows"
+        "Built": "R 3.6.3; ; 2021-04-14 04:25:06 UTC; windows"
       }
     },
     "jsonlite": {
@@ -2136,7 +2136,7 @@
         "Maintainer": "Joe Cheng <joe@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2020-06-05 10:10:13 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-09-29 16:40:52 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-04-14 04:24:56 UTC; windows"
       }
     },
     "lattice": {
@@ -3007,7 +3007,7 @@
         "Maintainer": "Jim Hester <jim.hester@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2020-05-29 05:10:08 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-09-29 16:44:30 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-02-10 19:44:15 UTC; windows"
       }
     },
     "plotly": {
@@ -3038,7 +3038,7 @@
         "Maintainer": "Carson Sievert <cpsievert1@gmail.com>",
         "Repository": "CRAN",
         "Date/Publication": "2021-06-18 09:00:02 UTC",
-        "Built": "R 3.6.3; ; 2021-08-25 11:52:21 UTC; windows"
+        "Built": "R 3.6.3; ; 2021-10-25 21:44:42 UTC; windows"
       }
     },
     "praise": {
@@ -3123,7 +3123,7 @@
         "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
         "Repository": "CRAN",
         "Date/Publication": "2020-11-30 11:40:02 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-09-29 16:43:45 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-02-10 17:15:33 UTC; windows"
       }
     },
     "progress": {
@@ -3281,7 +3281,7 @@
         "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2021-01-31 05:40:02 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-02-02 15:15:04 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-05-12 16:49:23 UTC; windows"
       }
     },
     "readr": {
@@ -3319,7 +3319,7 @@
         "Maintainer": "Jim Hester <jim.hester@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2021-08-10 15:40:02 UTC",
-        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-10-04 20:35:44 UTC; windows"
+        "Built": "R 3.6.3; x86_64-w64-mingw32; 2021-10-22 16:08:41 UTC; windows"
       }
     },
     "rematch2": {
@@ -4281,7 +4281,7 @@
         "Maintainer": "Jim Hester <jim.hester@rstudio.com>",
         "Repository": "CRAN",
         "Date/Publication": "2021-01-26 16:20:02 UTC",
-        "Built": "R 3.6.3; ; 2021-09-29 16:30:46 UTC; windows"
+        "Built": "R 3.6.3; ; 2021-04-14 02:38:37 UTC; windows"
       }
     },
     "xml2": {
@@ -4405,7 +4405,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "07e03d4ef7f9ea95d95c94a4b8aa3ab3"
+      "checksum": "2f16f07b5b081a4cad1468949083b3d8"
     },
     "data/example.csv.gz": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -4417,7 +4417,7 @@
       "checksum": "7ff20a30ede215f0169905de12ddde28"
     },
     "global.R": {
-      "checksum": "8733f028ea5056ed436fe4f859e73969"
+      "checksum": "49bc8cf7ad002d5869a8c5e8575b1cba"
     },
     "LICENSE": {
       "checksum": "99c15a225de3b9667249cc1727dcdbd1"
@@ -4435,7 +4435,7 @@
       "checksum": "fba0290cc145271b0b2cd0aca781b38f"
     },
     "packrat/desc/BH": {
-      "checksum": "1e4a97792426becd5dc65c848ef1e82d"
+      "checksum": "4464b7770e7dd28229b5e85910494583"
     },
     "packrat/desc/bit": {
       "checksum": "733b454f767cd3903ad5532d2a18e6c3"
@@ -4450,13 +4450,13 @@
       "checksum": "41cf561fc853f54262cb8eca24f10262"
     },
     "packrat/desc/bslib": {
-      "checksum": "36dbebda65f14b5c1fc184b9bd93c82f"
+      "checksum": "8b29a03b5521b63f26be3a4b5b06cc6b"
     },
     "packrat/desc/cachem": {
-      "checksum": "73bf57d6726b54b1b27d605a2b76804c"
+      "checksum": "7213352eeec0f51a4c4adddd9afbe153"
     },
     "packrat/desc/callr": {
-      "checksum": "9161f2625d689207a1f81ade4fbfe482"
+      "checksum": "4cdae8a93555c8b3050d6d2e8a15f808"
     },
     "packrat/desc/checkmate": {
       "checksum": "44f9edabb281696e9ea6f62039a9767a"
@@ -4474,7 +4474,7 @@
       "checksum": "22dbb5dbf79161d258054228b97c5f58"
     },
     "packrat/desc/cpp11": {
-      "checksum": "2aa7d2c34cdbf2511f8e0feeac9b6fb2"
+      "checksum": "df5dc931f47a2f272b2b811bbc2675fe"
     },
     "packrat/desc/crayon": {
       "checksum": "55f2bf41c93dbee39533a7c204b8cba8"
@@ -4486,7 +4486,7 @@
       "checksum": "6b69ee23e5158fbb25652df9e5db4f12"
     },
     "packrat/desc/daa.analytics": {
-      "checksum": "f3e199488ef083aca850e88bf3014675"
+      "checksum": "57b8f08f49401acac1ea0d8630bddf18"
     },
     "packrat/desc/data.table": {
       "checksum": "fb38090242a606607214a0191cc246dc"
@@ -4522,7 +4522,7 @@
       "checksum": "c7863383d4e4b1fc4b2332dca38593a8"
     },
     "packrat/desc/fastmap": {
-      "checksum": "a96ad7c830e92ca82d72d3950f6f9738"
+      "checksum": "6e1418884fd7653d12ead2809719942f"
     },
     "packrat/desc/filelock": {
       "checksum": "e12fdb699e5c799b6f864d1976bcbaa8"
@@ -4555,7 +4555,7 @@
       "checksum": "f68b8cff95c824d40ef2be8d866b3ca9"
     },
     "packrat/desc/gridExtra": {
-      "checksum": "77686f5e7cc55ff6c37316187c3db41a"
+      "checksum": "ad4144ec9d5263c9a5cc13e03f497d60"
     },
     "packrat/desc/gt": {
       "checksum": "8692384386c3b5e67badd64691fe8e83"
@@ -4573,7 +4573,7 @@
       "checksum": "b80e06c476d91d5e850c804a722a2fa6"
     },
     "packrat/desc/httpuv": {
-      "checksum": "a431ece9166f13c2aaaff4bc7d626efb"
+      "checksum": "3386d5c3c6eaf1062d5712ba93d401dc"
     },
     "packrat/desc/httr": {
       "checksum": "709badd6a52967211470811b682fecd2"
@@ -4585,7 +4585,7 @@
       "checksum": "4789d01ecff63aed41c41e8d08b61b0a"
     },
     "packrat/desc/jquerylib": {
-      "checksum": "90d189325c173dd1dc2b32a584e5e6ff"
+      "checksum": "80c7c6f62c15b8a5544d25990affe837"
     },
     "packrat/desc/jsonlite": {
       "checksum": "767455b83f00d47aaebeffa24563b2a6"
@@ -4600,7 +4600,7 @@
       "checksum": "e1fc74cfa64125ba01ddefb5200a6c4f"
     },
     "packrat/desc/later": {
-      "checksum": "2bf9209bd75a4a4362ba739f7d1b070f"
+      "checksum": "1c965c014f382c0972c0c92d6e2ee716"
     },
     "packrat/desc/lattice": {
       "checksum": "b5f9060f8e44aa424a4ee83e70421483"
@@ -4690,10 +4690,10 @@
       "checksum": "fae4e8cafd1dc3b6955c2b92eb69f7c9"
     },
     "packrat/desc/pkgload": {
-      "checksum": "0dd86b10ffc61209365b5a6946a05ee6"
+      "checksum": "1af10ebc7eeb997e7f3484ee0301cba8"
     },
     "packrat/desc/plotly": {
-      "checksum": "486205fad9c5fb7b71b41f850db4fb52"
+      "checksum": "d62c89307241c928e429e554058df931"
     },
     "packrat/desc/praise": {
       "checksum": "1047677d70fb0e4ac3e49dcf05d1bc04"
@@ -4702,7 +4702,7 @@
       "checksum": "8bd5a62e1c4bc3b5496d55084d19089c"
     },
     "packrat/desc/processx": {
-      "checksum": "c4f48c750b4ae41bee6a1b36a8bfbd0b"
+      "checksum": "1dd4d42a3d4508fb81fd46848a0f8679"
     },
     "packrat/desc/progress": {
       "checksum": "a69269ac36e51e32cdcb481e15cfc726"
@@ -4729,16 +4729,16 @@
       "checksum": "8dc3d90e3c3f1dbbca25585084c163ef"
     },
     "packrat/desc/rappdirs": {
-      "checksum": "d182148c82f0115766caafaab53249a3"
+      "checksum": "4a28686706b6a106eafed76bb4e33c7a"
     },
     "packrat/desc/RColorBrewer": {
       "checksum": "e552c59afd09c6d4387ba9548071e666"
     },
     "packrat/desc/Rcpp": {
-      "checksum": "ca10ee3d976453f9bbde06041d7c86cd"
+      "checksum": "d8bcbfbc70e78dcde71b5a4d28a37745"
     },
     "packrat/desc/readr": {
-      "checksum": "faaa9937313a4aeadccfd59197e860ea"
+      "checksum": "d32abc2b85872f8a3d476cb39232633f"
     },
     "packrat/desc/rematch2": {
       "checksum": "c999ee1810db891837a399d24e22b972"
@@ -4828,7 +4828,7 @@
       "checksum": "984aec900591df3d6638ff55aafbd072"
     },
     "packrat/desc/withr": {
-      "checksum": "20747a5607ec147afa98d51b23a1a8e5"
+      "checksum": "eb7b98d8eaec8a88296b028f51e950d4"
     },
     "packrat/desc/XML": {
       "checksum": "587354a1b92f0a011c1868a367722976"
@@ -4846,31 +4846,31 @@
       "checksum": "966ec35ea5cf830059d8dd0870876dea"
     },
     "packrat/packrat.lock": {
-      "checksum": "35949784cbf3c9f68a6eb88f04d05a6b"
+      "checksum": "243b36c8017756944247279086de93bd"
     },
     "R/fetch.R": {
-      "checksum": "84930f10156d0bb9b746485a0c2013ab"
+      "checksum": "fb61349f26c7e586a16fda16a7cbe66f"
     },
     "R/ui_login_module.R": {
       "checksum": "c1973603f2279ec712d9582ab9ef5673"
     },
     "R/ui_main_module.R": {
-      "checksum": "b25b03ad2fd020b792e97b894014b05a"
+      "checksum": "f554b22faca1196ab516a7d5accc841d"
     },
     "R/ui_unauth_module.R": {
       "checksum": "71de87e433223d7af19ab25d0dde07dc"
     },
     "R/utils.R": {
-      "checksum": "cc3eaffce2d202b3d32f298db48d7ea2"
+      "checksum": "ff3a3452dae6e6a82ae24c78871f4498"
     },
     "R/visuals.R": {
-      "checksum": "dc1b02f9d9b703fd55fb7c926b5834ba"
+      "checksum": "65b9dd564ed222373abf04218737ecff"
     },
     "README.md": {
       "checksum": "c353842791d1f08b4415c5f4026ed97b"
     },
     "server.R": {
-      "checksum": "3c5686b37005a667425d73d8ff7a2a3f"
+      "checksum": "4423555592af6ce060269dd87fd48e12"
     },
     "templates/template.xlsx": {
       "checksum": "71ecea15b000811475a05b3ad7cf0f36"

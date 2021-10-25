@@ -15,10 +15,10 @@
   "Packages": {
     "BH": {
       "Package": "BH",
-      "Version": "1.75.0-0",
+      "Version": "1.72.0-3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "e4c04affc2cac20c8fec18385cd14691"
+      "Hash": "8f9ce74c6417d61f0782cbae5fd2b7b0"
     },
     "DT": {
       "Package": "DT",
@@ -232,16 +232,16 @@
     },
     "daa.analytics": {
       "Package": "daa.analytics",
-      "Version": "0.1.6",
+      "Version": "0.2.0",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "pepfar-datim",
       "RemoteRepo": "daa-analytics",
-      "RemoteRef": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
-      "RemoteSha": "4ea6dbedddeedfec3f318bd69af605047cdabbd5",
+      "RemoteRef": "b185d50f8d1e27cc332e1b2c3b58e299885fa50d",
+      "RemoteSha": "b185d50f8d1e27cc332e1b2c3b58e299885fa50d",
       "Remotes": "pepfar-datim/datimutils",
-      "Hash": "3f04f37ac91960b97491e604ce122aa7"
+      "Hash": "d2a1c7dbe25a6b0fee274b145c14176b"
     },
     "data.table": {
       "Package": "data.table",
