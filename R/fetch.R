@@ -141,8 +141,6 @@ fetch <- function(authenticated, ready, ou_uid, d2_session, geo_session) {
       # })
       # Sys.sleep(0.5)
 
-      save(d, file = "data/mytest.Rda")
-
       shiny::incProgress(0.0625, detail = ("Merging datasets"))
       d$combined_data <- daa.analytics::combine_data(
         daa_indicator_data = d$daa_indicator_data,
