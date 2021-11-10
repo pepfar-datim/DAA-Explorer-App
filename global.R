@@ -48,7 +48,19 @@ source("R/ui_login_module.R")
 source("R/ui_unauth_module.R")
 
 # App Information -----------------------------------------
-app_info <- list(version = "2021.2.0")
+banner_message <-
+  paste0('<h3 style="text-align:center;"><strong>IMPORTANT NOTICE</strong></h3>',
+         '<br><ul><li>MOH Data Alignment Data is now available for the FY21 ',
+         'Activity. This data can be seen within the `Site Data` tab, ',
+         'the `Pivot Table` tab, and within files from the `Downloads` ',
+         'tab.</li><li>PEPFAR data for FY2021 will not be available until ',
+         'after the close of the MER Data Import window (Nov 12) and will ',
+         'not populate in the app until sometime the following week. ',
+         '<strong>Until that time, no concordance data can be shown inside ',
+         'the app.</strong></li></ul><br>')
+
+app_info <- list(version = "2021.2.0",
+                 message = banner_message)
 wiki_url <- a("Data Alignment Support Site",
               href = glue::glue("
                                https://datim.zendesk.com/hc/en-us/categories/\\
