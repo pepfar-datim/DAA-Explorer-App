@@ -101,7 +101,7 @@ shinyServer(function(input, output, session) {
         text = "Please check your username/password!",
         type = "error")
       futile.logger::flog.info(
-        paste0("User ", input$user_name, " login failed."),
+        paste0("User ", input$user_name, " login failed on ", base_url),
         name = "daa-analysis")
     })
 
