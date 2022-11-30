@@ -7,13 +7,6 @@ library(rpivotTable)
 library(gt)
 library(DT)
 
-source("./R/fetch.R")
-source("./R/ui_login_module.R")
-source("./R/ui_main_module.R")
-source("./R/ui_unauth_module.R")
-source("./R/utilities.R")
-source("./R/visuals.R")
-
 shinyServer(function(input, output, session) {
   # Reactive Values -----------------------------------------------------------
 
