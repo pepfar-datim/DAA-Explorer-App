@@ -1,1 +1,0 @@
-DO NOT DELETE THIS FILE. This file is meant to keep the "support_files" folder active within the GitHub repo to keep the app working properly.
