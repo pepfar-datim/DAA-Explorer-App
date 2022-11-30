@@ -1,53 +1,54 @@
+library(shiny)
+library(shinyjs)
+library(shinyWidgets)
+library(plotly)
+library(magrittr)
+library(rpivotTable)
+library(gt)
+library(DT)
 shinyServer(function(input, output, session) {
   # Reactive Values -----------------------------------------------------------
 
-  ready <- reactiveValues(ok = FALSE)
+  ready <- reactiveValues(ok = FALSE) # indication of whether user has pushed the "Get Data" button
 
-  user_input <- reactiveValues(authenticated = FALSE,
-                               authorized = FALSE,
-                               ou_uid = NULL,
-                               d2_session = NULL,
-                               geo_session = NULL)
+  user_input <- reactiveValues(authenticated = FALSE, # Whether a user has a valid DATIM account
+                               authorized = FALSE, # Whether a user is authorized to access this application
+                               ou_uid = NULL, # Organisation Unit UID for the country selected from the dropdown menu by the user
+                               d2_session = NULL, # DATIM session object (see `datimutils` docs for more information)
+                               geo_session = NULL) # GeoAlign session object (see `datimutils` docs for more information)
 
-  filter_values <- reactiveValues(vz_de_filter = NULL,
-                                  vz_pe_filter = NULL,
-                                  wb_analysis_de_filter = NULL,
-                                  wb_analysis_pe_filter = NULL,
-                                  wb_raw_de_filter = NULL,
-                                  wb_raw_pe_filter = NULL,
-                                  wb_raw_uids_check = NULL,
-                                  integrity_radio = NULL)
+  filter_values <- reactiveValues(vz_de_filter = NULL, # Visualization Data Element (Indicator) Filter, located in sidebar
+                                  vz_pe_filter = NULL, # Visualization Period (Fiscal Year) Filter, located in the sidebar
+                                  wb_de_filter = NULL, # Raw CSV file Data Element (Indicator) Filter
+                                  wb_pe_filter = NULL, # Raw CSV file Period (Fiscal Year) Filter
+                                  integrity_radio = NULL) # Radio button for selecting which data integrity check to display
 
-  timestamps <- reactiveValues(s3 = NULL,
-                               datim = NULL)
-
-  data <- reactiveValues(gg_con = c(),
-                         tb_pivot = c())
+  data <- reactiveValues(gg_con = c(), # ggplot2 graph data for the Concordancy Graph
+                         tb_pivot = c()) # rpivotTable data based on the current view in the pivot table
 
   # Reactives -----------------------------------------------------------------
 
   analysis_data <- reactive({
+    # Run the fetch function to attempt to obtain data from DATIM and GeoAlign
     d <- fetch(authenticated = user_input$authenticated,
                ready = ready,
                ou_uid = input$ou,
                d2_session = user_input$d2_session,
                geo_session = user_input$geo_session)
+
+    # If no data was returned, switch "Ready" indication back to False
     if (is.null(d)) {
       ready$ok <- FALSE
-    # } else {
-    #   timestamps$s3 <- purrr::pluck(d, "s3_timestamp")
-    #   timestamps$datim <- purrr::pluck(d, "datim_timestamp")
     }
+
+    # Return the `d` list object with data
     return(d)
   })
 
-  # refreshed <- reactive({
-  #   refresh_list <- list(s3 = timestamps$s3, datim = timestamps$datim)
-  #   return(refresh_list)
-  # })
-
   # Observer Reactivity -------------------------------------------------------
 
+  # Waits for "Get Data" button to be pushed by user, then disables "Get Data" button and country dropdown menu
+  # Also switched status of "Ready" to TRUE
   observeEvent(input$fetch, {
     shinyjs::disable("ou")
     shinyjs::disable("fetch")
@@ -55,22 +56,27 @@ shinyServer(function(input, output, session) {
     # d <- analysis_data()
   })
 
+  # Waits for user to hit the "Reset" button, then re-enables the "Get Data" button and the country dropdown menu
+  # Also disables or hides all UI elements associated with tables, graphs, and downloads
+  # Switches status of "Ready" to FALSE
   observeEvent(input$reset_input, {
     shinyjs::enable("ou")
     shinyjs::enable("fetch")
     shinyjs::hide("hr-toggle")
     shinyjs::hide("vz_de_input")
     shinyjs::hide("vz_pe_input")
-    # shinyjs::hide("update_note")
     shinyjs::disable("save_con_graph")
     shinyjs::disable("integrity_radio_input")
     shinyjs::disable("save_pivot")
-    shinyjs::disable("download_workbook")
     shinyjs::disable("download_raw")
     shinyjs::disable("reset_input")
     ready$ok <- FALSE
   })
 
+  # Waits for user to hit the "Logout" button then resets app
+  # Wipes out all session objects for active logins
+  # Changes status of "authorized" and "authenticated" to FALSE
+  # Changes status of "Ready" to FALSE
   observeEvent(input$logout, {
     flog.info(paste0("User ",
                      user_input$d2_session$me$userCredentials$username,
@@ -86,7 +92,7 @@ shinyServer(function(input, output, session) {
   })
 
   observeEvent(input$login_button, {
-    base_url <- Sys.getenv(input$user_type)
+    base_url <- Sys.getenv("DATIM_URL")
     tryCatch({
       datimutils::loginToDATIM(username = input$user_name,
                                password = input$password,
@@ -101,7 +107,7 @@ shinyServer(function(input, output, session) {
         text = "Please check your username/password!",
         type = "error")
       futile.logger::flog.info(
-        paste0("User ", input$user_name, " login failed on ", base_url),
+        paste0("User ", input$user_name, " login failed."),
         name = "daa-analysis")
     })
 
@@ -114,8 +120,8 @@ shinyServer(function(input, output, session) {
         credential_check(d2_session = user_input$d2_session)
 
       if (user_input$authorized == TRUE) {
-        # Logs into GeoAlign
-        datimutils::loginToDATIM(base_url = Sys.getenv("GEOALIGN_URL"),
+        # Logs into GeoAlign using stored credentials for the app
+         datimutils::loginToDATIM(base_url = Sys.getenv("GEOALIGN_URL"),
                                  username = Sys.getenv("GEOALIGN_USERNAME"),
                                  password = Sys.getenv("GEOALIGN_PASSWORD"),
                                  d2_session_envir = parent.env(environment()))
@@ -132,48 +138,61 @@ shinyServer(function(input, output, session) {
     }
   })
 
+  # Observes country dropdown menu and
+  # updates `user_input$ou_uid` reactive value to match `input$ou` value
   observeEvent(input$ou, {
     user_input$ou_uid <- input$ou
   })
+
+  # Observes indicator filter in sidebar and
+  # updates `filter_values$vz_de_filter` reactive value to match `input$vz_de_input` value
   observeEvent(input$vz_de_input, {
     filter_values$vz_de_filter <- input$vz_de_input
   })
+
+  # Observes fiscal year filter in sidebar and
+  # updates `filter_values$vz_pe_filter` reactive value to match `input$vz_pe_input` value
   observeEvent(input$vz_pe_input, {
     filter_values$vz_pe_filter <- input$vz_pe_input
   })
-  observeEvent(input$wb_analysis_de_input, {
-    filter_values$wb_analysis_de_filter <- input$wb_analysis_de_input
+
+  # Observes indicator filter on the downloads tab and
+  # updates `filter_values$wb_de_filter` reactive value to match `input$wb_de_input` value
+  observeEvent(input$wb_de_input, {
+    filter_values$wb_de_filter <- input$wb_de_input
   })
-  observeEvent(input$wb_analysis_pe_input, {
-    filter_values$wb_analysis_pe_filter <- input$wb_analysis_pe_input
+
+  # Observes fiscal year filter on the downloads page and
+  # updates `filter_values$wb_pe_filter` reactive value to match `input$wb_pe_input` value
+  observeEvent(input$wb_pe_input, {
+    filter_values$wb_pe_filter <- input$wb_pe_input
   })
-  observeEvent(input$wb_raw_de_input, {
-    filter_values$wb_raw_de_filter <- input$wb_raw_de_input
-  })
-  observeEvent(input$wb_raw_pe_input, {
-    filter_values$wb_raw_pe_filter <- input$wb_raw_pe_input
-  })
-  observeEvent(input$wb_raw_uids_input, {
-    filter_values$wb_raw_uids_check <- input$wb_raw_uids_input
-  })
+
+  # Observes the radio button on the integrity check tab and
+  # updates `filter_values$integrity_radio` reactive value to match `input$integrity_radio_input` value
   observeEvent(input$integrity_radio_input, {
     filter_values$integrity_radio <- input$integrity_radio_input
   })
+
+  # Observes pivot table and
+  # updates `data$tb_pivot` reactive value to match `input$pivot_data` value
   observeEvent(input$pivot_data,{
     data$tb_pivot <- extract_pivot_data(input$pivot_data)
   })
 
   # App UI --------------------------------------------------------------------
 
+  # Progresses a user through various UI screens based on whether
+  # they have successfully logged into their DATIM account and
+  # whether they are authorized to access this app.
   output$ui <- renderUI({
-    if (user_input$authenticated == FALSE) {
+    if (user_input$authenticated == FALSE) { # If a user is not authenticated, show them the login screen
       callModule(ui_login, "ui")
-    } else if (user_input$authorized == FALSE) {
+    } else if (user_input$authorized == FALSE) { # If a user is not authorized, show them the "unauthorized" screen
       callModule(ui_unauth, "ui")
-    } else {
+    } else { # If a user is both authenticated and authorized, show them the main app content
       callModule(ui_main, "main",
-                 d2_session = user_input$d2_session) #,
-                 # refreshed = refreshed())
+                 d2_session = user_input$d2_session)
     }
   })
 
@@ -237,36 +256,26 @@ shinyServer(function(input, output, session) {
 
   # Download Handlers ---------------------------------------------------------
 
-  ## Analysis Workbooks -------------------------------------------------------
-  output$download_workbook <- downloadHandler(
-    filename = function() {
-      wb_name <- analysis_data() %>%
-        wb_filename(type = "analysis")
-      return(wb_name)
-      },
-    content = function(file) {
-      df <- analysis_data() %>%
-        adorn_export_data() %>%
-        table_filter(de_filter = filter_values$wb_analysis_de_filter,
-                     pe_filter = filter_values$wb_analysis_pe_filter)
-      wb <- wb_filecontent(df = df, file = file)
-      return(wb)
-    }
-  )
-
   ## Raw Workbooks ------------------------------------------------------------
   output$download_raw <- downloadHandler(
     filename = function() {
-      wb_name <- analysis_data() %>%
-        wb_filename(type = "raw")
-      return(wb_name)
+      if (is.null(d) || is.null(d$combined_data)) {
+        return("no_data.txt")
+      }
+
+      date <- base::format(Sys.time(), "%Y%m%d_%H%M%S")
+      ou_name <- d$ou_name
+
+      name <- paste0(paste(date, ou_name, "raw_data", sep = "_"), ".csv")
+
+      return(name)
     },
     content = function(file) {
-      d <- analysis_data() %>%
-        adorn_export_data(filter_values$wb_raw_uids_check) %>%
-        table_filter(de_filter = filter_values$wb_raw_de_filter,
-                     pe_filter = filter_values$wb_raw_pe_filter)
-      raw_file <- write.csv(d, file)
+      data <- analysis_data() %>%
+        adorn_export_data() %>%
+        table_filter(de_filter = filter_values$wb_de_filter,
+                     pe_filter = filter_values$wb_pe_filter)
+      raw_file <- write.csv(data, file)
       return(raw_file)
     }
   )

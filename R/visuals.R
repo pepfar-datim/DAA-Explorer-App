@@ -1,4 +1,12 @@
-
+#' Country Summary Table
+#'
+#' @param d List object containing data
+#' @param filter_values List of values for appropriate filters
+#'
+#' @return Returns a table summarizing data for the country at the indicator
+#' and fiscal year level
+#' @export
+#'
 country_summary <- function(d, filter_values) {
 
   if (is.null(d) || is.null(d$combined_data)) {
@@ -8,29 +16,35 @@ country_summary <- function(d, filter_values) {
   df <- d %>%
     purrr::pluck("combined_data") %>%
     dplyr::filter(reported_by == "Both") %>%
-    dplyr::group_by(namelevel3, indicator, period) %>%
+    dplyr::group_by(OU, indicator, period) %>%
     dplyr::summarise(
       MOH_total = sum(moh),
       PEPFAR_total = sum(pepfar),
-      MOH_aligned = max(count_of_matched_sites),
-      Concordance = sum(weighted_concordance),
-      Discordance = sum(weighted_discordance),
+      MOH_aligned = dplyr::n(),
+      Concordance = sum(OU_Concordance),
       .groups = "keep"
     ) %>%
     dplyr::ungroup() %>%
     dplyr::full_join(x = .,
-                     y = d$data_availability %>%
-                       dplyr::filter(namelevel3 == d$ou_name),
-                     by = c("namelevel3", "period", "indicator")) %>%
-    # TODO Go back and fix this issue in the package upstream
-    dplyr::mutate(has_results_data = ifelse(!is.na(`Concordance`),
-                                            "Yes", "No")) %>%
+                     y = d$import_history %>%
+                       dplyr::filter(OU == d$ou_name),
+                     by = c("OU", "period", "indicator")) %>%
     table_filter(de_filter = filter_values$vz_de_filter,
                  pe_filter = filter_values$vz_pe_filter)
 
   return(df)
 }
 
+#' Summary of matched sites
+#'
+#' @description Summary table of country data
+#'
+#' @param d List object containing data
+#' @param filter_values List of values for appropriate filters
+#'
+#' @return
+#' @export
+#'
 matching_summary <- function(d, filter_values) {
 
   if (is.null(d) || is.null(d$combined_data)) {
@@ -39,48 +53,44 @@ matching_summary <- function(d, filter_values) {
 
   df <- d %>%
     purrr::pluck("combined_data") %>%
-    dplyr::group_by(namelevel3, indicator, period, reported_by) %>%
+    dplyr::group_by(OU, indicator, period, reported_by) %>%
     dplyr::summarise(
       site_count = dplyr::n(),
       MOH_total = sum(moh),
       PEPFAR_total = sum(pepfar),
-      Concordance = sum(weighted_concordance),
-      Discordance = sum(weighted_discordance),
+      Concordance = sum(OU_Concordance),
       .groups = "keep"
     ) %>%
     dplyr::ungroup() %>%
     dplyr::full_join(x = .,
-                     y = d$data_availability %>%
-                       dplyr::filter(namelevel3 == d$ou_name),
-                     by = c("namelevel3", "period", "indicator")) %>%
-    #TODO Go back and fix this issue in the package upstream
-    dplyr::mutate(has_results_data = ifelse(!is.na(`Concordance`),
-                                            "Yes", "No")) %>%
+                     y = d$import_history %>%
+                       dplyr::filter(OU == d$ou_name),
+                     by = c("OU", "period", "indicator")) %>%
     table_filter(de_filter = filter_values$vz_de_filter,
                  pe_filter = filter_values$vz_pe_filter)
 
   return(df)
 }
 
+#' Site Reporting Graph
+#'
+#' @param df Dataframe that has been prepared using the `matching_summary` function.
+#'
+#' @return ggplot2 object
+#' @export
+#'
 site_reporting_graph <- function(df) {
 
   if (is.null(df)) {
     return(NULL)
   }
 
-  df %<>%
-    dplyr::group_by(namelevel3, indicator, period) %>%
-    dplyr::mutate(group_results =
-                    sum(ifelse(has_results_data == "Yes", 1, 0))) %>%
-    dplyr::ungroup() %>%
-    dplyr::filter(group_results > 0)
-
   graph_fy <- max(df$period)
 
   gg_rprt <- df %>%
-    dplyr::select(namelevel3, indicator, period,
+    dplyr::select(OU, indicator, period,
                   reported_by, site_count) %>%
-    dplyr::filter(period == graph_fy,
+    dplyr::filter(period == max(period),
                   reported_by %in% c("Both", "PEPFAR")) %>%
     dplyr::mutate(site_type = ifelse(reported_by == "Both",
                                      "Matched sites",
@@ -94,7 +104,6 @@ site_reporting_graph <- function(df) {
          subtitle = glue::glue("Totals for matched and unmatched \\
                                sites in {graph_fy}")) +
     theme_minimal() +
-    # scale_color_viridis_d() +
     theme(plot.title = element_text(hjust = 0.15, size = 22),
           plot.subtitle = element_text(hjust = 0.15, size = 18),
           axis.title = element_blank(),
@@ -106,6 +115,18 @@ site_reporting_graph <- function(df) {
   return(gg_rprt)
 }
 
+#' Interactive Scatter Plot
+#'
+#' @description Creates an interactive scatterplot showing
+#' unweighted concordance value by facility, with indicators shown
+#' in different colors.
+#'
+#' @param d List object containing data
+#' @param filter_values List of values for appropriate filters
+#'
+#' @return ggplotly object
+#' @export
+#'
 interactive_scatter <- function(d, filter_values) {
 
   if (is.null(d) || is.null(d$combined_data)) {
@@ -115,10 +136,9 @@ interactive_scatter <- function(d, filter_values) {
   concordance_distributions <- d %>%
     purrr::pluck("combined_data") %>%
     dplyr::filter(reported_by == "Both") %>%
-    dplyr::mutate(facility_name =
-                    ifelse(is.na(namelevel7), namelevel6, namelevel7),
-                  unweighted_concordance = weighted_concordance / weighting) %>%
-    dplyr::select(facility_name, indicator, period, pepfar, moh,
+    dplyr::mutate(unweighted_concordance =
+                    OU_Concordance / OU_weighting) %>%
+    dplyr::select(Facility, indicator, period, pepfar, moh,
                   unweighted_concordance) %>%
     table_filter(de_filter = filter_values$vz_de_filter,
                  pe_filter = filter_values$vz_pe_filter)
@@ -129,7 +149,7 @@ interactive_scatter <- function(d, filter_values) {
       aes(x = pepfar, y = unweighted_concordance, color = indicator,
           text =
             paste(
-              "Facility: ", facility_name,
+              "Facility: ", Facility,
               "<br>Indicator: ", indicator,
               "<br>Period: ", period,
               "<br>PEPFAR Reported Total: ", pepfar,
@@ -165,6 +185,13 @@ interactive_scatter <- function(d, filter_values) {
   return(fig)
 }
 
+#' Generate Indicator Table
+#'
+#' @param df Dataframe that has been prepared using the `country_summary` function.
+#'
+#' @return A `gt` table object
+#' @export
+#'
 indicator_table_rendering <- function(df) {
 
   if (is.null(df)) {
@@ -173,8 +200,9 @@ indicator_table_rendering <- function(df) {
 
   t <- df %>%
     dplyr::select(indicator, Period = period, Mapping = has_disag_mapping,
+                  MappingData = has_mapping_result_data,
                   PEPFAR = PEPFAR_total, MOH = MOH_total,
-                  MOH_aligned, Discordance, Concordance) %>%
+                  MOH_aligned, OU, Concordance) %>%
     apply_levels() %>%
     dplyr::arrange(indicator, Period) %>%
     dplyr::group_by(indicator) %>%
@@ -188,17 +216,17 @@ indicator_table_rendering <- function(df) {
       columns = c(MOH_aligned, PEPFAR, MOH)
     ) %>%
     gt::tab_style(
-      style = cell_text(size = px(12)),
-      locations = cells_body(
-        columns = c(Period, Mapping, MOH_aligned,
-                    PEPFAR, MOH, Discordance, Concordance))
+      style = gt::cell_text(size = px(12)),
+      locations = gt::cells_body(
+        columns = c(Period, Mapping, MappingData, MOH_aligned,
+                    PEPFAR, MOH, OU))
     ) %>%
     gt::fmt_number(columns = c(PEPFAR, MOH),
                    decimals = 0) %>%
-    gt::fmt_percent(columns = c(Discordance, Concordance),
+    gt::fmt_percent(columns = c(Concordance, Concordance),
                     decimals = 2) %>%
     gt::fmt_missing(columns = everything(), missing_text = "—") %>%
-    gt::cols_label(MOH_aligned = md("No. of sites<br>reported by both")) %>%
+    gt::cols_label(MOH_aligned = gt::md("No. of sites<br>reported by both")) %>%
     gt::tab_options(
       column_labels.font.size = px(16),
       table.font.size = px(14),
@@ -217,6 +245,13 @@ indicator_table_rendering <- function(df) {
   return(t)
 }
 
+#' Generate Concordance Chart
+#'
+#' @param df A dataframe prepared using the `country_summary` function.
+#'
+#' @return A ggplot2 object
+#' @export
+#'
 concordance_chart <- function(df) {
 
   if (is.null(df)) {
@@ -245,7 +280,7 @@ concordance_chart <- function(df) {
     guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
     coord_cartesian(ylim = c(y_min, 1)) +
     labs(title = "Progress Towards System Alignment",
-         subtitle = "Weighted Average Concordance, FY2018-FY2020") +
+         subtitle = "Weighted Average Concordance, FY2018-FY2022") +
     theme_minimal() +
     # scale_color_viridis_d(name = "Indicator") +
     theme(plot.title = element_text(hjust = 0.15, size = 22),
@@ -259,6 +294,14 @@ concordance_chart <- function(df) {
   return(g)
 }
 
+#' Prepare site table data
+#'
+#' @param d List object containing data
+#' @param filter_values List of values for appropriate filters
+#'
+#' @return A `DT` table object
+#' @export
+#'
 site_table_data <- function(d, filter_values) {
 
   if (is.null(d) || is.null(d$combined_data)) {
@@ -271,28 +314,38 @@ site_table_data <- function(d, filter_values) {
                  pe_filter = filter_values$vz_pe_filter) %>%
     dplyr::filter(reported_by == "Both") %>%
     dplyr::mutate(
-      facility_hierarchy = ifelse(is.na(namelevel7),
-                                  paste(namelevel3, namelevel4, namelevel5,
-                                        namelevel6, sep = "/"),
-                                  paste(namelevel3, namelevel4, namelevel5,
-                                        namelevel6, namelevel7, sep = "/")),
+      Facility_hierarchy = ifelse(is.na(SNU3),
+                                  paste(OU, SNU1, SNU2, sep = "/"),
+                                  paste(OU, SNU1, SNU2, SNU3, sep = "/")),
       difference = pepfar - moh) %>%
-    dplyr::select(Facility = facility_hierarchy,
+    dplyr::select(Facility = Facility_hierarchy,
                   Indicator = indicator,
                   Period = period,
                   MOH = moh,
                   PEPFAR = pepfar,
                   Difference = difference,
-                  `Weighted concordance` = weighted_concordance) %>%
+                  `Weighted concordance (OU Level)` = OU_Concordance) %>%
     DT::datatable(options = list(pageLength = 20,
                                  order = list(list(6, 'desc'))
                                  ),
                   rownames = FALSE) %>%
-    DT::formatPercentage(columns = c("Weighted concordance"), digits = 5)
+    DT::formatPercentage(
+      columns = c("Weighted concordance (OU Level)"), digits = 5
+    )
 
   return(t)
 }
 
+#' Generate Integrity Check Tables
+#'
+#' @description Creates the data integrity  check tables.
+#'
+#' @param d List object containing data
+#' @param filter_values List of values for appropriate filters
+#'
+#' @return A `DT` table object
+#' @export
+#'
 generate_integrity_table <- function(d, filter_values) {
 
   if (is.null(d) || is.null(filter_values$integrity_radio)) {
@@ -346,6 +399,15 @@ generate_integrity_table <- function(d, filter_values) {
   return(t)
 }
 
+#' Apply filters to table
+#'
+#' @param df A dataframe to be filtered
+#' @param de_filter A list of indicators (data elements) to be included in the filter
+#' @param pe_filter A list of fiscal years (periods) to be included in the filter
+#'
+#' @return A filtered dataframe
+#' @export
+#'
 table_filter <- function(df, de_filter, pe_filter) {
   if (!is.null(de_filter)) {
     df %<>%
@@ -360,14 +422,28 @@ table_filter <- function(df, de_filter, pe_filter) {
   return(df)
 }
 
+#' Order Indicators by Levels
+#'
+#' @param df A dataframe object to be ordered by indicators
+#'
+#' @return A dataframe that has had indicators converted to a factor
+#' @export
+#'
 apply_levels <- function(df) {
   df$indicator <- factor(df$indicator,
                          levels = c("HTS_TST", "PMTCT_ART", "PMTCT_STAT",
                                     "TB_PREV_LEGACY", "TB_PREV",
-                                    "TX_NEW", "TX_CURR"))
+                                    "TX_NEW", "TX_CURR", "TX_PVLS_NUM", "TX_PVLS_DEN"))
   return(df)
 }
 
+#' Extract Data from Pivot Table
+#'
+#' @param d A list object containing data
+#'
+#' @return A dataset plucked from the Pivot table current view
+#' @export
+#'
 moh_pivot <- function(d) {
 
   pivot <- d %>%
@@ -384,7 +460,7 @@ moh_pivot <- function(d) {
   rpivotTable(data = pivot,
               rows = c("indicator"),
               cols = c("period"),
-              vals = "weighted_concordance",
+              vals = "OU_Concordance",
               aggregatorName = "Sum",
               rendererName = "Table",
               width = "70%",
@@ -394,6 +470,17 @@ moh_pivot <- function(d) {
 
 }
 
+#' @export
+#' @title Extract data from Pivot Table
+#'
+#' @description This code is based on the below GitHub comment
+#' in the rpivotTable repository. It allows the user to access the data
+#' in the pivot table so that it can be exported as a CSV.
+#'
+#' @param x Pivot table data from `input$pivot_data`
+#'
+#' @returns Data frame containing data from current pivot table view.
+#'
 extract_pivot_data <- function(x) {
   x %<>%
     xml2::read_html(.) %>%

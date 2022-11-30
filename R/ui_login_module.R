@@ -1,3 +1,4 @@
+# This is the login screen for the app where users enter their DATIM login credentials
 ui_login <- function(input, output, session) {
   ##### UI code for DATIM login page
   fluidPage(fluidRow(
@@ -9,7 +10,7 @@ ui_login <- function(input, output, session) {
         fluidRow(HTML(glue::glue('<center><img src="pepfar.png">\\
                                 <h3>Welcome to the<br>DAA Explorer app</h3>\\
                                 <h4>Please login with your<br>\\
-                                DATIM or DATIM4U credentials:</h5>
+                                DATIM credentials:</h5>
                                 </center>'))),
         br(),
         fluidRow(div(align = "center",
@@ -19,12 +20,6 @@ ui_login <- function(input, output, session) {
                      passwordInput(inputId = "password",
                                    label = NULL,
                                    placeholder = "Password"),
-                     radioButtons(inputId = "user_type",
-                                  label = NULL,
-                                  choices = c("DATIM user" = "DATIM_URL",
-                                              "DATIM4U user" = "D4U_URL"),
-                                  selected = "DATIM_URL",
-                                  inline = TRUE),
                      actionButton("login_button", "Log in!"))),
       tags$hr(),
       fluidRow(
