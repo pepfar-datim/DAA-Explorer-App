@@ -6,7 +6,6 @@ library(magrittr)
 library(rpivotTable)
 library(gt)
 library(DT)
-
 shinyServer(function(input, output, session) {
   # Reactive Values -----------------------------------------------------------
 
@@ -257,26 +256,29 @@ shinyServer(function(input, output, session) {
 
   # Download Handlers ---------------------------------------------------------
 
+  output$download_workbook <- downloadHandler(
+    filename = wb_filename(d = analysis_data(),
+                           type = "analysis"),
+    content = function(file) {
+      df <- analysis_data() %>%
+        adorn_export_data() %>%
+        table_filter(de_filter = filter_values$wb_analysis_de_filter,
+                     pe_filter = filter_values$wb_analysis_pe_filter)
+      wb <- wb_filecontent(df = df, file = file)
+      return(wb)
+    }
+  )
+
   ## Raw Workbooks ------------------------------------------------------------
   output$download_raw <- downloadHandler(
-    filename = function() {
-      if (is.null(d) || is.null(d$combined_data)) {
-        return("no_data.txt")
-      }
-
-      date <- base::format(Sys.time(), "%Y%m%d_%H%M%S")
-      ou_name <- d$ou_name
-
-      name <- paste0(paste(date, ou_name, "raw_data", sep = "_"), ".csv")
-
-      return(name)
-    },
+    filename = wb_filename(d = analysis_data(),
+                           type = "raw"),
     content = function(file) {
-      data <- analysis_data() %>%
+      d <- analysis_data() %>%
         adorn_export_data() %>%
-        table_filter(de_filter = filter_values$wb_de_filter,
-                     pe_filter = filter_values$wb_pe_filter)
-      raw_file <- write.csv(data, file)
+        table_filter(de_filter = filter_values$wb_raw_de_filter,
+                     pe_filter = filter_values$wb_raw_pe_filter)
+      raw_file <- write.csv(d, file)
       return(raw_file)
     }
   )

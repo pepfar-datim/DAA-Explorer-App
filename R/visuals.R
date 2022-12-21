@@ -315,8 +315,8 @@ site_table_data <- function(d, filter_values) {
     dplyr::filter(reported_by == "Both") %>%
     dplyr::mutate(
       Facility_hierarchy = ifelse(is.na(SNU3),
-                                  paste(OU, SNU1, SNU2, sep = "/"),
-                                  paste(OU, SNU1, SNU2, SNU3, sep = "/")),
+                                  paste(OU, SNU1, SNU2, Facility, sep = "/"),
+                                  paste(OU, SNU1, SNU2, SNU3, Facility, sep = "/")),
       difference = pepfar - moh) %>%
     dplyr::select(Facility = Facility_hierarchy,
                   Indicator = indicator,
