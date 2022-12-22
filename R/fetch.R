@@ -38,7 +38,7 @@ fetch <- function(authenticated, ready, ou_uid, d2_session, geo_session) {
       Sys.sleep(0.5)
 
       shiny::incProgress(0.0625, detail = ("Adorning DAA Indicator data"))
-      d$daa_indicator_data %<>%
+      d$daa_indicator_data <- d$daa_indicator_data |>
         daa.analytics::adorn_daa_data(include_coc = FALSE,
                                       d2_session = d$d2_session)
       Sys.sleep(0.5)
