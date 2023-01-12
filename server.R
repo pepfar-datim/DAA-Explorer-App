@@ -42,6 +42,7 @@ shinyServer(function(input, output, session) {
     }
 
     # Return the `d` list object with data
+
     return(d)
   })
 
@@ -121,7 +122,7 @@ shinyServer(function(input, output, session) {
 
       if (user_input$authorized == TRUE) {
         # Logs into GeoAlign using stored credentials for the app
-         datimutils::loginToDATIM(base_url = Sys.getenv("GEOALIGN_URL"),
+        datimutils::loginToDATIM(base_url = Sys.getenv("GEOALIGN_URL"),
                                  username = Sys.getenv("GEOALIGN_USERNAME"),
                                  password = Sys.getenv("GEOALIGN_PASSWORD"),
                                  d2_session_envir = parent.env(environment()))
@@ -271,22 +272,40 @@ shinyServer(function(input, output, session) {
 
   ## Raw Workbooks ------------------------------------------------------------
   output$download_raw <- downloadHandler(
-    filename = wb_filename(d = analysis_data(),
-                           type = "raw"),
+    filename = function() {
+      d <- analysis_data()
+      if (is.null(d) || is.null(d$combined_data)) {
+        return("no_data.txt")
+      }
+
+      date <- base::format(Sys.time(), "%Y%m%d_%H%M%S")
+      ou_name <- d$ou_name
+
+      name <- paste0(paste(date, ou_name, "raw_data", sep = "_"), ".csv")
+
+      return(name)
+    },
     content = function(file) {
       d <- analysis_data() %>%
         adorn_export_data() %>%
-        table_filter(de_filter = filter_values$wb_raw_de_filter,
-                     pe_filter = filter_values$wb_raw_pe_filter)
+        table_filter(de_filter = filter_values$wb_de_filter,
+                     pe_filter = filter_values$wb_pe_filter)
       raw_file <- write.csv(d, file)
       return(raw_file)
     }
   )
 
+
+
   ## Save Concordancy Graph ---------------------------------------------------
   output$save_con_graph <- downloadHandler(
-    filename =
-      paste0(analysis_data() %>% purrr::pluck("ou_name"), "_graph.png"),
+    filename = function(){
+      d <- analysis_data()
+      ou_name <- d$ou_name
+      name <- paste0(paste(ou_name, "_graph.png"))
+      return(name)
+    },
+
     content = function(file) {
       ggplot2::ggsave(file, plot = data$gg_con)
     }
@@ -294,8 +313,13 @@ shinyServer(function(input, output, session) {
 
   ## Save Pivot Table ---------------------------------------------------------
   output$save_pivot <- downloadHandler(
-    filename =
-      paste0(analysis_data() %>% purrr::pluck("ou_name"), "_pivot_data.csv"),
+    filename = function(){
+      d <- analysis_data()
+      ou_name <- d$ou_name
+      name <- paste0(paste(ou_name, "_pivot_data.csv"))
+      return(name)
+    },
+
     content = function(file) {
       write.csv(data$tb_pivot, file = file)
     }

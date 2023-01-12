@@ -139,22 +139,3 @@ adorn_export_data <- function(d) {
 
   return(df)
 }
-
-wb_filename <- function(d, type) {
-
-  if (is.null(d) || is.null(d$combined_data)) {
-    return("no_data.txt")
-  }
-
-  date <- base::format(Sys.time(), "%Y%m%d_%H%M%S")
-  ou_name <- d$ou_name
-
-  if (type == "raw") {
-    name <- paste0(paste(date, ou_name, "raw_data", sep = "_"), ".csv")
-  } else {
-    name <-
-      paste0(paste(date, ou_name, "analysis_workbook", sep = "_"), ".xlsx")
-  }
-
-  return(name)
-}
