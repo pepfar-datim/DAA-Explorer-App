@@ -888,7 +888,7 @@
       "GithubRepo": "daa-analytics",
       "GithubUsername": "pepfar-datim",
       "GithubRef": "0.6.1",
-      "GithubSha1": "ab4f6fd1a9a3efb9e210f780218dbe779bfb9483",
+      "GithubSha1": "d9d859bad6c4af4dc9659a88c900add95974fb4c",
       "description": {
         "Package": "daa.analytics",
         "Title": "Utilities for Compiling and Analyzing PEPFAR Data Alignment Activity Data",
@@ -908,18 +908,18 @@
         "RoxygenNote": "7.2.0",
         "Author": "Chris Nemarich [aut, cre]",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 4.2.1; ; 2023-01-12 15:10:11 UTC; unix",
+        "Built": "R 4.2.1; ; 2023-01-13 11:02:12 UTC; unix",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
         "RemoteRef": "0.6.1",
-        "RemoteSha": "ab4f6fd1a9a3efb9e210f780218dbe779bfb9483",
+        "RemoteSha": "d9d859bad6c4af4dc9659a88c900add95974fb4c",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
         "GithubRef": "0.6.1",
-        "GithubSHA1": "ab4f6fd1a9a3efb9e210f780218dbe779bfb9483",
+        "GithubSHA1": "d9d859bad6c4af4dc9659a88c900add95974fb4c",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
@@ -2951,7 +2951,7 @@
     },
     "stringi": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3157,7 +3157,7 @@
     },
     "timechange": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3485,7 +3485,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "4e9e28c6aa481d171947847bc8dacd93"
+      "checksum": "fd3a09e3d60613e483e51dd586999a11"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
