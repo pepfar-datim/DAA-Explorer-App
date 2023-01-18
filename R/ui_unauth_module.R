@@ -1,3 +1,4 @@
+# This is a screen to show an error message if the user does not have the correct permissions to access this app
 ui_unauth <- function(input, output, session) {
   ##### UI code for Unauthorized user page
   fluidPage(fluidRow(
