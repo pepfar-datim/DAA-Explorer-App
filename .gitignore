@@ -1,5 +1,6 @@
 # Rprofile files
 .Rprofile
+.DS_Store
 
 # History files
 .Rhistory
