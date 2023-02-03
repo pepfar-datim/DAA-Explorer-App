@@ -204,12 +204,11 @@ indicator_table_rendering <- function(df) {
                   PEPFAR = PEPFAR_total, MOH = MOH_total,
                   MOH_aligned, OU, Concordance) %>%
 
-    dplyr::mutate(Mapping = ifelse(is.na(MOH) | MOH == "None" & MappingData == "Coarse" & Period < 2022, "Mapping Coarse",
-                                   ifelse(is.na(MOH) | MOH == "None" & MappingData == "Fine" & Period < 2022, "Mapping Fine",
-                                          ifelse(!is.na(MOH) & (is.na(MappingData) | MappingData == "None") & Period < 2022, "No Mapping",
-                                                 ifelse(is.na(MOH) | MOH == "None" & (is.na(MappingData) | MappingData == "None") & Period < 2022, "No Mapping",
-                                                        ifelse(!is.na(MOH) & MappingData == "Fine" & Period < 2022, "Data Fine",
-                                                               ifelse(!is.na(MOH) & MappingData == "Coarse" & Period < 2022, "Data Coarse", Mapping))))))) %>%
+    dplyr::mutate(Mapping = ifelse((is.na(MOH) | MOH == "None") & MappingData == "Coarse" & Period < 2022, "Mapping Coarse",
+                                ifelse((is.na(MOH) | MOH == "None") & MappingData == "Fine" & Period < 2022, "Mapping Fine",
+                                ifelse((is.na(MappingData) | MappingData == "None") & Period < 2022, "No Mapping",
+                                ifelse(!is.na(MOH) & MappingData == "Fine" & Period < 2022, "Data Fine",
+                                ifelse(!is.na(MOH) & MappingData == "Coarse" & Period < 2022, "Data Coarse", Mapping)))))) %>%
 
     dplyr::select(indicator, Period, Mapping,
                   PEPFAR, MOH,
@@ -338,8 +337,8 @@ site_table_data <- function(d, filter_values) {
                   `Weighted concordance (OU Level)` = OU_Concordance) %>%
     DT::datatable(options = list(pageLength = 20,
                                  order = list(list(6, 'desc'))
-    ),
-    rownames = FALSE) %>%
+                                 ),
+                  rownames = FALSE) %>%
     DT::formatPercentage(
       columns = c("Weighted concordance (OU Level)"), digits = 5
     )
