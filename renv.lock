@@ -292,10 +292,10 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "pepfar-datim",
       "RemoteRepo": "daa-analytics",
-      "RemoteRef": "0.6.1",
-      "RemoteSha": "d9d859bad6c4af4dc9659a88c900add95974fb4c",
+      "RemoteRef": "v0.6.2",
+      "RemoteSha": "1a570903f81f6c49236451dc66f2c0781df5856a",
       "Remotes": "pepfar-datim/datimutils",
-      "Hash": "2bbe3ba5fe8f50131fc3983de24a918e",
+      "Hash": "5b22c091965f3ff132f5705fcf46783e",
       "Requirements": [
         "aws.s3",
         "datimutils",
