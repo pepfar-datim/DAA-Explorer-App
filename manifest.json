@@ -12,7 +12,7 @@
   "packages": {
     "BH": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -38,7 +38,7 @@
     },
     "DT": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -69,7 +69,7 @@
     },
     "MASS": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -194,7 +194,7 @@
     },
     "Rcpp": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -693,7 +693,7 @@
     },
     "colorspace": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -850,7 +850,7 @@
     },
     "curl": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -887,8 +887,8 @@
       "Repository": null,
       "GithubRepo": "daa-analytics",
       "GithubUsername": "pepfar-datim",
-      "GithubRef": "0.6.1",
-      "GithubSha1": "d9d859bad6c4af4dc9659a88c900add95974fb4c",
+      "GithubRef": "v0.6.2",
+      "GithubSha1": "1a570903f81f6c49236451dc66f2c0781df5856a",
       "description": {
         "Package": "daa.analytics",
         "Title": "Utilities for Compiling and Analyzing PEPFAR Data Alignment Activity Data",
@@ -908,18 +908,18 @@
         "RoxygenNote": "7.2.0",
         "Author": "Chris Nemarich [aut, cre]",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 4.2.1; ; 2023-01-13 11:02:12 UTC; unix",
+        "Built": "R 4.2.1; ; 2023-02-07 08:35:10 UTC; unix",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
-        "RemoteRef": "0.6.1",
-        "RemoteSha": "d9d859bad6c4af4dc9659a88c900add95974fb4c",
+        "RemoteRef": "v0.6.2",
+        "RemoteSha": "1a570903f81f6c49236451dc66f2c0781df5856a",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
-        "GithubRef": "0.6.1",
-        "GithubSHA1": "d9d859bad6c4af4dc9659a88c900add95974fb4c",
+        "GithubRef": "v0.6.2",
+        "GithubSHA1": "1a570903f81f6c49236451dc66f2c0781df5856a",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
@@ -1028,7 +1028,7 @@
     },
     "dplyr": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -1095,7 +1095,7 @@
     },
     "fansi": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -1219,7 +1219,7 @@
     },
     "fontawesome": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -1283,7 +1283,7 @@
     },
     "fs": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -2050,7 +2050,7 @@
     },
     "lubridate": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -2697,7 +2697,7 @@
     },
     "sass": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -2921,7 +2921,7 @@
     },
     "sourcetools": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3086,7 +3086,7 @@
     },
     "tidyr": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3223,7 +3223,7 @@
     },
     "utf8": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3254,7 +3254,7 @@
     },
     "vctrs": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3320,7 +3320,7 @@
     },
     "vroom": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3456,7 +3456,7 @@
     },
     "yaml": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3485,7 +3485,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "fd3a09e3d60613e483e51dd586999a11"
+      "checksum": "b0e389e3b1cb46c2cc01f59fd4e3af10"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -3501,9 +3501,6 @@
     },
     "LICENSE": {
       "checksum": "9b62b5c75bb467271d2729f6639a8259"
-    },
-    "R/.DS_Store": {
-      "checksum": "194577a7e20bdcc7afbb718f502c134c"
     },
     "R/fetch.R": {
       "checksum": "b1fbe83a405c9d75846744e8b97c5d0a"
@@ -3521,40 +3518,37 @@
       "checksum": "051262107de5bf12cc7718b827f3e527"
     },
     "R/visuals.R": {
-      "checksum": "49b7d949b319e7281c096cf6f2fff0ae"
+      "checksum": "171d53f517c36a4f6244af5791681cc1"
     },
     "README.md": {
-      "checksum": "bfbe0808ab33fb95cdecdb5aaf15b80e"
+      "checksum": "2745559c66e468b674b6484703195a8d"
     },
     "server.R": {
       "checksum": "8d969a8a333a06687f0c3b6b15d2576f"
     },
-    "support_files/.DS_Store": {
-      "checksum": "fb73f2ba8d9b45d1a5514f315d66a85d"
-    },
     "support_files/coc_metadata.rds": {
-      "checksum": "86fdc5bb1ae9de36fcc683d61cdd2169"
+      "checksum": "bf37f44452d085071b314fd7d5982e94"
     },
     "support_files/de_metadata.rds": {
-      "checksum": "448586b36f4f2602b444a5378648a79b"
+      "checksum": "e3ab0bbe570a7f1847f8e5daa60d4fb9"
     },
     "support_files/DoNotRemove.txt": {
       "checksum": "0b3315837f4b532adfe37efff297db5d"
     },
     "support_files/duplicate_ids.rds": {
-      "checksum": "ea754313688056ca7d13469b61bab1d6"
+      "checksum": "43505297968fde0751c4ffc8239337b8"
     },
     "support_files/null_ids.rds": {
-      "checksum": "9c6e10c89ddd1a5e7fb554a78932e285"
+      "checksum": "2f31287c31b2e69c357b4cb0176751d8"
     },
     "support_files/ou_metadata.rds": {
-      "checksum": "c58eb5514db27775e9f41195b0b0d2de"
+      "checksum": "d7931c6fda5ca2f14342f0a8af7116da"
     },
     "support_files/pe_metadata.rds": {
       "checksum": "8a1f95bd38952a1ce369e73085b46d65"
     },
     "support_files/pvls_emr_raw.rds": {
-      "checksum": "36da77d4a252d6fb6f1f86f5dbf1194e"
+      "checksum": "d31886b7631af5da37cc76fb9ececa18"
     },
     "ui.R": {
       "checksum": "e1032b921c640ee9d43801c7f336154c"
