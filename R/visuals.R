@@ -168,7 +168,7 @@ interactive_scatter <- function(d, filter_values) {
     labs(title = "How are sites alinging?",
          subtitle = "Unweighted concordance",
          alt = "",
-         x = "Number of patients reported by PEPFAR"
+         x = "Number of patients reported by PEPFAR\n Note: Only facilities that are not 100% concordant are shown in this scatterplot."
     ) +
     theme_minimal() +
     # scale_color_viridis_d(name = "Indicator") +
