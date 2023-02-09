@@ -93,19 +93,19 @@ site_reporting_graph <- function(df) {
     dplyr::filter(period == max(period),
                   reported_by %in% c("Both", "PEPFAR")) %>%
     dplyr::mutate(site_type = ifelse(reported_by == "Both",
-                                     "Matched sites",
-                                     "Unmatched sites")) %>%
+                                     "Facilities reporting to both MOH and PEPFAR",
+                                     "Facilities reporting to PEPFAR only")) %>%
     ggplot2::ggplot(aes(x = indicator, y = site_count,
                         fill = site_type, group = site_type)) +
     geom_col() +
+    geom_text(aes(label = site_count), position = position_stack(vjust = 0.5)) +
     coord_flip() +
     facet_wrap(~ site_type, nrow = 1) +
-    labs(title = "How many PEPFAR sites have matching MoH sites?",
-         subtitle = glue::glue("Totals for matched and unmatched \\
-                               sites in {graph_fy}")) +
+    labs(title = "Are all facilities reporting to PEPFAR also accounted for in MOH reporting?",
+         subtitle = glue::glue("Facilities reporting in {graph_fy}")) +
     theme_minimal() +
     theme(plot.title = element_text(hjust = 0.15, size = 22),
-          plot.subtitle = element_text(hjust = 0.15, size = 18),
+          plot.subtitle = element_text(hjust = 0.35, size = 18),
           axis.title = element_blank(),
           text = element_text(size = 18),
           axis.line.y = element_blank(),
@@ -181,7 +181,6 @@ interactive_scatter <- function(d, filter_values) {
 
   fig <- ggplotly(unweighted_scatter, tooltip = "text") %>%
     config(displayModeBar = F)
-
   return(fig)
 }
 
