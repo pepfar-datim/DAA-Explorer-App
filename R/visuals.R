@@ -209,6 +209,8 @@ indicator_table_rendering <- function(df) {
                                 ifelse(!is.na(MOH) & MappingData == "Fine" & Period < 2022, "Data Fine",
                                 ifelse(!is.na(MOH) & MappingData == "Coarse" & Period < 2022, "Data Coarse", Mapping)))))) %>%
 
+    dplyr::filter(!(Mapping == "No Mapping" & is.na(MOH))) %>%
+
     dplyr::select(indicator, Period, Mapping,
                   PEPFAR, MOH,
                   MOH_aligned, OU, Concordance) %>%

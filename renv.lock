@@ -293,9 +293,9 @@
       "RemoteUsername": "pepfar-datim",
       "RemoteRepo": "daa-analytics",
       "RemoteRef": "v0.6.2",
-      "RemoteSha": "1a570903f81f6c49236451dc66f2c0781df5856a",
+      "RemoteSha": "8e6b7b518dadbc329dc2ae44da13b93367c1998d",
       "Remotes": "pepfar-datim/datimutils",
-      "Hash": "5b22c091965f3ff132f5705fcf46783e",
+      "Hash": "a07afca0fe0a720508f568319fcfbf0a",
       "Requirements": [
         "aws.s3",
         "datimutils",
