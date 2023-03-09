@@ -128,11 +128,9 @@ site_reporting_graph <- function(df) {
 #' @export
 #'
 interactive_scatter <- function(d, filter_values) {
-
   if (is.null(d) || is.null(d$combined_data)) {
     return(NULL)
   }
-
   concordance_distributions <- d %>%
     purrr::pluck("combined_data") %>%
     dplyr::filter(reported_by == "Both") %>%
@@ -142,7 +140,6 @@ interactive_scatter <- function(d, filter_values) {
                   unweighted_concordance) %>%
     table_filter(de_filter = filter_values$vz_de_filter,
                  pe_filter = filter_values$vz_pe_filter)
-
   unweighted_scatter <- concordance_distributions %>%
     dplyr::filter(unweighted_concordance != 1) %>%
     ggplot2::ggplot(
@@ -165,19 +162,24 @@ interactive_scatter <- function(d, filter_values) {
     scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
     geom_hline(yintercept = 0.90) +
     geom_vline(xintercept = 100) +
+    theme(axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5,
+                                     size = 14, color = "black",
+                                     margin = margin(l = 20, r = 20))) +
     labs(title = "How are sites alinging?",
          subtitle = "Unweighted concordance",
          alt = "",
-         x = "Number of patients reported by PEPFAR\n Note: Only facilities that are not 100% concordant are shown in this scatterplot."
-    ) +
+         x = "Number of patients reported by PEPFAR \n\n <b>Note: Only facilities that are not 100% concordant are shown in this scatterplot.</b>",
+         y = "Concordance \u21E8") +
     theme_minimal() +
+    labs(color = "Indicators") +
     # scale_color_viridis_d(name = "Indicator") +
     theme(plot.title = element_text(hjust = 0.5, size = 22),
           plot.subtitle = element_text(hjust = 0.5, size = 18),
           text = element_text(size = 14),
-          axis.title.x = element_text(size = 12),
-          axis.title.y = element_blank(),
-          panel.grid = element_blank())
+          axis.title.x = element_text(size = 12, vjust = 1, color = "black"),
+          panel.grid = element_blank(),
+          plot.margin = unit(c(1,1,-2,1), "cm"),
+          axis.title.y = element_text(angle = -90, vjust = 1, hjust = -0.2))
 
   fig <- ggplotly(unweighted_scatter, tooltip = "text") %>%
     config(displayModeBar = F)
