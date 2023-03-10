@@ -597,7 +597,7 @@
     },
     "cachem": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -887,8 +887,8 @@
       "Repository": null,
       "GithubRepo": "daa-analytics",
       "GithubUsername": "pepfar-datim",
-      "GithubRef": "v0.6.2",
-      "GithubSha1": "1a570903f81f6c49236451dc66f2c0781df5856a",
+      "GithubRef": "main",
+      "GithubSha1": "8e6b7b518dadbc329dc2ae44da13b93367c1998d",
       "description": {
         "Package": "daa.analytics",
         "Title": "Utilities for Compiling and Analyzing PEPFAR Data Alignment Activity Data",
@@ -908,24 +908,24 @@
         "RoxygenNote": "7.2.0",
         "Author": "Chris Nemarich [aut, cre]",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 4.2.1; ; 2023-02-07 08:35:10 UTC; unix",
+        "Built": "R 4.2.1; ; 2023-03-10 09:39:25 UTC; unix",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
-        "RemoteRef": "v0.6.2",
-        "RemoteSha": "1a570903f81f6c49236451dc66f2c0781df5856a",
+        "RemoteRef": "main",
+        "RemoteSha": "8e6b7b518dadbc329dc2ae44da13b93367c1998d",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
-        "GithubRef": "v0.6.2",
-        "GithubSHA1": "1a570903f81f6c49236451dc66f2c0781df5856a",
+        "GithubRef": "main",
+        "GithubSHA1": "8e6b7b518dadbc329dc2ae44da13b93367c1998d",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
     "data.table": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -1160,7 +1160,7 @@
     },
     "fastmap": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -1681,7 +1681,7 @@
     },
     "httr": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -2151,7 +2151,7 @@
     },
     "mgcv": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3485,7 +3485,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "ab8c1cde8a92743a805ee8dbc86744cb"
+      "checksum": "24e1e4afc8a5008f0ee074916b9f7d70"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -3518,7 +3518,7 @@
       "checksum": "051262107de5bf12cc7718b827f3e527"
     },
     "R/visuals.R": {
-      "checksum": "12b305d643d776325d6f78cc418b5ad9"
+      "checksum": "59ca34c994ae0873335aabd9c2ff5d09"
     },
     "README.md": {
       "checksum": "2745559c66e468b674b6484703195a8d"
@@ -3527,10 +3527,10 @@
       "checksum": "8d969a8a333a06687f0c3b6b15d2576f"
     },
     "support_files/coc_metadata.rds": {
-      "checksum": "cfb47d068793b72a73b044f6ee29b315"
+      "checksum": "caf90a89a431b12b9cbe9d77914f3ac3"
     },
     "support_files/de_metadata.rds": {
-      "checksum": "d3e8981c9e0c48feca385b54ec979b08"
+      "checksum": "f05c36e2ce109c4601487660072fa28b"
     },
     "support_files/DoNotRemove.txt": {
       "checksum": "0b3315837f4b532adfe37efff297db5d"
@@ -3539,16 +3539,16 @@
       "checksum": "e458e16d07fbb3a7eae5c67977730648"
     },
     "support_files/null_ids.rds": {
-      "checksum": "4dd2c29950f8bdae3c847a7d8641debe"
+      "checksum": "ff83970d007dd39bb5c73ff903dbc42d"
     },
     "support_files/ou_metadata.rds": {
-      "checksum": "47630729fc32063154b80de1a3833a60"
+      "checksum": "3f956272886407bd38d0d17af9692d5f"
     },
     "support_files/pe_metadata.rds": {
       "checksum": "02d25ac4e87d7cc04157040cf979d7ab"
     },
     "support_files/pvls_emr_raw.rds": {
-      "checksum": "21c48469e452dcc8d8e4bf6a13e81725"
+      "checksum": "2eb47940165082ac3d96a845190a5606"
     },
     "ui.R": {
       "checksum": "e1032b921c640ee9d43801c7f336154c"
