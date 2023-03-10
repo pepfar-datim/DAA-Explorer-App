@@ -165,7 +165,7 @@ interactive_scatter <- function(d, filter_values) {
     theme(axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5,
                                      size = 14, color = "black",
                                      margin = margin(l = 20, r = 20))) +
-    labs(title = "How are sites alinging?",
+    labs(title = "How are sites aligning?",
          subtitle = "Unweighted concordance",
          alt = "",
          x = "Number of patients reported by PEPFAR \n\n <b>Note: Only facilities that are not 100% concordant are shown in this scatterplot.</b>",
