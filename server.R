@@ -94,6 +94,7 @@ shinyServer(function(input, output, session) {
 
   observeEvent(input$login_button, {
     base_url <- Sys.getenv("DATIM_URL")
+    print(paste0("Base URL: ", base_url))
     tryCatch({
       datimutils::loginToDATIM(username = input$user_name,
                                password = input$password,
@@ -127,6 +128,7 @@ shinyServer(function(input, output, session) {
                                  password = Sys.getenv("GEOALIGN_PASSWORD"),
                                  d2_session_envir = parent.env(environment()))
         user_input$geo_session <- d2_default_session$clone()
+        print(user_input$geo_session)
 
         futile.logger::flog.info(
           paste0("User ", input$user_name, " logged in."),

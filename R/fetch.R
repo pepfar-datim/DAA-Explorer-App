@@ -24,6 +24,8 @@ fetch <- function(authenticated, ready, ou_uid, d2_session, geo_session) {
       # Creates list object with session objects included
       d <- list(d2_session = d2_session, geo_session = geo_session)
       aws_s3_bucket = Sys.getenv("AWS_S3_BUCKET")
+      aws_s3_region = Sys.getenv("AWS_DEFAULT_REGION")
+      print(paste0("Bucket: ", aws_s3_bucket, " Region: ", aws_s3_region))
       # TODO recalculate progress bars
       shiny::incProgress(0.0625, detail = ("Fetching OU information"))
       d$ou_uid <- ou_uid
