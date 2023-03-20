@@ -5,7 +5,7 @@ source("./R/ui_main_module.R")
 source("./R/ui_unauth_module.R")
 source("./R/utilities.R")
 source("./R/visuals.R")
-app_info <- list(version = "2022.0.2")
+app_info <- list(version = "v1.0.1")
 wiki_url <- a("Data Alignment Support Site",
               href = glue::glue("
                                https://datim.zendesk.com/hc/en-us/categories/\\
