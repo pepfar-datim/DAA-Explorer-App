@@ -330,21 +330,17 @@ site_table_data <- function(d, filter_values) {
       Facility_hierarchy = ifelse(is.na(SNU3),
                                   paste(OU, SNU1, SNU2, Facility, sep = "/"),
                                   paste(OU, SNU1, SNU2, SNU3, Facility, sep = "/")),
-      difference = pepfar - moh) %>%
+      difference = abs(pepfar - moh)) %>%
     dplyr::select(Facility = Facility_hierarchy,
                   Indicator = indicator,
                   Period = period,
                   MOH = moh,
                   PEPFAR = pepfar,
-                  Difference = difference,
-                  `Weighted concordance (OU Level)` = OU_Concordance) %>%
+                  `Difference (absolute)` = difference) %>%
     DT::datatable(options = list(pageLength = 20,
-                                 order = list(list(6, 'desc'))
-                                 ),
-                  rownames = FALSE) %>%
-    DT::formatPercentage(
-      columns = c("Weighted concordance (OU Level)"), digits = 5
-    )
+                                 order = list(list(5, 'desc'))
+    ),
+    rownames = FALSE)
 
   return(t)
 }
