@@ -3,13 +3,13 @@ ui_main <- function(input, output, session, d2_session) { #, refreshed) {
   fluidPage(
     tags$head(
       tags$style(
-      ".shiny-notification {
+        ".shiny-notification {
        position: fixed;
        top: 20%;
        left: 33%;
        right: 33%;}"
       )
-      ),
+    ),
     sidebarLayout(
       sidebarPanel(
         width = 3,
@@ -37,7 +37,8 @@ ui_main <- function(input, output, session, d2_session) { #, refreshed) {
         tags$hr(),
         actionButton("logout", "Logout"),
         tags$hr(),
-        p(id = "app_version", HTML(glue::glue("Version: {app_info$version}")))),
+        p(id = "app_version", HTML(glue::glue("Version: {app_info$version}"))),
+        p(id = "last_update_version", HTML(glue::glue("Data Last Updated: {last_updated$updated_last} UTC")))),
       mainPanel(
         tabsetPanel(
           id = "main-panel",
@@ -48,7 +49,7 @@ ui_main <- function(input, output, session, d2_session) { #, refreshed) {
                    plotOutput("reporting_graph")),
           tabPanel(title = "Concordance Graph",
                    downloadButton("save_con_graph", "Save Graph"),
-                   plotOutput("concordance_graph")),
+                   plotOutput("concordance_graph", height = "600px")),
           tabPanel(title = "Site Data",
                    dataTableOutput("site_table")),
           tabPanel(title = "Site Scatterplot",

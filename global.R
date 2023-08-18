@@ -12,6 +12,7 @@ wiki_url <- a("Data Alignment Support Site",
                                360000927432-PEPFAR-MoH-Data-Alignment-Activity
                                "),
               target = "_blank")
+last_updated <- list(updated_last = daa.analytics::get_last_modified())
 
 # Dropdown Information --------------------------
 filter_options <- list(de_list = get_indicator_list(),
