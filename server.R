@@ -6,6 +6,7 @@ library(magrittr)
 library(rpivotTable)
 library(gt)
 library(DT)
+library(paws)
 shinyServer(function(input, output, session) {
   # Reactive Values -----------------------------------------------------------
 
