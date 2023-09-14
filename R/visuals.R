@@ -270,6 +270,8 @@ concordance_chart <- function(df) {
   if (is.null(df)) {
     return(NULL)
   }
+  min_period <- min(df$period)
+  max_period <- max(df$period)
 
   df$period <- as.factor(df$period)
 
@@ -293,7 +295,7 @@ concordance_chart <- function(df) {
     guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
     coord_cartesian(ylim = c(y_min, 1)) +
     labs(title = "Progress Towards System Alignment",
-         subtitle = "Weighted Average Concordance, FY2018-FY2022") +
+         subtitle = glue::glue("Weighted Average Concordance, FY{min_period} - FY{max_period}")) +
     theme_minimal() +
     # scale_color_viridis_d(name = "Indicator") +
     theme(plot.title = element_text(hjust = 0.15, size = 22),
