@@ -888,7 +888,7 @@
       "GithubRepo": "daa-analytics",
       "GithubUsername": "pepfar-datim",
       "GithubRef": "0.6.1",
-      "GithubSha1": "87c20998d69ed8dc132d273570b64d0773cd9140",
+      "GithubSha1": "6380051a5811ceffbafc1d5273f8812d50073fab",
       "description": {
         "Package": "daa.analytics",
         "Title": "Utilities for Compiling and Analyzing PEPFAR Data Alignment Activity Data",
@@ -908,18 +908,18 @@
         "RoxygenNote": "7.2.2",
         "Author": "Chris Nemarich [aut, cre]",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 4.2.1; ; 2023-09-18 08:40:48 UTC; unix",
+        "Built": "R 4.2.1; ; 2023-10-05 11:53:48 UTC; unix",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
         "RemoteRef": "0.6.1",
-        "RemoteSha": "87c20998d69ed8dc132d273570b64d0773cd9140",
+        "RemoteSha": "6380051a5811ceffbafc1d5273f8812d50073fab",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
         "GithubRef": "0.6.1",
-        "GithubSHA1": "87c20998d69ed8dc132d273570b64d0773cd9140",
+        "GithubSHA1": "6380051a5811ceffbafc1d5273f8812d50073fab",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
@@ -2850,7 +2850,7 @@
     },
     "prettyunits": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3341,7 +3341,7 @@
     },
     "sodium": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3809,7 +3809,7 @@
     },
     "withr": {
       "Source": "CRAN",
-      "Repository": "https://ftpmirror1.infania.net/mirror/CRAN",
+      "Repository": "https://rstudio-package.ap.datim.org/prod/latest",
       "GithubRepo": null,
       "GithubUsername": null,
       "GithubRef": null,
@@ -3935,7 +3935,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "3863efa7677524d443f930c375ed59d5"
+      "checksum": "63d72fc94ec4d99b7fa869e3f331c351"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -3975,6 +3975,9 @@
     },
     "server.R": {
       "checksum": "d140847322bf6e414eaa0cc064d6a711"
+    },
+    "support_files/.DS_Store": {
+      "checksum": "194577a7e20bdcc7afbb718f502c134c"
     },
     "support_files/coc_metadata.rds": {
       "checksum": "8230dfafeb039a47a7854b50a89567c2"
