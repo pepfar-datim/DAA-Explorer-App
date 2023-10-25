@@ -80,39 +80,51 @@ matching_summary <- function(d, filter_values) {
 #' @export
 #'
 site_reporting_graph <- function(df) {
-
   if (is.null(df)) {
     return(NULL)
   }
 
   graph_fy <- max(df$period)
 
-  gg_rprt <- df %>%
-    dplyr::select(OU, indicator, period,
-                  reported_by, site_count) %>%
-    dplyr::filter(period == max(period),
-                  reported_by %in% c("Both", "PEPFAR")) %>%
-    dplyr::mutate(site_type = ifelse(reported_by == "Both",
-                                     "Facilities reporting to both MOH and PEPFAR",
-                                     "Facilities reporting to PEPFAR only")) %>%
-    ggplot2::ggplot(aes(x = indicator, y = site_count,
-                        fill = site_type, group = site_type)) +
-    geom_col() +
-    geom_text(aes(label = site_count), position = position_stack(vjust = 0.5)) +
-    coord_flip() +
-    facet_wrap(~ site_type, nrow = 1) +
-    labs(title = "Are all facilities reporting to PEPFAR also accounted for in MOH reporting?",
-         subtitle = glue::glue("Facilities reporting in {graph_fy}")) +
-    theme_minimal() +
-    theme(plot.title = element_text(hjust = 0.15, size = 22),
-          plot.subtitle = element_text(hjust = 0.35, size = 18),
-          axis.title = element_blank(),
-          text = element_text(size = 18),
-          axis.line.y = element_blank(),
-          panel.grid = element_blank(),
-          legend.position = "none")
+  # Check if there is at least one row of data for "PEPFAR" in the specified year
+  pepfar_data <- df %>%
+    filter(reported_by == "PEPFAR", period == graph_fy)
 
-  return(gg_rprt)
+  if (nrow(pepfar_data) == 0) {
+    plot.new()
+    message <- " Error: This graph displays data for the last fiscal year (FY) selected in the filters to the left. \nSeeing this error message indicates that there is no data from MOH and/or PEPFAR for this fiscal year.\nPlease adjust the filter to a fiscal year containing both MOH and PEPFAR data."
+    text(0.5, 0.7, message, col = "red", cex = 1.5)
+    par(mar = c(5, 0, 0, 0))
+  } else {
+    if (nrow(pepfar_data) > 0) {
+      gg_rprt <- df %>%
+        dplyr::select(OU, indicator, period,
+                      reported_by, site_count) %>%
+        dplyr::filter(period == max(period),
+                      reported_by %in% c("Both", "PEPFAR")) %>%
+        dplyr::mutate(site_type = ifelse(reported_by == "Both",
+                                         "Facilities reporting to both MOH and PEPFAR",
+                                         "Facilities reporting to PEPFAR only")) %>%
+        ggplot2::ggplot(aes(x = indicator, y = site_count,
+                            fill = site_type, group = site_type)) +
+        geom_col() +
+        geom_text(aes(label = site_count), position = position_stack(vjust = 0.5)) +
+        coord_flip() +
+        facet_wrap(~ site_type, nrow = 1) +
+        labs(title = "Are all facilities reporting to PEPFAR also accounted for in MOH reporting?",
+             subtitle = glue::glue("Facilities reporting in {graph_fy}")) +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.15, size = 22),
+              plot.subtitle = element_text(hjust = 0.35, size = 18),
+              axis.title = element_blank(),
+              text = element_text(size = 18),
+              axis.line.y = element_blank(),
+              panel.grid = element_blank(),
+              legend.position = "none")
+
+      return(gg_rprt)
+    }
+  }
 }
 
 #' Interactive Scatter Plot
@@ -270,6 +282,8 @@ concordance_chart <- function(df) {
   if (is.null(df)) {
     return(NULL)
   }
+  min_period <- min(df$period)
+  max_period <- max(df$period)
 
   df$period <- as.factor(df$period)
 
@@ -293,7 +307,7 @@ concordance_chart <- function(df) {
     guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
     coord_cartesian(ylim = c(y_min, 1)) +
     labs(title = "Progress Towards System Alignment",
-         subtitle = "Weighted Average Concordance, FY2018-FY2022") +
+         subtitle = glue::glue("Weighted Average Concordance, FY{min_period} - FY{max_period}")) +
     theme_minimal() +
     # scale_color_viridis_d(name = "Indicator") +
     theme(plot.title = element_text(hjust = 0.15, size = 22),
