@@ -887,8 +887,8 @@
       "Repository": null,
       "GithubRepo": "daa-analytics",
       "GithubUsername": "pepfar-datim",
-      "GithubRef": "0.6.1",
-      "GithubSha1": "f1d7ee5601bc1bc572a32a24d7e87495456ceae8",
+      "GithubRef": "v0.7.0",
+      "GithubSha1": "a000a1cba7987b73ea041f69e779ea47bf7e4450",
       "description": {
         "Package": "daa.analytics",
         "Title": "Utilities for Compiling and Analyzing PEPFAR Data Alignment Activity Data",
@@ -908,18 +908,18 @@
         "RoxygenNote": "7.2.2",
         "Author": "Chris Nemarich [aut, cre]",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 4.2.1; ; 2023-10-25 09:15:23 UTC; unix",
+        "Built": "R 4.2.1; ; 2023-10-26 10:18:16 UTC; unix",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
-        "RemoteRef": "0.6.1",
-        "RemoteSha": "f1d7ee5601bc1bc572a32a24d7e87495456ceae8",
+        "RemoteRef": "v0.7.0",
+        "RemoteSha": "a000a1cba7987b73ea041f69e779ea47bf7e4450",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
-        "GithubRef": "0.6.1",
-        "GithubSHA1": "f1d7ee5601bc1bc572a32a24d7e87495456ceae8",
+        "GithubRef": "v0.7.0",
+        "GithubSHA1": "a000a1cba7987b73ea041f69e779ea47bf7e4450",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
@@ -3935,7 +3935,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "5a922982b37fa3f3c78a558128f13bfa"
+      "checksum": "48db368f87fa480206df96e37bdeced0"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -3947,7 +3947,7 @@
       "checksum": "7ff20a30ede215f0169905de12ddde28"
     },
     "global.R": {
-      "checksum": "6896e6fb0169e8bd3ae7f143c34ed558"
+      "checksum": "610dcd61f707a187ed2678be2fb93cf0"
     },
     "LICENSE": {
       "checksum": "9b62b5c75bb467271d2729f6639a8259"
@@ -3980,28 +3980,28 @@
       "checksum": "194577a7e20bdcc7afbb718f502c134c"
     },
     "support_files/coc_metadata.rds": {
-      "checksum": "2c921bcf7cce0094268a3f5aa4fc132b"
+      "checksum": "310e358a680d7f6ec419b129221320b8"
     },
     "support_files/de_metadata.rds": {
-      "checksum": "d456094cedb3bd51c951f0785a077542"
+      "checksum": "a50e9de91d114a81167176156342b1d4"
     },
     "support_files/DoNotRemove.txt": {
       "checksum": "0b3315837f4b532adfe37efff297db5d"
     },
     "support_files/duplicate_ids.rds": {
-      "checksum": "de06f75cbd93bc81b98493162ec5a80c"
+      "checksum": "644894a65d29f68f49f30e145528415f"
     },
     "support_files/null_ids.rds": {
-      "checksum": "9d6c808db90345e767949d07a1698ca3"
+      "checksum": "f097fd0a921927a0bcfefbe264e10706"
     },
     "support_files/ou_metadata.rds": {
-      "checksum": "7d9561e9de91d6a832a17bd7557b3f5c"
+      "checksum": "5ee39208c9552a27a45d4fcd6cd3cd1e"
     },
     "support_files/pe_metadata.rds": {
-      "checksum": "c413cf90a005570c73e5f3cdaee85c0b"
+      "checksum": "8282c808b703344ac113c5ba6dd96833"
     },
     "support_files/pvls_emr_raw.rds": {
-      "checksum": "fc1b5b48ddef768d48402c8b889e412c"
+      "checksum": "5421f7edfb6864b924324824c70755af"
     },
     "ui.R": {
       "checksum": "e1032b921c640ee9d43801c7f336154c"
