@@ -194,7 +194,7 @@ interactive_scatter <- function(d, filter_values) {
           axis.title.y = element_text(angle = -90, vjust = 1, hjust = -0.2))
 
   fig <- ggplotly(unweighted_scatter, tooltip = "text") %>%
-    config(displayModeBar = F)
+    plotly::config(displayModeBar = F)
   return(fig)
 }
 
