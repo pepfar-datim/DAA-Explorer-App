@@ -43,7 +43,7 @@ ui_main <- function(input, output, session, d2_session) { #, refreshed) {
         tabsetPanel(
           id = "main-panel",
           type = "tabs",
-          tabPanel(title = "Indicator Analysis",
+          tabPanel(title = "Concordance Analysis",
                    gt::gt_output("indicator_table")),
           tabPanel(title = "Reporting Rates",
                    plotOutput("reporting_graph")),
