@@ -13,7 +13,7 @@ if(interactive()){
   options(shiny.port = 3734)
   APP_URL <- "http://127.0.0.1:3734/"
 } else {
-  APP_URL <- Sys.getenv("DATIM_URL")
+  APP_URL <- Sys.getenv("APP_URL")
 }
 
 
@@ -452,6 +452,7 @@ shinyServer(function(input, output, session) {
       ggplot2::ggsave(file, plot = data$gg_con)
     }
   )
+
 
   ## Save Pivot Table ---------------------------------------------------------
   output$save_pivot <- downloadHandler(
