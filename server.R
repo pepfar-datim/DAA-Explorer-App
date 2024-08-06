@@ -342,7 +342,7 @@ shinyServer(function(input, output, session) {
       matching_summary(filter_values = filter_values) %>%
       site_reporting_graph()
 
-    data$gg_rprt <- gg_rprt
+    data$gg_rprt < gg_rprt
 
     gg_rprt
   })
