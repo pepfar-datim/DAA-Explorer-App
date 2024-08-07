@@ -33,21 +33,6 @@
       ],
       "Hash": "64ff3427f559ce3f2597a4fe13255cb6"
     },
-    "MASS": {
-      "Package": "MASS",
-      "Version": "7.3-58.4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "grDevices",
-        "graphics",
-        "methods",
-        "stats",
-        "utils"
-      ],
-      "Hash": "a3142b2a022b8174ca675bc8b80cdc4e"
-    },
     "Matrix": {
       "Package": "Matrix",
       "Version": "1.7-0",
@@ -555,7 +540,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
-        "MASS",
         "R",
         "cli",
         "glue",

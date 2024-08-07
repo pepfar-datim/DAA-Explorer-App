@@ -73,35 +73,6 @@
         "RemoteSha": "0.33"
       }
     },
-    "MASS": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "MASS",
-        "Priority": "recommended",
-        "Version": "7.3-58.4",
-        "Date": "2023-04-04",
-        "Revision": "$Rev: 3618 $",
-        "Depends": "R (>= 4.3.0), grDevices, graphics, stats, utils",
-        "Imports": "methods",
-        "Suggests": "lattice, nlme, nnet, survival",
-        "Authors@R": "c(person(\"Brian\", \"Ripley\", role = c(\"aut\", \"cre\", \"cph\"),\n                    email = \"ripley@stats.ox.ac.uk\"),\n\t     person(\"Bill\", \"Venables\", role = \"ctb\"),\n\t     person(c(\"Douglas\", \"M.\"), \"Bates\", role = \"ctb\"),\n\t     person(\"Kurt\", \"Hornik\", role = \"trl\",\n                     comment = \"partial port ca 1998\"),\n\t     person(\"Albrecht\", \"Gebhardt\", role = \"trl\",\n                     comment = \"partial port ca 1998\"),\n\t     person(\"David\", \"Firth\", role = \"ctb\"))",
-        "Description": "Functions and datasets to support Venables and Ripley,\n  \"Modern Applied Statistics with S\" (4th edition, 2002).",
-        "Title": "Support Functions and Datasets for Venables and Ripley's MASS",
-        "LazyData": "yes",
-        "ByteCompile": "yes",
-        "License": "GPL-2 | GPL-3",
-        "URL": "http://www.stats.ox.ac.uk/pub/MASS4/",
-        "Contact": "<MASS@stats.ox.ac.uk>",
-        "NeedsCompilation": "yes",
-        "Packaged": "2023-04-04 16:19:41 UTC; ripley",
-        "Author": "Brian Ripley [aut, cre, cph],\n  Bill Venables [ctb],\n  Douglas M. Bates [ctb],\n  Kurt Hornik [trl] (partial port ca 1998),\n  Albrecht Gebhardt [trl] (partial port ca 1998),\n  David Firth [ctb]",
-        "Maintainer": "Brian Ripley <ripley@stats.ox.ac.uk>",
-        "Repository": "CRAN",
-        "Date/Publication": "2023-03-07 09:23:19 UTC",
-        "Built": "R 4.4.1; aarch64-apple-darwin20; 2024-08-07 14:35:09 UTC; unix"
-      }
-    },
     "Matrix": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -4601,7 +4572,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "3bbe5fac0209328e0bb578ae766919a6"
+      "checksum": "4903244b7f6604fa493b7e38a88b92d5"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -4640,7 +4611,7 @@
       "checksum": "2745559c66e468b674b6484703195a8d"
     },
     "renv.lock": {
-      "checksum": "87cb0ec73477a65fa0af099151431beb"
+      "checksum": "a427950eea102b86d94d5faa9c0b81f1"
     },
     "server.R": {
       "checksum": "6d45b133be596425812e174014d472e6"
