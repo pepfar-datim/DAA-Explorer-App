@@ -73,39 +73,6 @@
         "RemoteSha": "0.33"
       }
     },
-    "Matrix": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "Matrix",
-        "Version": "1.7-0",
-        "VersionNote": "do also bump src/version.h, inst/include/Matrix/version.h",
-        "Date": "2024-03-16",
-        "Priority": "recommended",
-        "Title": "Sparse and Dense Matrix Classes and Methods",
-        "Description": "A rich hierarchy of sparse and dense matrix classes,\n\tincluding general, symmetric, triangular, and diagonal matrices\n\twith numeric, logical, or pattern entries.  Efficient methods for\n\toperating on such matrices, often wrapping the 'BLAS', 'LAPACK',\n\tand 'SuiteSparse' libraries.",
-        "License": "GPL (>= 2) | file LICENCE",
-        "URL": "https://Matrix.R-forge.R-project.org",
-        "BugReports": "https://R-forge.R-project.org/tracker/?atid=294&group_id=61",
-        "Contact": "Matrix-authors@R-project.org",
-        "Authors@R": "\n\tc(person(\"Douglas\", \"Bates\", role = \"aut\",\n\t         comment = c(ORCID = \"0000-0001-8316-9503\")),\n\t  person(\"Martin\", \"Maechler\", role = c(\"aut\", \"cre\"),\n\t         email = \"mmaechler+Matrix@gmail.com\",\n\t         comment = c(ORCID = \"0000-0002-8685-9910\")),\n\t  person(\"Mikael\", \"Jagan\", role = \"aut\",\n\t         comment = c(ORCID = \"0000-0002-3542-2938\")),\n\t  person(\"Timothy A.\", \"Davis\", role = \"ctb\",\n\t         comment = c(ORCID = \"0000-0001-7614-6899\",\n\t                     \"SuiteSparse libraries\",\n\t                     \"collaborators listed in dir(system.file(\\\"doc\\\", \\\"SuiteSparse\\\", package=\\\"Matrix\\\"), pattern=\\\"License\\\", full.names=TRUE, recursive=TRUE)\")),\n\t  person(\"George\", \"Karypis\", role = \"ctb\",\n\t         comment = c(ORCID = \"0000-0003-2753-1437\",\n\t                     \"METIS library\",\n\t                     \"Copyright: Regents of the University of Minnesota\")),\n\t  person(\"Jason\", \"Riedy\", role = \"ctb\",\n\t         comment = c(ORCID = \"0000-0002-4345-4200\",\n\t                     \"GNU Octave's condest() and onenormest()\",\n\t                     \"Copyright: Regents of the University of California\")),\n\t  person(\"Jens\", \"Oehlschlägel\", role = \"ctb\",\n\t         comment = \"initial nearPD()\"),\n\t  person(\"R Core Team\", role = \"ctb\",\n\t         comment = \"base R's matrix implementation\"))",
-        "Depends": "R (>= 4.4.0), methods",
-        "Imports": "grDevices, graphics, grid, lattice, stats, utils",
-        "Suggests": "MASS, datasets, sfsmisc, tools",
-        "Enhances": "SparseM, graph",
-        "LazyData": "no",
-        "LazyDataNote": "not possible, since we use data/*.R and our S4 classes",
-        "BuildResaveData": "no",
-        "Encoding": "UTF-8",
-        "NeedsCompilation": "yes",
-        "Packaged": "2024-03-19 17:15:14 UTC; maechler",
-        "Author": "Douglas Bates [aut] (<https://orcid.org/0000-0001-8316-9503>),\n  Martin Maechler [aut, cre] (<https://orcid.org/0000-0002-8685-9910>),\n  Mikael Jagan [aut] (<https://orcid.org/0000-0002-3542-2938>),\n  Timothy A. Davis [ctb] (<https://orcid.org/0000-0001-7614-6899>,\n    SuiteSparse libraries, collaborators listed in\n    dir(system.file(\"doc\", \"SuiteSparse\", package=\"Matrix\"),\n    pattern=\"License\", full.names=TRUE, recursive=TRUE)),\n  George Karypis [ctb] (<https://orcid.org/0000-0003-2753-1437>, METIS\n    library, Copyright: Regents of the University of Minnesota),\n  Jason Riedy [ctb] (<https://orcid.org/0000-0002-4345-4200>, GNU\n    Octave's condest() and onenormest(), Copyright: Regents of the\n    University of California),\n  Jens Oehlschlägel [ctb] (initial nearPD()),\n  R Core Team [ctb] (base R's matrix implementation)",
-        "Maintainer": "Martin Maechler <mmaechler+Matrix@gmail.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2024-04-26 12:03:02 UTC",
-        "Built": "R 4.4.1; aarch64-apple-darwin20; 2024-06-15 17:28:00 UTC; unix"
-      }
-    },
     "R6": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -4572,7 +4539,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "4903244b7f6604fa493b7e38a88b92d5"
+      "checksum": "2095f9817126fed9f90d68ced0c1bc88"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -4611,7 +4578,7 @@
       "checksum": "2745559c66e468b674b6484703195a8d"
     },
     "renv.lock": {
-      "checksum": "a427950eea102b86d94d5faa9c0b81f1"
+      "checksum": "01c71da1be312b036c22a2baa7202ac2"
     },
     "server.R": {
       "checksum": "6d45b133be596425812e174014d472e6"
