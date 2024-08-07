@@ -79,10 +79,10 @@
       "description": {
         "Package": "MASS",
         "Priority": "recommended",
-        "Version": "7.3-60.2",
-        "Date": "2024-01-12",
-        "Revision": "$Rev: 3641 $",
-        "Depends": "R (>= 4.4.0), grDevices, graphics, stats, utils",
+        "Version": "7.3-58.4",
+        "Date": "2023-04-04",
+        "Revision": "$Rev: 3618 $",
+        "Depends": "R (>= 4.3.0), grDevices, graphics, stats, utils",
         "Imports": "methods",
         "Suggests": "lattice, nlme, nnet, survival",
         "Authors@R": "c(person(\"Brian\", \"Ripley\", role = c(\"aut\", \"cre\", \"cph\"),\n                    email = \"ripley@stats.ox.ac.uk\"),\n\t     person(\"Bill\", \"Venables\", role = \"ctb\"),\n\t     person(c(\"Douglas\", \"M.\"), \"Bates\", role = \"ctb\"),\n\t     person(\"Kurt\", \"Hornik\", role = \"trl\",\n                     comment = \"partial port ca 1998\"),\n\t     person(\"Albrecht\", \"Gebhardt\", role = \"trl\",\n                     comment = \"partial port ca 1998\"),\n\t     person(\"David\", \"Firth\", role = \"ctb\"))",
@@ -94,12 +94,12 @@
         "URL": "http://www.stats.ox.ac.uk/pub/MASS4/",
         "Contact": "<MASS@stats.ox.ac.uk>",
         "NeedsCompilation": "yes",
-        "Packaged": "2024-01-12 08:51:36 UTC; ripley",
+        "Packaged": "2023-04-04 16:19:41 UTC; ripley",
         "Author": "Brian Ripley [aut, cre, cph],\n  Bill Venables [ctb],\n  Douglas M. Bates [ctb],\n  Kurt Hornik [trl] (partial port ca 1998),\n  Albrecht Gebhardt [trl] (partial port ca 1998),\n  David Firth [ctb]",
         "Maintainer": "Brian Ripley <ripley@stats.ox.ac.uk>",
         "Repository": "CRAN",
-        "Date/Publication": "2024-04-26 12:02:47 UTC",
-        "Built": "R 4.4.1; aarch64-apple-darwin20; 2024-06-15 17:27:55 UTC; unix"
+        "Date/Publication": "2023-03-07 09:23:19 UTC",
+        "Built": "R 4.4.1; aarch64-apple-darwin20; 2024-08-07 14:35:09 UTC; unix"
       }
     },
     "Matrix": {
@@ -4601,7 +4601,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "6a1a4a5ed02211fb36072d4825689fe3"
+      "checksum": "3bbe5fac0209328e0bb578ae766919a6"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -4640,7 +4640,7 @@
       "checksum": "2745559c66e468b674b6484703195a8d"
     },
     "renv.lock": {
-      "checksum": "67ce928a371d67886de2d4062d4b7576"
+      "checksum": "87cb0ec73477a65fa0af099151431beb"
     },
     "server.R": {
       "checksum": "6d45b133be596425812e174014d472e6"
