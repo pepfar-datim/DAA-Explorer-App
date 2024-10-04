@@ -329,6 +329,8 @@ concordance_chart <- function(df) {
 #' @return A `DT` table object
 #' @export
 #'
+#'
+
 site_table_data <- function(d, filter_values) {
 
   if (is.null(d) || is.null(d$combined_data)) {
@@ -357,6 +359,268 @@ site_table_data <- function(d, filter_values) {
     rownames = FALSE)
 
   return(t)
+}
+
+new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
+  if (is.null(d) || is.null(d$combined_data)) {
+    return(NULL)
+  }
+
+  # Convert rows_per_page to numeric to avoid errors
+  rows_per_page <- as.numeric(rows_per_page)
+
+  # Check if rows_per_page is numeric
+  if (is.na(rows_per_page) || !is.numeric(rows_per_page)) {
+    stop("Error: 'rows_per_page' must be numeric.")
+  }
+
+  # Process the data
+  processed_df <- d %>%
+    purrr::pluck("combined_data") %>%
+    table_filter(de_filter = filter_values$vz_de_filter,
+                 pe_filter = filter_values$vz_pe_filter) %>%
+    dplyr::group_by(OU, indicator, period) %>%
+    dplyr::mutate(
+      MOH = length(unique(Facility_UID[reported_by %in% c("Both", "MOH")])),
+      'Both(MOH & PEPFAR)' = length(unique(Facility_UID[reported_by == "Both"])),
+      PEPFAR = length(unique(Facility_UID[reported_by %in% c("Both", "PEPFAR")])),
+      MOH_Facilities_SupportedBy_PEPFAR = round((length(Facility_UID[reported_by == "Both"]) /
+                                                   length(Facility_UID[reported_by %in% c("Both", "MOH")])) * 100, 2),
+      PEPFAR_Reported_Facilities_ReportedByMOH = round((length(Facility_UID[reported_by == "Both"]) /
+                                                          length(Facility_UID[reported_by %in% c("Both", "PEPFAR")])) * 100, 2),
+      MOH_Supported_By_pepfar = dplyr::case_when(
+        sum(pepfar[reported_by %in% c("Both", "PEPFAR")], na.rm = TRUE) > 0 &
+          sum(moh[reported_by %in% c("Both", "MOH")], na.rm = TRUE) > 0 ~
+          round((sum(pepfar[reported_by %in% c("Both", "PEPFAR")], na.rm = TRUE) /
+                   sum(moh[reported_by %in% c("Both", "MOH")], na.rm = TRUE)) * 100, 2),
+        TRUE ~ NA_real_
+      ),
+      weighted_concordance = dplyr::case_when(
+        sum(OU_Concordance[reported_by == "Both"], na.rm = TRUE) > 0 ~
+          round((sum(OU_Concordance[reported_by == "Both"], na.rm = TRUE)) * 100, 2)
+      ),
+      absolute_difference = ifelse(
+        sum(absolute_difference[reported_by == "Both"], na.rm = TRUE) > 0,
+        sum(absolute_difference[reported_by == "Both"], na.rm = TRUE),
+        NA_real_
+      ),
+      absolute_diff_mean = round(abs(absolute_difference / length(unique(Facility_UID[reported_by == "Both"]))), 0),
+    ) %>%
+    dplyr::mutate(
+      dplyr::across(
+        c(PEPFAR_Reported_Facilities_ReportedByMOH, MOH_Facilities_SupportedBy_PEPFAR),
+        ~ ifelse(PEPFAR == 0 | MOH == 0, NA, .x)
+      ),
+      PEPFAR_facilities_not_reported_by_MOH = round(abs((PEPFAR_Reported_Facilities_ReportedByMOH / 100) - 1) * 100, 2)
+    )  %>%
+    dplyr::ungroup() %>%
+    dplyr::distinct(OU, indicator, period, .keep_all = TRUE) %>%
+    dplyr::select(-Facility, -Facility_UID, -reported_by, -OU_UID, -OU_Concordance, -OU_weighting, -SNU1, -SNU1_UID, -SNU2,
+                  -SNU2_UID, -SNU3, -SNU3_UID, -SNU1_Concordance, -SNU2_Concordance, -EMR_Concordance, -emr_present, -moh_id,
+                  -longitude, -latitude, -moh, -pepfar) %>%
+    dplyr::left_join(., d$import_history,
+                     by = c("OU", "period", "indicator")) %>%
+    dplyr::mutate('MOH Indicator Disaggregation' = dplyr::case_when(
+      !is.na(has_disag_mapping) & has_disag_mapping != "None" ~ has_disag_mapping,
+      is.na(has_disag_mapping) | has_disag_mapping == "None" ~ has_mapping_result_data,
+      TRUE ~ NA_character_  # Catch-all for any other cases
+    )) %>%
+    dplyr::select(-has_disag_mapping, -has_mapping_result_data, -has_results_data)
+
+  # Sort by year in descending order, assuming 'period' contains the year
+  processed_df <- processed_df %>%
+    dplyr::arrange(desc(period))
+
+  processed_df <- processed_df %>%
+    dplyr::select(-OU, -PEPFAR_Reported_Facilities_ReportedByMOH)
+
+  processed_df <- processed_df %>%
+    dplyr::select(
+      indicator,
+      period,
+      'MOH Indicator Disaggregation',
+      MOH,
+      PEPFAR,
+      'Both(MOH & PEPFAR)',
+      MOH_Facilities_SupportedBy_PEPFAR,
+      PEPFAR_facilities_not_reported_by_MOH,
+      MOH_Supported_By_pepfar,
+      weighted_concordance,
+      absolute_difference,
+      absolute_diff_mean
+    )
+
+  # Paginate the data by subsetting based on the selected number of rows per page
+  paginated_df <- head(processed_df, rows_per_page)
+  paginated_df$SpacerColumn <- ""
+  paginated_df$SpacerColumn2 <- ""
+  # Add the rendered_table code as before
+
+  rendered_table <- paginated_df %>%
+    gt::gt() %>%
+
+    # Move the desired column (for spacing) to its desired position
+    gt::cols_move(SpacerColumn, after = 'Both(MOH & PEPFAR)') %>%
+    gt::cols_move(SpacerColumn2, after = PEPFAR_facilities_not_reported_by_MOH) %>%
+
+    # Label columns
+    gt::cols_label(
+      MOH_Facilities_SupportedBy_PEPFAR = "% MOH Facilities Supported By PEPFAR",
+      PEPFAR_facilities_not_reported_by_MOH = "% PEPFAR Facilities Not Reported By MOH",
+      MOH_Supported_By_pepfar = '% MOH Results Supported By PEPFAR',
+      weighted_concordance = 'Weighted Concordance',
+      absolute_difference = 'Abs Difference',
+      indicator = 'Indicator',
+      absolute_diff_mean = 'Abs Diff Mean',
+      SpacerColumn = "",
+      SpacerColumn2 = ""
+    ) %>%
+
+    # Group columns under a spanner
+    gt::tab_spanner(
+      label = md("**Nbr facilities reported by:**"),
+      columns = c(MOH, PEPFAR, 'Both(MOH & PEPFAR)')
+    ) %>%
+
+    # Define colors for specific columns
+    gt::data_color(
+      columns = PEPFAR_facilities_not_reported_by_MOH,
+      colors = scales::col_bin(
+        palette = c("green", "yellow", "lightcoral"),
+        bins = c(-Inf, 50, 100, Inf)
+      )
+    ) %>%
+    gt::data_color(
+      columns = weighted_concordance,
+      colors = scales::col_bin(
+        palette = c("lightcoral", "yellow", "green"),
+        bins = c(0, 92, 95, 100),
+        right = TRUE  # Include the upper bound in each bin
+      )
+    ) %>%
+    gt::data_color(
+      columns = MOH_Supported_By_pepfar,
+      colors = scales::col_bin(
+        palette = c("white", "lightcoral"),
+        bins = c(0, 100, Inf)
+      )
+    ) %>%
+    gt::data_color(
+      columns = 'MOH Indicator Disaggregation',
+      colors = scales::col_factor(
+        palette = c("green", "yellow", "red"),  # Green, yellow, red for the three categories
+        levels = c("Data Fine", "Data Fine (50+)", "Fine", "Data Coarse", "Data Fine (65+)", "Fine", "Mapping Fine (50+)", "Mapping Fine (65+)", "Mapping Fine", "Mapping Coarse", "Coarse", "Mapping Coarse (65+)", "Mapping Coarse (50+)", "Coarse", "No Mapping"),
+        domain = c("Data Fine", "Data Fine (50+)", "Fine", "Data Coarse", "Data Fine (65+)", "Fine", "Mapping Fine (50+)", "Mapping Fine (65+)", "Mapping Fine", "Mapping Coarse", "Coarse", "Mapping Coarse (65+)", "Mapping Coarse (50+)", "Coarse", "No Mapping")
+      )
+    ) %>%
+
+    # Format numbers and percentages
+    gt::fmt_number(
+      columns = c(MOH, PEPFAR, 'Both(MOH & PEPFAR)'),
+      sep_mark = ",",
+      decimals = 0
+    ) %>%
+    gt::fmt_number(
+      columns = c(MOH_Facilities_SupportedBy_PEPFAR, PEPFAR_facilities_not_reported_by_MOH, MOH_Supported_By_pepfar, weighted_concordance),
+      decimals = 2,
+      pattern = "{x}%"
+    ) %>%
+
+    # Center align all columns
+    gt::cols_align(
+      align = "center",
+      columns = everything()
+    ) %>%
+
+    # Add borders to the body (rows) with BLACK color, excluding SpacerColumns
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = "all",
+        color = "black",
+        weight = px(1)
+      ),
+      locations = gt::cells_body(columns = -SpacerColumn)
+    ) %>%
+
+    # Remove top and bottom borders from the SpacerColumn
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = c("top", "bottom"),
+        color = "transparent",
+        weight = px(0)
+      ),
+      locations = gt::cells_body(columns = SpacerColumn)
+    ) %>%
+
+    # Add borders to left and right sides of SpacerColumn
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = c("left", "right"),
+        color = "black",
+        weight = px(1)
+      ),
+      locations = gt::cells_body(columns = SpacerColumn)
+    ) %>%
+
+    # Apply grey shading to SpacerColumn
+    gt::tab_style(
+      style = gt::cell_fill(
+        color = "darkgrey"
+      ),
+      locations = gt::cells_body(columns = SpacerColumn)
+    ) %>%
+
+    # Remove top and bottom borders from the SpacerColumn2
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = c("top", "bottom"),
+        color = "transparent",
+        weight = px(0)
+      ),
+      locations = gt::cells_body(columns = SpacerColumn2)
+    ) %>%
+
+    # Add borders to left and right sides of SpacerColumn2
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = c("left", "right"),
+        color = "black",
+        weight = px(1)
+      ),
+      locations = gt::cells_body(columns = SpacerColumn2)
+    ) %>%
+
+    # Apply grey shading to SpacerColumn2
+    gt::tab_style(
+      style = gt::cell_fill(
+        color = "darkgrey"
+      ),
+      locations = gt::cells_body(columns = SpacerColumn2)
+    ) %>%
+
+    # Apply borders to column labels
+    gt::tab_style(
+      style = gt::cell_borders(
+        sides = "all",
+        color = "black",
+        weight = px(1)
+      ),
+      locations = gt::cells_column_labels(columns = everything())
+    ) %>%
+
+    # Make column labels bold
+    gt::tab_style(
+      style = gt::cell_text(weight = "bold"),
+      locations = gt::cells_column_labels()
+    ) %>%
+
+    gt::tab_options(
+      table.font.size = px(14),
+      column_labels.font.size = px(16),
+      data_row.padding = px(5)
+    )
+
+  return(rendered_table)
 }
 
 #' Generate Integrity Check Tables
