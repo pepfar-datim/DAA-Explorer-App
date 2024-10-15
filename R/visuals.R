@@ -483,13 +483,13 @@ new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
     ) %>%
 
     # Define colors for specific columns
-    gt::data_color(
-      columns = PEPFAR_facilities_not_reported_by_MOH,
-      colors = scales::col_bin(
-        palette = c("green", "yellow", "lightcoral"),
-        bins = c(-Inf, 50, 100, Inf)
-      )
-    ) %>%
+    # gt::data_color(
+    #   columns = PEPFAR_facilities_not_reported_by_MOH,
+    #   colors = scales::col_bin(
+    #     palette = c("springgreen", "yellow", "#B83E3E"),
+    #     bins = c(0, 5, 10, Inf)
+    #   )
+    # ) %>%
     gt::data_color(
       columns = weighted_concordance,
       colors = scales::col_bin(
