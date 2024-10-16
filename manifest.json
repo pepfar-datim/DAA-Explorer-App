@@ -782,18 +782,18 @@
         "RoxygenNote": "7.2.2",
         "Author": "Chris Nemarich [aut, cre]",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 4.3.1; ; 2024-10-04 10:34:19 UTC; unix",
+        "Built": "R 4.3.1; ; 2024-10-16 09:03:18 UTC; unix",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
         "RemoteRef": "main",
-        "RemoteSha": "6c701f88dcc9cd236e3882a08a30ea0cdda5ac20",
+        "RemoteSha": "4c24221f3605ad0d4cfba2daed4e68dcd41c6315",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
         "GithubRef": "main",
-        "GithubSHA1": "6c701f88dcc9cd236e3882a08a30ea0cdda5ac20",
+        "GithubSHA1": "4c24221f3605ad0d4cfba2daed4e68dcd41c6315",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
@@ -3701,7 +3701,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "911717ff1a5958db0601b24c747c317c"
+      "checksum": "6884fecf27de1f17b33df22a12ac9ce6"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -3734,13 +3734,13 @@
       "checksum": "051262107de5bf12cc7718b827f3e527"
     },
     "R/visuals.R": {
-      "checksum": "d659a7bbd457d52c4d34b1918d8357a5"
+      "checksum": "51560ed5354122e697c57e329905e3cb"
     },
     "README.md": {
       "checksum": "2745559c66e468b674b6484703195a8d"
     },
     "renv.lock": {
-      "checksum": "f2f5ced29656e1354bda7e7b21ca3c11"
+      "checksum": "779da3aea1badf96b87926db809d6489"
     },
     "server.R": {
       "checksum": "9d39276b43a878d22678fdeaabf85fa3"

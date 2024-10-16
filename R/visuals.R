@@ -508,9 +508,9 @@ new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
     gt::data_color(
       columns = 'MOH Indicator Disaggregation',
       colors = scales::col_factor(
-        palette = c("green", "yellow", "red"),  # Green, yellow, red for the three categories
-        levels = c("Data Fine", "Data Fine (50+)", "Fine", "Data Coarse", "Data Fine (65+)", "Fine", "Mapping Fine (50+)", "Mapping Fine (65+)", "Mapping Fine", "Mapping Coarse", "Coarse", "Mapping Coarse (65+)", "Mapping Coarse (50+)", "Coarse", "No Mapping"),
-        domain = c("Data Fine", "Data Fine (50+)", "Fine", "Data Coarse", "Data Fine (65+)", "Fine", "Mapping Fine (50+)", "Mapping Fine (65+)", "Mapping Fine", "Mapping Coarse", "Coarse", "Mapping Coarse (65+)", "Mapping Coarse (50+)", "Coarse", "No Mapping")
+      palette = c("#BBDBA9", "#D2E7C6", "#FFF0C2", "#FFC2C9"),  # Green, yellow, red for the three categories
+        levels = c("Data Fine", "Data Fine (65+)", "Data Fine (50+)", "Fine", "Data Coarse", "Fine", "Mapping Fine (50+)", "Mapping Fine (65+)", "Mapping Fine", "Mapping Coarse", "Coarse", "Mapping Coarse (65+)", "Mapping Coarse (50+)", "Coarse", "No Mapping"),
+        domain = c("Data Fine", "Data Fine (65+)", "Data Fine (50+)", "Fine", "Data Coarse", "Fine", "Mapping Fine (50+)", "Mapping Fine (65+)", "Mapping Fine", "Mapping Coarse", "Coarse", "Mapping Coarse (65+)", "Mapping Coarse (50+)", "Coarse", "No Mapping")
       )
     ) %>%
 
