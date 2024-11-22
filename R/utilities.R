@@ -108,9 +108,16 @@ get_period_list <- function() {
   )
 
   pe_list <- stats::setNames(df$period_code, df$period_name)
+  #print(pe_list)
 
   return(pe_list)
 }
+
+get_current_year <- function() {
+  format(Sys.Date(), "%Y")
+}
+
+current_year <- get_current_year()
 
 # Workbook File Functions --------------------------------------------------
 

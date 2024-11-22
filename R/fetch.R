@@ -35,7 +35,7 @@ fetch <- function(authenticated, ready, ou_uid, d2_session, geo_session) {
       shiny::incProgress(0.0625, detail = ("Fetching DAA Indicator data"))
       d$daa_indicator_data <-
         daa.analytics::get_daa_data(ou_uid = d$ou_uid,
-                                    fiscal_year = c(2018:daa.analytics::current_fiscal_year()),
+                                    fiscal_year = c(2018:get_current_year()),
                                     d2_session = d$d2_session)
       Sys.sleep(0.5)
 

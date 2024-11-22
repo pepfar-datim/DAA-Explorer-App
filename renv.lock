@@ -347,7 +347,7 @@
       "RemoteUsername": "pepfar-datim",
       "RemoteRepo": "daa-analytics",
       "RemoteRef": "main",
-      "RemoteSha": "4c24221f3605ad0d4cfba2daed4e68dcd41c6315",
+      "RemoteSha": "f7e47bb9f5362b118fbe26b18154b789398d46a3",
       "Remotes": "pepfar-datim/datimutils",
       "Requirements": [
         "R",
@@ -364,7 +364,7 @@
         "stringr",
         "tidyr"
       ],
-      "Hash": "1af4804c6866a73e6722db433e00e327"
+      "Hash": "47935ff84bef22bf2d84d42f2586190d"
     },
     "data.table": {
       "Package": "data.table",

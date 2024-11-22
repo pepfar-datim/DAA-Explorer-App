@@ -782,18 +782,18 @@
         "RoxygenNote": "7.2.2",
         "Author": "Chris Nemarich [aut, cre]",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 4.3.1; ; 2024-10-16 09:03:18 UTC; unix",
+        "Built": "R 4.3.1; ; 2024-11-22 11:12:27 UTC; unix",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
         "RemoteRef": "main",
-        "RemoteSha": "4c24221f3605ad0d4cfba2daed4e68dcd41c6315",
+        "RemoteSha": "04a35ec720a7a7443c25e0c5b4e0241bc4565458",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
         "GithubRef": "main",
-        "GithubSHA1": "4c24221f3605ad0d4cfba2daed4e68dcd41c6315",
+        "GithubSHA1": "04a35ec720a7a7443c25e0c5b4e0241bc4565458",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
@@ -3701,7 +3701,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "6884fecf27de1f17b33df22a12ac9ce6"
+      "checksum": "535ae2e90d14d30948be3265552a0f94"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -3731,31 +3731,40 @@
       "checksum": "19a749f26d8a16c48f46abdf4a6da1a3"
     },
     "R/utilities.R": {
-      "checksum": "051262107de5bf12cc7718b827f3e527"
+      "checksum": "f571fba696f07d2df70f518c807db9aa"
     },
     "R/visuals.R": {
-      "checksum": "51560ed5354122e697c57e329905e3cb"
+      "checksum": "5a405633d34b611808633a8db0ad45c6"
     },
     "README.md": {
       "checksum": "2745559c66e468b674b6484703195a8d"
     },
     "renv.lock": {
-      "checksum": "779da3aea1badf96b87926db809d6489"
+      "checksum": "3a2a9ce6c010f991b5da19a1b6962da5"
     },
     "server.R": {
       "checksum": "9d39276b43a878d22678fdeaabf85fa3"
     },
     "support_files/coc_metadata.rds": {
-      "checksum": "55cfb79f24585fe26edbdf7a751d8a3b"
+      "checksum": "d64dcd4bb6263eb085f2e7feabfc52a3"
+    },
+    "support_files/daa_data_bQQJe0cC1eD_2017_2022.rds": {
+      "checksum": "0db84da224b2f8f70b665740f5fe84c8"
     },
     "support_files/daa_data_HfVjCurKxh2_2017_2022.rds": {
-      "checksum": "ebed755a05b7fd397a7e693ce0c2d6cf"
+      "checksum": "ebf9c0e12348221cece95ff4c08bec78"
+    },
+    "support_files/daa_data_IH1kchw86uA_2017_2022.rds": {
+      "checksum": "6896968b18c961d0b47ee256fd048e8d"
     },
     "support_files/daa_data_l1KFEXKI4Dg_2017_2022.rds": {
-      "checksum": "d198ea76b302803ce82abad3469c851a"
+      "checksum": "5a0eaf69e4b09591eaaaadd49d10ae45"
     },
     "support_files/daa_data_mdXu6iCbn2G_2017_2022.rds": {
       "checksum": "28c32c6134ab7225e8799eab783aa28c"
+    },
+    "support_files/daa_data_Qh4XMQJhbk8_2017_2022.rds": {
+      "checksum": "8110a6160113c04df35475828877ed2b"
     },
     "support_files/daa_data_V0qMZH29CtN_2017_2022.rds": {
       "checksum": "4e01153f566f07e9553616bc12db48b2"
@@ -3767,19 +3776,19 @@
       "checksum": "0b3315837f4b532adfe37efff297db5d"
     },
     "support_files/duplicate_ids.rds": {
-      "checksum": "81d1962b2bdd07542213f3c1d192218f"
+      "checksum": "81786bc31f6e946663c986b861ca499b"
     },
     "support_files/null_ids.rds": {
-      "checksum": "53ed81067c68ce1e8f5f82115ff460ae"
+      "checksum": "6c738be3b20b012488f42fd7a3dbc29d"
     },
     "support_files/ou_metadata.rds": {
-      "checksum": "d792aae5d6d0d05382d1c0f8366425cd"
+      "checksum": "bcd4e05d315bac2facf2a8c84cdec099"
     },
     "support_files/pe_metadata.rds": {
-      "checksum": "85d25a0621f246e7d56ee26f0fd0e836"
+      "checksum": "8bee9bfcf197d4b791de379879dc14c3"
     },
     "support_files/pvls_emr_raw.rds": {
-      "checksum": "5f39dd99317a7a1a9d53c35187df5931"
+      "checksum": "4039f971a828ffab5e51356e780bd81a"
     },
     "ui.R": {
       "checksum": "e1032b921c640ee9d43801c7f336154c"

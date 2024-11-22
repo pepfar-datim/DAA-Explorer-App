@@ -92,8 +92,8 @@ site_reporting_graph <- function(df) {
 
   if (nrow(pepfar_data) == 0) {
     plot.new()
-    message <- " Error: This graph displays data for the last fiscal year (FY) selected in the filters to the left. \nSeeing this error message indicates that there is no data from MOH and/or PEPFAR for this fiscal year.\nPlease adjust the filter to a fiscal year containing both MOH and PEPFAR data."
-    text(0.5, 0.7, message, col = "red", cex = 1.5)
+    message <- " Warning: This graph displays data for the last fiscal year (FY) selected in the filters to the left. \nSeeing this error message indicates that there is no data from MOH and/or PEPFAR for this fiscal year.\nPlease adjust the filter to a fiscal year containing both MOH and PEPFAR data."
+    text(0.5, 0.7, message, col = "#2D481E", cex = 1.5)
     par(mar = c(5, 0, 0, 0))
   } else {
     if (nrow(pepfar_data) > 0) {
