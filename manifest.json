@@ -782,18 +782,18 @@
         "RoxygenNote": "7.2.2",
         "Author": "Chris Nemarich [aut, cre]",
         "Maintainer": "Chris Nemarich <cnemarich@guidehousefederal.com>",
-        "Built": "R 4.3.1; ; 2024-11-22 11:12:27 UTC; unix",
+        "Built": "R 4.3.1; ; 2024-11-22 11:56:03 UTC; unix",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteUsername": "pepfar-datim",
         "RemoteRepo": "daa-analytics",
         "RemoteRef": "main",
-        "RemoteSha": "04a35ec720a7a7443c25e0c5b4e0241bc4565458",
+        "RemoteSha": "f7e47bb9f5362b118fbe26b18154b789398d46a3",
         "GithubHost": "api.github.com",
         "GithubRepo": "daa-analytics",
         "GithubUsername": "pepfar-datim",
         "GithubRef": "main",
-        "GithubSHA1": "04a35ec720a7a7443c25e0c5b4e0241bc4565458",
+        "GithubSHA1": "f7e47bb9f5362b118fbe26b18154b789398d46a3",
         "Remotes": "pepfar-datim/datimutils"
       }
     },
@@ -3701,7 +3701,7 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "535ae2e90d14d30948be3265552a0f94"
+      "checksum": "19f8bfb3e5104639d74cc9110599c058"
     },
     "daa-analysis.log": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -3719,22 +3719,22 @@
       "checksum": "9b62b5c75bb467271d2729f6639a8259"
     },
     "R/fetch.R": {
-      "checksum": "fc0b4aae346a652e8445f4c6a5ee1feb"
+      "checksum": "753921397510540dcc2857dd26b131a3"
     },
     "R/ui_login_module.R": {
       "checksum": "18eab5f8c970da34091cfdd29773d0c9"
     },
     "R/ui_main_module.R": {
-      "checksum": "b0910707372a8d2da0c774fe1a0ec228"
+      "checksum": "e92312eb5b98563844536889e2e6dde2"
     },
     "R/ui_unauth_module.R": {
       "checksum": "19a749f26d8a16c48f46abdf4a6da1a3"
     },
     "R/utilities.R": {
-      "checksum": "f571fba696f07d2df70f518c807db9aa"
+      "checksum": "90dbe549bd045bd4c6ca8717b888d4db"
     },
     "R/visuals.R": {
-      "checksum": "5a405633d34b611808633a8db0ad45c6"
+      "checksum": "a01ac6c1fc9384fd54a224bf1e66c881"
     },
     "README.md": {
       "checksum": "2745559c66e468b674b6484703195a8d"
@@ -3743,10 +3743,10 @@
       "checksum": "3a2a9ce6c010f991b5da19a1b6962da5"
     },
     "server.R": {
-      "checksum": "9d39276b43a878d22678fdeaabf85fa3"
+      "checksum": "13a54ecef184b235f74a75bf55456ddf"
     },
     "support_files/coc_metadata.rds": {
-      "checksum": "d64dcd4bb6263eb085f2e7feabfc52a3"
+      "checksum": "760a5756fc3c353ee3478373c359cf2a"
     },
     "support_files/daa_data_bQQJe0cC1eD_2017_2022.rds": {
       "checksum": "0db84da224b2f8f70b665740f5fe84c8"
@@ -3760,6 +3760,9 @@
     "support_files/daa_data_l1KFEXKI4Dg_2017_2022.rds": {
       "checksum": "5a0eaf69e4b09591eaaaadd49d10ae45"
     },
+    "support_files/daa_data_lZsCb6y0KDX_2017_2022.rds": {
+      "checksum": "0cbbba2977608cdd855be0618b6e2f42"
+    },
     "support_files/daa_data_mdXu6iCbn2G_2017_2022.rds": {
       "checksum": "28c32c6134ab7225e8799eab783aa28c"
     },
@@ -3767,10 +3770,10 @@
       "checksum": "8110a6160113c04df35475828877ed2b"
     },
     "support_files/daa_data_V0qMZH29CtN_2017_2022.rds": {
-      "checksum": "4e01153f566f07e9553616bc12db48b2"
+      "checksum": "cd3bd3577c81514194230a438ab5451a"
     },
     "support_files/de_metadata.rds": {
-      "checksum": "a53db493cd9f1be579872a9752ba4b21"
+      "checksum": "d02fabce607496a5d02758b09e4e2f81"
     },
     "support_files/DoNotRemove.txt": {
       "checksum": "0b3315837f4b532adfe37efff297db5d"
@@ -3782,13 +3785,13 @@
       "checksum": "6c738be3b20b012488f42fd7a3dbc29d"
     },
     "support_files/ou_metadata.rds": {
-      "checksum": "bcd4e05d315bac2facf2a8c84cdec099"
+      "checksum": "75a35d02dc54e9b18ad929fc9934c011"
     },
     "support_files/pe_metadata.rds": {
-      "checksum": "8bee9bfcf197d4b791de379879dc14c3"
+      "checksum": "702cd2fc1bf65a91b021489a606d0789"
     },
     "support_files/pvls_emr_raw.rds": {
-      "checksum": "4039f971a828ffab5e51356e780bd81a"
+      "checksum": "def4795d775a8464beaf6fa3a82e8711"
     },
     "ui.R": {
       "checksum": "e1032b921c640ee9d43801c7f336154c"

@@ -90,18 +90,22 @@ site_reporting_graph <- function(df) {
   pepfar_data <- df %>%
     filter(reported_by == "PEPFAR", period == graph_fy)
 
-  if (nrow(pepfar_data) == 0) {
+  if (nrow(pepfar_data) == 0 || length(unique(df$period)) > 1) {
     plot.new()
-    message <- " Warning: This graph displays data for the last fiscal year (FY) selected in the filters to the left. \nSeeing this error message indicates that there is no data from MOH and/or PEPFAR for this fiscal year.\nPlease adjust the filter to a fiscal year containing both MOH and PEPFAR data."
-    text(0.5, 0.7, message, col = "#2D481E", cex = 1.5)
+    message1 <- expression(bold("Note: Please filter to a single fiscal year (panel to the left)."))
+    message2 <- "The graph will only be rendered when selecting years for which Ministry data was provided."
+    text(0.5, 0.8, message1, col = "#2D481E", cex = 1.5)
+    text(0.5, 0.7, message2, col = "#2D481E", cex = 1.5)
     par(mar = c(5, 0, 0, 0))
   } else {
-    if (nrow(pepfar_data) > 0) {
       gg_rprt <- df %>%
         dplyr::select(OU, indicator, period,
                       reported_by, site_count) %>%
-        dplyr::filter(period == max(period),
-                      reported_by %in% c("Both", "PEPFAR")) %>%
+        dplyr::filter(reported_by %in% c("Both", "PEPFAR")) %>%
+        dplyr::group_by(indicator, reported_by) %>%
+        dplyr::summarise(site_count = sum(site_count, na.rm = TRUE))  %>%
+        dplyr::ungroup() %>%
+        dplyr::filter(reported_by %in% c("Both", "PEPFAR")) %>%
         dplyr::mutate(site_type = ifelse(reported_by == "Both",
                                          "Facilities reporting to both MOH and PEPFAR",
                                          "Facilities reporting to PEPFAR only")) %>%
@@ -112,7 +116,7 @@ site_reporting_graph <- function(df) {
         coord_flip() +
         facet_wrap(~ site_type, nrow = 1) +
         labs(title = "Are all facilities reporting to PEPFAR also accounted for in MOH reporting?",
-             subtitle = glue::glue("Facilities reporting in {graph_fy}")) +
+             subtitle =  glue::glue("Facilities reporting in {graph_fy}")) +
         theme_minimal() +
         theme(plot.title = element_text(hjust = 0.15, size = 22),
               plot.subtitle = element_text(hjust = 0.35, size = 18),
@@ -125,7 +129,6 @@ site_reporting_graph <- function(df) {
       return(gg_rprt)
     }
   }
-}
 
 #' Interactive Scatter Plot
 #'
@@ -139,10 +142,138 @@ site_reporting_graph <- function(df) {
 #' @return ggplotly object
 #' @export
 #'
+# interactive_scatter <- function(d, filter_values) {
+#   if (is.null(d) || is.null(d$combined_data)) {
+#     return(NULL)
+#   }
+#
+  # if (length(filter_values$vz_pe_filter) != 1) {
+  #   warning_plot <- ggplot2::ggplot() +
+  #     ggplot2::annotate(
+  #       "text",
+  #       x = 0.5, y = 0.8, # Position for the title
+  #       label = "Note: Please filter to a single fiscal year (panel to the left).",
+  #       color = "#2D481E", size = 6, fontface = "bold", hjust = 0.5
+  #     ) +
+  #     ggplot2::theme_void() +
+  #     ggplot2::theme(
+  #       panel.grid = ggplot2::element_blank(),
+  #       panel.border = ggplot2::element_blank(),
+  #       axis.line = ggplot2::element_blank(),
+  #       plot.background = ggplot2::element_blank(),
+  #       #plot.margin = grid::unit(c(0, 0, 0, 0), "lines")
+  #     )
+  #
+  #   return(plotly::ggplotly(warning_plot, tooltip = NULL) %>%
+  #            plotly::config(displayModeBar = F))
+  # }
+#   concordance_distributions <- d %>%
+#     purrr::pluck("combined_data") %>%
+#     dplyr::filter(reported_by == "Both") %>%
+#     dplyr::mutate(unweighted_concordance =
+#                     OU_Concordance / OU_weighting) %>%
+#     dplyr::select(Facility, indicator, period, pepfar, moh,
+#                   unweighted_concordance) %>%
+#     table_filter(de_filter = filter_values$vz_de_filter,
+#                  pe_filter = filter_values$vz_pe_filter)
+#
+#   unweighted_scatter <- concordance_distributions %>%
+#     dplyr::filter(unweighted_concordance != 1) %>%
+#     ggplot2::ggplot(
+#       aes(x = pepfar, y = unweighted_concordance, color = indicator,
+#           text =
+#             paste(
+#               "Facility: ", Facility,
+#               "<br>Indicator: ", indicator,
+#               "<br>Period: ", period,
+#               "<br>PEPFAR Reported Total: ", pepfar,
+#               "<br>MOH Reported Total: ", moh,
+#               "<br>Unweighted Concordance: ",
+#               scales::percent(unweighted_concordance, accuracy = 0.01)
+#             ))) +
+#     geom_point(alpha = 0.5) +
+#     scale_x_continuous(trans = "log10",
+#                        breaks = scales::trans_breaks("log10",
+#                                                      function(x) 10 ^ x,
+#                                                      n = 5)) +
+#     scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+#     geom_hline(yintercept = 0.90) +
+#     geom_vline(xintercept = 100) +
+#     theme(axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5,
+#                                      size = 14, color = "black",
+#                                      margin = margin(l = 20, r = 20))) +
+#     labs(title = "How are sites aligning?",
+#          subtitle = "Unweighted concordance",
+#          alt = "",
+#          x = "Number of patients reported by PEPFAR \n\n <b>Note: Only facilities that are not 100% concordant are shown in this scatterplot.</b>",
+#          y = "Concordance \u21E8") +
+#     theme_minimal() +
+#     labs(color = "Indicators") +
+#     # scale_color_viridis_d(name = "Indicator") +
+#     theme(plot.title = element_text(hjust = 0.5, size = 22),
+#           plot.subtitle = element_text(hjust = 0.5, size = 18),
+#           text = element_text(size = 14),
+#           axis.title.x = element_text(size = 12, vjust = 1, color = "black"),
+#           panel.grid = element_blank(),
+#           plot.margin = unit(c(1,1,-2,1), "cm"),
+#           axis.title.y = element_text(angle = -90, vjust = 1, hjust = -0.2))
+#
+#   fig <- ggplotly(unweighted_scatter, tooltip = "text") %>%
+#     plotly::config(displayModeBar = F)
+#   return(fig)
+# }
+
 interactive_scatter <- function(d, filter_values) {
   if (is.null(d) || is.null(d$combined_data)) {
     return(NULL)
   }
+  if (length(filter_values$vz_pe_filter) != 1) {
+    warning_plot <- ggplot2::ggplot() +
+      ggplot2::labs(
+        title = "Note: Please filter to a single fiscal year (panel to the left)."
+      ) +
+      ggplot2::theme_void() +
+      ggplot2::theme(
+        plot.title = ggplot2::element_text(
+          color = "#2D481E", size = 16, face = "bold", hjust = 0.1, vjust = -2 # Adjusted to move left
+        ),
+        axis.line = ggplot2::element_blank(),       # Remove axis lines
+        panel.border = ggplot2::element_blank(),    # Remove any panel border
+        plot.margin = grid::unit(c(2, 1, 1, 1), "lines") # Margin to prevent cutoffs
+      )
+
+    return(plotly::ggplotly(warning_plot, tooltip = NULL) %>%
+             plotly::config(displayModeBar = F))
+  }
+
+
+
+  # if (length(filter_values$vz_pe_filter) != 1) {
+  #   warning_plot <- ggplot2::ggplot() +
+  #     ggplot2::annotate(
+  #       "text",
+  #       x = 0.4, y = 1.2, # Adjust the y value to move the label upward
+  #       label = "Note: Please filter to a single fiscal year (panel to the left).",
+  #       color = "#2D481E", size = 6, fontface = "bold", hjust = 0.9
+  #     ) +
+  #     ggplot2::xlim(0, 1) + # Define x-axis range
+  #     ggplot2::ylim(0, 2) + # Define y-axis range to allow space at the top
+  #     ggplot2::theme_void() +
+  #     ggplot2::theme(
+  #       panel.grid = ggplot2::element_blank(),
+  #       panel.border = ggplot2::element_blank(),
+  #       axis.line = ggplot2::element_blank(),
+  #       plot.background = ggplot2::element_blank(),
+  #       plot.margin = grid::unit(c(0, 0, 0, 0), "lines")
+  #     )
+  #
+  #   return(plotly::ggplotly(warning_plot, tooltip = NULL) %>%
+  #            plotly::config(displayModeBar = F))
+  # }
+
+
+
+  # Generate the scatterplot
   concordance_distributions <- d %>%
     purrr::pluck("combined_data") %>%
     dplyr::filter(reported_by == "Both") %>%
@@ -152,6 +283,7 @@ interactive_scatter <- function(d, filter_values) {
                   unweighted_concordance) %>%
     table_filter(de_filter = filter_values$vz_de_filter,
                  pe_filter = filter_values$vz_pe_filter)
+
   unweighted_scatter <- concordance_distributions %>%
     dplyr::filter(unweighted_concordance != 1) %>%
     ggplot2::ggplot(
@@ -174,29 +306,90 @@ interactive_scatter <- function(d, filter_values) {
     scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
     geom_hline(yintercept = 0.90) +
     geom_vline(xintercept = 100) +
-    theme(axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5,
-                                     size = 14, color = "black",
-                                     margin = margin(l = 20, r = 20))) +
-    labs(title = "How are sites aligning?",
-         subtitle = "Unweighted concordance",
-         alt = "",
-         x = "Number of patients reported by PEPFAR \n\n <b>Note: Only facilities that are not 100% concordant are shown in this scatterplot.</b>",
-         y = "Concordance \u21E8") +
     theme_minimal() +
-    labs(color = "Indicators") +
-    # scale_color_viridis_d(name = "Indicator") +
-    theme(plot.title = element_text(hjust = 0.5, size = 22),
-          plot.subtitle = element_text(hjust = 0.5, size = 18),
-          text = element_text(size = 14),
-          axis.title.x = element_text(size = 12, vjust = 1, color = "black"),
-          panel.grid = element_blank(),
-          plot.margin = unit(c(1,1,-2,1), "cm"),
-          axis.title.y = element_text(angle = -90, vjust = 1, hjust = -0.2))
+    theme(
+      plot.title = element_text(hjust = 0.5, size = 22),
+      plot.subtitle = element_text(hjust = 0.5, size = 18),
+      text = element_text(size = 14),
+      axis.title.x = element_text(size = 12, vjust = 1, color = "black"),
+      panel.grid = element_blank(),
+      plot.margin = unit(c(1, 1, -2, 1), "cm"),
+      axis.title.y = element_text(angle = -90, vjust = 1, hjust = -0.2)
+    ) +
+    labs(
+      title = "How well are sites aligning?",
+      subtitle = "Unweighted concordance",
+      x = "Number of patients reported by PEPFAR \n\n <b>Note: Only facilities that are not 100% concordant are shown in this scatterplot.</b>",
+      y = "Concordance \u21E8",
+      color = "Indicators"
+    )
 
-  fig <- ggplotly(unweighted_scatter, tooltip = "text") %>%
-    plotly::config(displayModeBar = F)
-  return(fig)
+  # Convert scatterplot to plotly
+  scatterplot <- ggplotly(unweighted_scatter, tooltip = "text") %>%
+    plotly::config(displayModeBar = FALSE)
+
+  footer_text <- paste(
+    "<b>The scatterplot is based on data reported by PEPFAR on the number of patients across sites and their corresponding concordance levels.</b>",
+    "<br><br>Quality Improvement Focus: Quadrant 4 sites are identified as priority areas for quality improvement interventions.<br>",
+    "This is due to their combination of high patient volume and suboptimal concordance.",
+    "<br><br><b>Quadrants:</b>",
+    "<br>Quadrant 1. (top-right) Sites with high patient volume and high concordance (>90%).",
+    "<br>Quadrant 2. (top-left) Sites with low patient volume and high concordance (>90%).",
+    "<br>Quadrant 3. (bottom-left) Sites with low patient volume and low concordance (<90%).",
+    "<br>Quadrant 4. (bottom-right) Sites with high patient volume and low concordance (<90%)."
+  )
+
+
+  footer <- plotly::plot_ly(
+    type = "scatter",
+    mode = "text",
+    x = c(0.5),
+    y = c(0),
+    text = footer_text,
+    hoverinfo = "none",
+    textfont = list(size = 14),
+    showlegend = FALSE
+  ) %>%
+    plotly::layout(
+      xaxis = list(
+        showgrid = FALSE,
+        zeroline = FALSE,
+        showticklabels = FALSE
+      ),
+      yaxis = list(
+        showgrid = FALSE,
+        zeroline = FALSE,
+        showticklabels = FALSE
+      ),
+      margin = list(l = 10, r = 10, t = 10, b = 10)
+    )
+
+  combined_plot <- subplot(
+    scatterplot, footer,
+    nrows = 2,
+    heights = c(0.60, 0.30),
+    shareX = FALSE,
+    shareY = FALSE,
+    titleY = FALSE
+  ) %>%
+    plotly::layout(
+      margin = list(t = 70, b = 80, l = 50, r = 50),
+      plot_bgcolor = "white"
+    ) %>%
+    plotly::config(displayModeBar = FALSE)
+
+  return(combined_plot)
+
+
 }
+
+
+
+
+
+
+
+
 
 #' Generate Indicator Table
 #'
@@ -361,17 +554,9 @@ site_table_data <- function(d, filter_values) {
   return(t)
 }
 
-new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
+new_analysis_table_rendering <- function(d, filter_values) {
   if (is.null(d) || is.null(d$combined_data)) {
     return(NULL)
-  }
-
-  # Convert rows_per_page to numeric to avoid errors
-  rows_per_page <- as.numeric(rows_per_page)
-
-  # Check if rows_per_page is numeric
-  if (is.na(rows_per_page) || !is.numeric(rows_per_page)) {
-    stop("Error: 'rows_per_page' must be numeric.")
   }
 
   # Process the data
@@ -407,6 +592,10 @@ new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
       absolute_diff_mean = round(abs(absolute_difference / length(unique(Facility_UID[reported_by == "Both"]))), 0),
     ) %>%
     dplyr::mutate(
+      # Apply comma formatting for display
+      absolute_difference_formatted = scales::comma(absolute_difference)
+    ) %>%
+    dplyr::mutate(
       dplyr::across(
         c(PEPFAR_Reported_Facilities_ReportedByMOH, MOH_Facilities_SupportedBy_PEPFAR),
         ~ ifelse(PEPFAR == 0 | MOH == 0, NA, .x)
@@ -424,7 +613,11 @@ new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
       !is.na(has_disag_mapping) & has_disag_mapping != "None" ~ has_disag_mapping,
       is.na(has_disag_mapping) | has_disag_mapping == "None" ~ has_mapping_result_data,
       TRUE ~ NA_character_  # Catch-all for any other cases
-    )) %>%
+    ),
+    'MOH Indicator Disaggregation' = stringr::str_remove(
+      `MOH Indicator Disaggregation`, "^(Data |Mapping )"
+    )
+    ) %>%
     dplyr::select(-has_disag_mapping, -has_mapping_result_data, -has_results_data)
 
   # Sort by year in descending order, assuming 'period' contains the year
@@ -446,18 +639,26 @@ new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
       PEPFAR_facilities_not_reported_by_MOH,
       MOH_Supported_By_pepfar,
       weighted_concordance,
-      absolute_difference,
+      absolute_difference_formatted,
       absolute_diff_mean
     )
-
-  # Paginate the data by subsetting based on the selected number of rows per page
-  paginated_df <- head(processed_df, rows_per_page)
-  paginated_df$SpacerColumn <- ""
-  paginated_df$SpacerColumn2 <- ""
-  # Add the rendered_table code as before
-
-  rendered_table <- paginated_df %>%
+  processed_df$SpacerColumn <- ""
+  processed_df$SpacerColumn2 <- ""
+  rendered_table <- processed_df %>%
     gt::gt() %>%
+
+    gt::tab_header(
+      title = gt::md("The DAA dashboard provides national level analysis of your country’s reporting across the DAA indicators. This is a useful starting point for a general comparison of data sources and to identify potential areas for deeper investigation.\n
+It is recommended to filter the dashboard to a single year to simplify the view.")
+    ) %>%
+
+    gt::tab_options(
+      table.border.top.width = px(0),
+      heading.border.bottom.width = px(0),
+      heading.padding = px(15)
+    ) %>%
+
+    #labs(title = gt::md("**This is the Main Dashboard**")) %>%
 
     # Move the desired column (for spacing) to its desired position
     gt::cols_move(SpacerColumn, after = 'Both(MOH & PEPFAR)') %>%
@@ -469,7 +670,7 @@ new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
       PEPFAR_facilities_not_reported_by_MOH = "% PEPFAR Facilities Not Reported By MOH",
       MOH_Supported_By_pepfar = '% MOH Results Supported By PEPFAR',
       weighted_concordance = 'Weighted Concordance',
-      absolute_difference = 'Abs Difference',
+      absolute_difference_formatted = 'Abs Difference',
       indicator = 'Indicator',
       absolute_diff_mean = 'Abs Diff Mean',
       SpacerColumn = "",
@@ -481,23 +682,6 @@ new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
       label = md("**Nbr facilities reported by:**"),
       columns = c(MOH, PEPFAR, 'Both(MOH & PEPFAR)')
     ) %>%
-
-    # Define colors for specific columns
-    # gt::data_color(
-    #   columns = PEPFAR_facilities_not_reported_by_MOH,
-    #   colors = scales::col_bin(
-    #     palette = c("springgreen", "yellow", "#B83E3E"),
-    #     bins = c(0, 5, 10, Inf)
-    #   )
-    # ) %>%
-    gt::data_color(
-      columns = weighted_concordance,
-      colors = scales::col_bin(
-        palette = c("lightcoral", "yellow", "green"),
-        bins = c(0, 92, 95, 100),
-        right = TRUE  # Include the upper bound in each bin
-      )
-    ) %>%
     gt::data_color(
       columns = MOH_Supported_By_pepfar,
       colors = scales::col_bin(
@@ -508,9 +692,9 @@ new_analysis_table_rendering <- function(d, filter_values, rows_per_page = 15) {
     gt::data_color(
       columns = 'MOH Indicator Disaggregation',
       colors = scales::col_factor(
-      palette = c("#BBDBA9", "#D2E7C6", "#FFF0C2", "#FFC2C9"),  # Green, yellow, red for the three categories
-        levels = c("Data Fine", "Data Fine (65+)", "Data Fine (50+)", "Fine", "Data Coarse", "Fine", "Mapping Fine (50+)", "Mapping Fine (65+)", "Mapping Fine", "Mapping Coarse", "Coarse", "Mapping Coarse (65+)", "Mapping Coarse (50+)", "Coarse", "No Mapping"),
-        domain = c("Data Fine", "Data Fine (65+)", "Data Fine (50+)", "Fine", "Data Coarse", "Fine", "Mapping Fine (50+)", "Mapping Fine (65+)", "Mapping Fine", "Mapping Coarse", "Coarse", "Mapping Coarse (65+)", "Mapping Coarse (50+)", "Coarse", "No Mapping")
+      palette = c("#BBDBA9", "#D2E7C6", "#FFF0C2", "#FFC2C9"),
+        levels = c("Fine", "Fine (65+)", "Fine (50+)", "Coarse", "No Mapping"),
+        domain = c("Fine", "Fine (65+)", "Fine (50+)", "Coarse", "No Mapping")
       )
     ) %>%
 

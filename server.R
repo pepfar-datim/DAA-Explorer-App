@@ -7,6 +7,9 @@ library(rpivotTable)
 library(gt)
 library(DT)
 library(paws)
+library(plotly)
+library(dplyr)
+library(ggplot2)
 if(interactive()){
   options(shiny.port = 5920)
   APP_URL <- "http://127.0.0.1:5920/"
@@ -372,25 +375,9 @@ shinyServer(function(input, output, session) {
   ##new analysis ----------------------------------------------------------
 
   output$new_analysis_table <- gt::render_gt({
-    # Set rows_per_page based on user input, defaulting to 15 if NULL
-    rows_per_page <- as.numeric(ifelse(is.null(input$rows_per_page), 15, input$rows_per_page))
-
-    # Debugging: Check the type and value of rows_per_page
-    print(paste("Rows per page input type:", typeof(rows_per_page)))
-    print(paste("Rows per page value:", rows_per_page))
-
-    # Ensure rows_per_page is numeric
-    if (is.na(rows_per_page) || !is.numeric(rows_per_page)) {
-      stop("Error: 'rows_per_page' must be numeric.")
-    }
-
-    # Render the table with the correct number of rows per page
     analysis_data() %>%
-      new_analysis_table_rendering(filter_values = filter_values, rows_per_page = rows_per_page)
+      new_analysis_table_rendering(filter_values = filter_values)
   })
-
-
-
 
   # Download Handlers ---------------------------------------------------------
 
