@@ -142,86 +142,6 @@ site_reporting_graph <- function(df) {
 #' @return ggplotly object
 #' @export
 #'
-# interactive_scatter <- function(d, filter_values) {
-#   if (is.null(d) || is.null(d$combined_data)) {
-#     return(NULL)
-#   }
-#
-  # if (length(filter_values$vz_pe_filter) != 1) {
-  #   warning_plot <- ggplot2::ggplot() +
-  #     ggplot2::annotate(
-  #       "text",
-  #       x = 0.5, y = 0.8, # Position for the title
-  #       label = "Note: Please filter to a single fiscal year (panel to the left).",
-  #       color = "#2D481E", size = 6, fontface = "bold", hjust = 0.5
-  #     ) +
-  #     ggplot2::theme_void() +
-  #     ggplot2::theme(
-  #       panel.grid = ggplot2::element_blank(),
-  #       panel.border = ggplot2::element_blank(),
-  #       axis.line = ggplot2::element_blank(),
-  #       plot.background = ggplot2::element_blank(),
-  #       #plot.margin = grid::unit(c(0, 0, 0, 0), "lines")
-  #     )
-  #
-  #   return(plotly::ggplotly(warning_plot, tooltip = NULL) %>%
-  #            plotly::config(displayModeBar = F))
-  # }
-#   concordance_distributions <- d %>%
-#     purrr::pluck("combined_data") %>%
-#     dplyr::filter(reported_by == "Both") %>%
-#     dplyr::mutate(unweighted_concordance =
-#                     OU_Concordance / OU_weighting) %>%
-#     dplyr::select(Facility, indicator, period, pepfar, moh,
-#                   unweighted_concordance) %>%
-#     table_filter(de_filter = filter_values$vz_de_filter,
-#                  pe_filter = filter_values$vz_pe_filter)
-#
-#   unweighted_scatter <- concordance_distributions %>%
-#     dplyr::filter(unweighted_concordance != 1) %>%
-#     ggplot2::ggplot(
-#       aes(x = pepfar, y = unweighted_concordance, color = indicator,
-#           text =
-#             paste(
-#               "Facility: ", Facility,
-#               "<br>Indicator: ", indicator,
-#               "<br>Period: ", period,
-#               "<br>PEPFAR Reported Total: ", pepfar,
-#               "<br>MOH Reported Total: ", moh,
-#               "<br>Unweighted Concordance: ",
-#               scales::percent(unweighted_concordance, accuracy = 0.01)
-#             ))) +
-#     geom_point(alpha = 0.5) +
-#     scale_x_continuous(trans = "log10",
-#                        breaks = scales::trans_breaks("log10",
-#                                                      function(x) 10 ^ x,
-#                                                      n = 5)) +
-#     scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-#     geom_hline(yintercept = 0.90) +
-#     geom_vline(xintercept = 100) +
-#     theme(axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5,
-#                                      size = 14, color = "black",
-#                                      margin = margin(l = 20, r = 20))) +
-#     labs(title = "How are sites aligning?",
-#          subtitle = "Unweighted concordance",
-#          alt = "",
-#          x = "Number of patients reported by PEPFAR \n\n <b>Note: Only facilities that are not 100% concordant are shown in this scatterplot.</b>",
-#          y = "Concordance \u21E8") +
-#     theme_minimal() +
-#     labs(color = "Indicators") +
-#     # scale_color_viridis_d(name = "Indicator") +
-#     theme(plot.title = element_text(hjust = 0.5, size = 22),
-#           plot.subtitle = element_text(hjust = 0.5, size = 18),
-#           text = element_text(size = 14),
-#           axis.title.x = element_text(size = 12, vjust = 1, color = "black"),
-#           panel.grid = element_blank(),
-#           plot.margin = unit(c(1,1,-2,1), "cm"),
-#           axis.title.y = element_text(angle = -90, vjust = 1, hjust = -0.2))
-#
-#   fig <- ggplotly(unweighted_scatter, tooltip = "text") %>%
-#     plotly::config(displayModeBar = F)
-#   return(fig)
-# }
 
 interactive_scatter <- function(d, filter_values) {
   if (is.null(d) || is.null(d$combined_data)) {
@@ -235,44 +155,16 @@ interactive_scatter <- function(d, filter_values) {
       ggplot2::theme_void() +
       ggplot2::theme(
         plot.title = ggplot2::element_text(
-          color = "#2D481E", size = 16, face = "bold", hjust = 0.1, vjust = -2 # Adjusted to move left
+          color = "#2D481E", size = 16, face = "bold", hjust = 0.1, vjust = -2
         ),
-        axis.line = ggplot2::element_blank(),       # Remove axis lines
-        panel.border = ggplot2::element_blank(),    # Remove any panel border
-        plot.margin = grid::unit(c(2, 1, 1, 1), "lines") # Margin to prevent cutoffs
+        axis.line = ggplot2::element_blank(),
+        panel.border = ggplot2::element_blank(),
+        plot.margin = grid::unit(c(2, 1, 1, 1), "lines")
       )
 
     return(plotly::ggplotly(warning_plot, tooltip = NULL) %>%
              plotly::config(displayModeBar = F))
   }
-
-
-
-  # if (length(filter_values$vz_pe_filter) != 1) {
-  #   warning_plot <- ggplot2::ggplot() +
-  #     ggplot2::annotate(
-  #       "text",
-  #       x = 0.4, y = 1.2, # Adjust the y value to move the label upward
-  #       label = "Note: Please filter to a single fiscal year (panel to the left).",
-  #       color = "#2D481E", size = 6, fontface = "bold", hjust = 0.9
-  #     ) +
-  #     ggplot2::xlim(0, 1) + # Define x-axis range
-  #     ggplot2::ylim(0, 2) + # Define y-axis range to allow space at the top
-  #     ggplot2::theme_void() +
-  #     ggplot2::theme(
-  #       panel.grid = ggplot2::element_blank(),
-  #       panel.border = ggplot2::element_blank(),
-  #       axis.line = ggplot2::element_blank(),
-  #       plot.background = ggplot2::element_blank(),
-  #       plot.margin = grid::unit(c(0, 0, 0, 0), "lines")
-  #     )
-  #
-  #   return(plotly::ggplotly(warning_plot, tooltip = NULL) %>%
-  #            plotly::config(displayModeBar = F))
-  # }
-
-
-
   # Generate the scatterplot
   concordance_distributions <- d %>%
     purrr::pluck("combined_data") %>%
@@ -306,90 +198,57 @@ interactive_scatter <- function(d, filter_values) {
     scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
     geom_hline(yintercept = 0.90) +
     geom_vline(xintercept = 100) +
+    theme(
+      axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5,
+                                 size = 14, color = "black",
+                                 margin = margin(l = 20, r = 20))) +
+    #plot.margin = unit(c(1, 1, 1, 3), "cm")) +
+    labs(title = "How well are sites aligning?",
+         subtitle = "Unweighted concordance",
+         alt = "",
+         x = "Number of patients reported by PEPFAR",
+         y = "Percent Concordance \u21E8") +
     theme_minimal() +
+    labs(color = "Indicators") +
     theme(
       plot.title = element_text(hjust = 0.5, size = 22),
       plot.subtitle = element_text(hjust = 0.5, size = 18),
       text = element_text(size = 14),
       axis.title.x = element_text(size = 12, vjust = 1, color = "black"),
       panel.grid = element_blank(),
-      plot.margin = unit(c(1, 1, -2, 1), "cm"),
+      plot.margin = unit(c(1, 1, 1, 2), "cm"),
       axis.title.y = element_text(angle = -90, vjust = 1, hjust = -0.2)
-    ) +
-    labs(
-      title = "How well are sites aligning?",
-      subtitle = "Unweighted concordance",
-      x = "Number of patients reported by PEPFAR \n\n <b>Note: Only facilities that are not 100% concordant are shown in this scatterplot.</b>",
-      y = "Concordance \u21E8",
-      color = "Indicators"
     )
-
   # Convert scatterplot to plotly
-  scatterplot <- ggplotly(unweighted_scatter, tooltip = "text") %>%
-    plotly::config(displayModeBar = FALSE)
-
-  footer_text <- paste(
-    "<b>The scatterplot is based on data reported by PEPFAR on the number of patients across sites and their corresponding concordance levels.</b>",
-    "<br><br>Quality Improvement Focus: Quadrant 4 sites are identified as priority areas for quality improvement interventions.<br>",
-    "This is due to their combination of high patient volume and suboptimal concordance.",
-    "<br><br><b>Quadrants:</b>",
-    "<br>Quadrant 1. (top-right) Sites with high patient volume and high concordance (>90%).",
-    "<br>Quadrant 2. (top-left) Sites with low patient volume and high concordance (>90%).",
-    "<br>Quadrant 3. (bottom-left) Sites with low patient volume and low concordance (<90%).",
-    "<br>Quadrant 4. (bottom-right) Sites with high patient volume and low concordance (<90%)."
-  )
-
-
-  footer <- plotly::plot_ly(
-    type = "scatter",
-    mode = "text",
-    x = c(0.5),
-    y = c(0),
-    text = footer_text,
-    hoverinfo = "none",
-    textfont = list(size = 14),
-    showlegend = FALSE
-  ) %>%
-    plotly::layout(
-      xaxis = list(
-        showgrid = FALSE,
-        zeroline = FALSE,
-        showticklabels = FALSE
+scatterplot <- ggplotly(unweighted_scatter, tooltip = "text") %>%
+plotly::layout(
+  annotations = list(
+    list(
+      x = 0.5,
+      y = -0.8,
+      text = paste(
+        #"<b>Number of patients reported by PEPFAR</b><br><br>",
+        "<b>The scatterplot is based on data reported by PEPFAR on the number of patients across sites and their corresponding concordance levels.</b>",
+        "<br><br>Quality Improvement Focus: Quadrant 4 sites are identified as priority areas for quality improvement interventions.<br>",
+        "This is due to their combination of high patient volume and suboptimal concordance.",
+        "<br><br><b>Quadrants:</b>",
+        "<br>Quadrant 1. (top-right) Sites with high patient volume and high concordance (>90%).",
+        "<br>Quadrant 2. (top-left) Sites with low patient volume and high concordance (>90%).",
+        "<br>Quadrant 3. (bottom-left) Sites with low patient volume and low concordance (<90%).",
+        "<br>Quadrant 4. (bottom-right) Sites with high patient volume and low concordance (<90%)."
       ),
-      yaxis = list(
-        showgrid = FALSE,
-        zeroline = FALSE,
-        showticklabels = FALSE
-      ),
-      margin = list(l = 10, r = 10, t = 10, b = 10)
+      showarrow = FALSE,
+      xref = "paper",
+      yref = "paper",
+      align = "center",
+      font = list(size = 14)
     )
-
-  combined_plot <- subplot(
-    scatterplot, footer,
-    nrows = 2,
-    heights = c(0.60, 0.30),
-    shareX = FALSE,
-    shareY = FALSE,
-    titleY = FALSE
+    ),
+    margin = list(t = 70, b = 350, l = 120, r = 50)
   ) %>%
-    plotly::layout(
-      margin = list(t = 70, b = 80, l = 50, r = 50),
-      plot_bgcolor = "white"
-    ) %>%
-    plotly::config(displayModeBar = FALSE)
-
-  return(combined_plot)
-
-
+  plotly::config(displayModeBar = FALSE)
+  return(scatterplot)
 }
-
-
-
-
-
-
-
-
 
 #' Generate Indicator Table
 #'

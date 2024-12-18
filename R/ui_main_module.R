@@ -55,7 +55,7 @@ ui_main <- function(input, output, session, d2_session) { #, refreshed) {
           tabPanel(title = "Site Data",
                    dataTableOutput("site_table")),
           tabPanel(title = "Site Scatterplot",
-                   plotlyOutput("interactive_scatter", height = "900px", width = "110%")),
+                   plotlyOutput("interactive_scatter", height = "800px", width = "110%")),
           tabPanel(title = "Integrity Checks",
                    radioButtons("integrity_radio_input",
                                 label = "Select Data Integrity Test:",
