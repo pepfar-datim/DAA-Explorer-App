@@ -114,7 +114,7 @@ get_period_list <- function() {
 }
 
 get_current_year <- function() {
-  as.numeric(format(Sys.Date(), "%Y"))
+  as.numeric(format(Sys.Date(), "%Y")) - 1
 }
 
 current_year <- get_current_year()
